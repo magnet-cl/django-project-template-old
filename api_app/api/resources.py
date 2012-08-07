@@ -27,9 +27,6 @@ class UserResource(ApiResource):
             help_text="The last name of this user")
     last_login = fields.DateTimeField('last_login', default=datetime.now,
             help_text="The date of the lat login for this user")
-    avatar = fields.FileField('avatar', default=None)
-    birth_date = fields.DateField('birth_date',
-        help_text='Date of birth of the user.', null=True, blank=True)
 
     class Meta(ApiResource.Meta):
         """ Metadata for the user resource """

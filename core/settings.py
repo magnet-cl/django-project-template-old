@@ -1,6 +1,15 @@
 """ Django settings for core project."""
 from local_settings import DEBUG, DATABASES
 
+import sys
+import os
+
+# the path to the root of the project
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+
+# TEST should be true if we are running python tests
+TEST = 'test' in sys.argv
+
 # define a database for tastytools to generate it's examples
 if 'tastytools' not in DATABASES:
     DATABASES['tastytools'] = {
@@ -10,6 +19,23 @@ if 'tastytools' not in DATABASES:
         "USER": "",
         "PASSWORD": "",
     }
+
+if TEST:
+    try:
+        DATABASES['default'] = DATABASES['test']
+        del DATABASES['test']
+    except KeyError as e:
+        print "%s is not defined in the DATABASES dict" % e.message
+        print "Using default in-memory DB for tests"
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': ":memory:",
+                "HOST": "",
+                "USER": "",
+                "PASSWORD": "",
+            }
+        }
 
 TEMPLATE_DEBUG = DEBUG
 
@@ -75,6 +101,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -114,6 +141,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
 )
 
 INSTALLED_APPS = (
