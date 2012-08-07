@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Install base packages
+yes | sudo apt-get install python-pip python-virtualenv
