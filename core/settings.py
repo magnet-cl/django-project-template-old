@@ -158,6 +158,7 @@ INSTALLED_APPS = (
     'tastytools',
     'mockups',
     'api_app',
+    'south',
 )
 
 # A sample logging configuration. The only tangible logging
