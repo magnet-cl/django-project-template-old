@@ -1,4 +1,4 @@
-""" Admin page configuration for the hitchhike api """
+""" Admin page configuration for the api """
 from django.contrib import admin
 
 from api_app.models import ApiUser

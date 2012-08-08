@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User, UserManager
 
 class ApiUser(User):
-    """ The representation of a Hitchhike user """
+    """ The representation of a Api user """
 
     # fields
     token = models.CharField(max_length=30, default="", blank=True,
