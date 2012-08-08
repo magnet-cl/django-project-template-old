@@ -7,13 +7,13 @@ class ApiBackend(object):
     """
     supports_inactive_user = True
 
-    def authenticate(self, email=None, password=None, token=None):
-        """ login using  the email validating with the password  or the
+    def authenticate(self, username=None, password=None, token=None):
+        """ login using  the username validating with the password  or the
         token. If the token is used, then it's deleted
 
         """
         try:
-            user = ApiUser.objects.get(email=email)
+            user = ApiUser.objects.get(username=username)
         except ApiUser.DoesNotExist:
             return None
         if password is not None:
