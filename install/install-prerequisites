@@ -1,4 +1,18 @@
 #!/bin/bash
 
 # Install base packages
-yes | sudo apt-get install python-pip python-virtualenv
+#yes | sudo apt-get install python-pip python-virtualenv python-dev
+
+KEEPTHISMESSAGE="a"
+echo "Are you going to use mysql for your database? [Y/n]"
+read KEEPTHISMESSAGE
+if [[ "$KEEPTHISMESSAGE" == "" ]] || [[ "$KEEPTHISMESSAGE" == "y" ]]
+then
+    KEEPTHISMESSAGE="Y"
+fi
+
+if [[ "$KEEPTHISMESSAGE" == "Y" ]]
+then
+    # Install mysql related packages
+    yes | sudo apt-get install libmysqlclient-dev python-mysqldb
+fi

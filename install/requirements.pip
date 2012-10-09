@@ -3,7 +3,3 @@ south
 mysql-python
 fabric
 ipython
--e git://github.com/toastdriven/django-tastypie.git#egg=django-tastypie
-
--e git://github.com/thagat/django-tastytools.git#egg=django-tastytools
--e git://github.com/thagat/django-mockups.git#egg=mockups

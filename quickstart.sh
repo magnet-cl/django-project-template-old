@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ./install/install-prerequisites
 virtualenv .env --distribute
 .env/bin/pip install --requirement install/requirements.pip
