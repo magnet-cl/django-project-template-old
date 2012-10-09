@@ -3,6 +3,7 @@
 from django.core.paginator import Paginator, InvalidPage
 from tastypie.exceptions import ImmediateHttpResponse
 from tastypie.http import HttpNotFound
+from tastypie.http import HttpBadRequest
 import json
 
 def api_method(single=False, expected_methods=['get']):
@@ -65,5 +66,34 @@ def api_method(single=False, expected_methods=['get']):
 
                 resource.log_throttled_access(request)
             return resource.create_response(request, object_list)
+        return wrapper
+    return decorator
+
+
+def required_fields_on_create(required_fields=[]):
+    """ This decorator is to by applied only to the obj_create method of
+    a ModelResource in your API
+
+    It is used to verify a list of required fields when a new object is
+    being created.
+
+    If a required field is not present it generates an ImmediateHttpResponse
+    in json with a reason explaining the problem
+
+    """
+    def decorator(func):
+        """ The decorator applied to the obj_create method"""
+        def wrapper(resource, bundle, request=None, **kwargs):
+            """ wraps the decorated method and verifies a list of required
+            fields when a new object is being created.
+
+            """
+            for required_field in required_fields:
+                if required_field not in bundle.data:
+                    response = HttpBadRequest(
+                            json.dumps("missing %s field" % required_field),
+                            content_type=request.META['CONTENT_TYPE'])
+                    raise ImmediateHttpResponse(response=response)
+            return func(resource, bundle, request, **kwargs)
         return wrapper
     return decorator

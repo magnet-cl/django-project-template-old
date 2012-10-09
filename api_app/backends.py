@@ -1,20 +1,23 @@
-from api_app.models import ApiUser
+from api_app.models import User
 
 
 class ApiBackend(object):
     """
-    Authenticates against api_app.models.ApiUser
+    Authenticates against api_app.models.User
     """
     supports_inactive_user = True
 
-    def authenticate(self, username=None, password=None, token=None):
+    def authenticate(self, email=None, username=None, password=None, token=None):
         """ login using  the username validating with the password  or the
         token. If the token is used, then it's deleted
 
         """
         try:
-            user = ApiUser.objects.get(username=username)
-        except ApiUser.DoesNotExist:
+            if username:
+                user = User.objects.get(username=username)
+            else:
+                user = User.objects.get(email=email)
+        except User.DoesNotExist:
             return None
         if password is not None:
             if user.check_password(password):
@@ -31,6 +34,6 @@ class ApiBackend(object):
     def get_user(self, user_id):
         """ returns the user using the id """
         try:
-            return ApiUser.objects.get(pk=user_id)
-        except ApiUser.DoesNotExist:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
             return None

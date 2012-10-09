@@ -1,6 +1,6 @@
 """ This document defines the resources for the API"""
 
-from api_app.models import ApiUser
+from api_app.models import User
 from datetime import datetime
 from tastypie.authorization import Authorization
 from tastypie.constants import ALL
@@ -39,7 +39,7 @@ class UserResource(ApiResource):
 
     class Meta(ApiResource.Meta):
         """ Metadata for the user resource """
-        queryset = ApiUser.objects.all()
+        queryset = User.objects.all()
         resource_name = 'user'
         allowed_methods = ['get', 'put', 'post']
         authentication = AuthenticationByMethod('POST')
