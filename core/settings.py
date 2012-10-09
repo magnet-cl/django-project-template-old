@@ -39,12 +39,12 @@ if TEST:
 
 TEMPLATE_DEBUG = DEBUG
 
-AUTH_PROFILE_MODULE = "api_app.User"
+AUTH_PROFILE_MODULE = "base.User"
 
 # Since we are using our custom user model, we need to set the authentication
-# backend to the ApiBackend, so it returns the User model
+# backend to the CustomBackend, so it returns the User model
 AUTHENTICATION_BACKENDS = (
-    'api_app.backends.ApiBackend',
+    'base.backends.CustomBackend',
 )
 
 ADMINS = (
@@ -154,7 +154,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'south',
+    #'south',
     'base',
 )
 
