@@ -5,4 +5,4 @@ virtualenv .env --distribute
 source .env/bin/activate
 easy_install -U distribute
 .env/bin/pip install --requirement install/requirements.pip
-cp core/local_settings.py.default core/local_settings.py
+cp config/local_settings.py.default config/local_settings.py
