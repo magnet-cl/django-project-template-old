@@ -187,3 +187,6 @@ LOGGING = {
         },
     }
 }
+
+# user loggin
+LOGIN_REDIRECT_URL="/"
