@@ -11,16 +11,6 @@ PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 # TEST should be true if we are running python tests
 TEST = 'test' in sys.argv
 
-# define a database for tastytools to generate it's examples
-if 'tastytools' not in DATABASES:
-    DATABASES['tastytools'] = {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': "/tmp/tastytools",
-        "HOST": "",
-        "USER": "",
-        "PASSWORD": "",
-    }
-
 if TEST:
     try:
         DATABASES['default'] = DATABASES['test']
@@ -139,7 +129,8 @@ ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates" or
+    # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
@@ -189,4 +180,4 @@ LOGGING = {
 }
 
 # user loggin
-LOGIN_REDIRECT_URL="/"
+LOGIN_REDIRECT_URL = "/"
