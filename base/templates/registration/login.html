@@ -2,9 +2,7 @@
 
 {% block content %}
 
-{% if form.errors %}
-  <p>{{form.errors }}</p>
-{% endif %}
+{{ form.errors.non_field_errors }}
 
 <form method="post" action="{% url base.views.login %}">
 {% csrf_token %}
@@ -12,10 +10,12 @@
 <tr>
     <td>{{ form.email.label_tag }}</td>
     <td>{{ form.email }}</td>
+    <td>{{ form.email.errors }}</td>
 </tr>
 <tr>
     <td>{{ form.password.label_tag }}</td>
     <td>{{ form.password }}</td>
+    <td>{{ form.password.errors }}</td>
 </tr>
 </table>
 

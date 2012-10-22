@@ -11,10 +11,8 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
     email = forms.EmailField(label=_("Email"))
     username = forms.CharField(label=_("Username"), max_length=30,
                                required=False)
-    error_messages = {
-        'invalid_email': _("Please enter a correct email and password. "
-                           "Note that both fields are case-sensitive."),
-    }.update(auth_forms.AuthenticationForm.error_messages)
+    error_messages = auth_forms.AuthenticationForm.error_messages
+    error_messages['invalid_email'] = _("Invalid email or password")
 
     def clean(self):
         """
@@ -35,6 +33,7 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
                 raise forms.ValidationError(self.error_messages['inactive'])
         else:
             # check by username and password
+            print "holi"
             return super(AuthenticationForm, self).clean()
         self.check_for_test_cookie()
         return self.cleaned_data
