@@ -33,7 +33,6 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
                 raise forms.ValidationError(self.error_messages['inactive'])
         else:
             # check by username and password
-            print "holi"
             return super(AuthenticationForm, self).clean()
         self.check_for_test_cookie()
         return self.cleaned_data
