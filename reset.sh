@@ -1,5 +1,20 @@
 #!/bin/bash
 
+RUNSERVER=false
+while getopts “s” OPTION
+do
+    case $OPTION in
+        s)
+             echo "Start Server"
+             RUNSERVER=true
+             ;;
+        ?)
+             echo "fail"
+             exit
+             ;;
+     esac
+done
+
 engine=`python -c"from config.local_settings import DATABASES; print DATABASES['default']['ENGINE']"`
 debug=`python -c"from config.local_settings import DEBUG; print DEBUG"`
 dbname=`python -c"from config.local_settings import DATABASES; print DATABASES['default']['NAME']"`
@@ -20,3 +35,8 @@ echo "----------------------drop-database------------------------------"
     echo "no" | python manage.py syncdb
     python manage.py migrate
 fi
+
+if  $RUNSERVER ; then
+    python manage.py runserver
+fi
+
