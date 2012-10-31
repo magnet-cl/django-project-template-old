@@ -49,6 +49,9 @@ if  $INSTALL_PIP ; then
     .env/bin/pip install --requirement install/requirements.pip
 fi
 if  $INSTALL_HEROKU ; then
+    # activate the environment
+    source .env/bin/activate
+
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
     heroku login
     pip install Django psycopg2 dj-database-url
