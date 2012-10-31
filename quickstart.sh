@@ -2,7 +2,7 @@
 
 INSTALL_APTITUDE=true
 INSTALL_PIP=true
-INSTALL_HEROKU=true
+INSTALL_HEROKU=false
 while getopts “ahp” OPTION
 do
     case $OPTION in
@@ -51,6 +51,8 @@ fi
 if  $INSTALL_HEROKU ; then
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
     heroku login
+    pip install Django psycopg2 dj-database-url
+    pip freeze > requirements.txt
 fi
 
 # create the local_settings file if it does not exist
