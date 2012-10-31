@@ -50,6 +50,7 @@ if  $INSTALL_PIP ; then
 fi
 if  $INSTALL_HEROKU ; then
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+    heroku login
 fi
 
 # create the local_settings file if it does not exist
