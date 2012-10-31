@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User as DjangoUser, UserManager
+import base64
+import os
 
 
 class BaseModel(models.Model):
@@ -26,6 +28,13 @@ class User(DjangoUser, BaseModel):
     )
     # Use UserManager to get the create_user method, etc.
     objects = UserManager()
+
+    def set_random_token(self):
+        """ generate a random token """
+        token = base64.urlsafe_b64encode(os.urandom(30))[:30]
+        self.token = token
+        self.save()
+        return token
 
     class Meta:
         verbose_name_plural = "users"
