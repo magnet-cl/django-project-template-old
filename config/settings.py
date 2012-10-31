@@ -2,16 +2,12 @@
 
 import sys
 import os
+from local_settings import LOCAL_DEBUG, LOCAL_DATABASES
 
 DATABASES = {}
 
-try:
-    from local_settings import LOCAL_DEBUG, LOCAL_DATABASES
-except:
-    pass
-else:
-    DATABASES.update(LOCAL_DATABASES)
-    DEBUG = LOCAL_DEBUG
+DATABASES.update(LOCAL_DATABASES)
+DEBUG = LOCAL_DEBUG
 
 # the path to the root of the project
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
