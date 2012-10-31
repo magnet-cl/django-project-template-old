@@ -3,16 +3,12 @@
 # Install base packages
 yes | sudo apt-get install python-pip python-virtualenv python-dev libpq-dev 
 
-KEEPTHISMESSAGE="a"
-echo "Are you going to use mysql for your database? [Y/n]"
-read KEEPTHISMESSAGE
-if [[ "$KEEPTHISMESSAGE" == "" ]] || [[ "$KEEPTHISMESSAGE" == "y" ]]
-then
-    KEEPTHISMESSAGE="Y"
-fi
+echo "Are you going to use mysql for your database? [N/y]"
+read INSTALL_MYSQL
 
-if [[ "$KEEPTHISMESSAGE" == "Y" ]]
+if [[ "$INSTALL_MYSQL" == "y" ]]
 then
     # Install mysql related packages
     yes | sudo apt-get install libmysqlclient-dev python-mysqldb
+    echo 'MySQL-python' >> install/requirements.pip
 fi

@@ -56,9 +56,21 @@ if  $INSTALL_HEROKU ; then
     heroku login
     pip install Django psycopg2 dj-database-url
     pip freeze > requirements.txt
+
+    echo "Would you like to create a new heroku repo? [N/y]"
+    read CREATE_REPO
+
+    if [[ "$CREATE_REPO" == "y" ]]
+    then
+        heroku create
+        echo "You should now commit the requirements.txt file."
+        echo "Then deploy to heroku: git push heroku master"
+    fi
 fi
 
 # create the local_settings file if it does not exist
 if [ ! -f ./config/local_settings.py ] ; then
     cp config/local_settings.py.default config/local_settings.py
+    EXP="s/django-db/${PWD##*/}/g"
+    echo $i|sed -i $EXP config/local_settings.py
 fi
