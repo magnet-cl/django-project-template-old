@@ -15,7 +15,7 @@ ERROR_MESSAGE = _("Please enter the correct email and password "
         "for a staff account. Note that both fields are case-sensitive.")
 
 # we are going to override the email login
-class ApiAdminAuthenticationForm(admin.forms.AdminAuthenticationForm):
+class AdminAuthenticationForm(admin.forms.AdminAuthenticationForm):
     """ Subclass which overrides the 'clean' method the email is accepted
     instead of the username
 
@@ -35,7 +35,7 @@ class ApiAdminAuthenticationForm(admin.forms.AdminAuthenticationForm):
                 raise forms.ValidationError(message)
         self.check_for_test_cookie()
         return self.cleaned_data
-admin.sites.AdminSite.login_form = ApiAdminAuthenticationForm
+admin.sites.AdminSite.login_form = AdminAuthenticationForm
 
 #we are going to configure the user admin, so we first need to unregister
 # the default one
