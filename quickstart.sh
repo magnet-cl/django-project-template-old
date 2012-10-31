@@ -34,7 +34,7 @@ else
     .env/bin/pip install --requirement install/requirements.pip
 
     # create the local_settings file if it does not exist
-    if [ -f ./config/local_settings.py ] ; then
+    if [ ! -f ./config/local_settings.py ] ; then
         cp config/local_settings.py.default config/local_settings.py
     fi
 fi
