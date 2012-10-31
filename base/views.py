@@ -3,7 +3,11 @@
 from django.contrib.auth.views import login as django_login
 from django.contrib.auth.views import password_change as django_password_change
 from base.forms import AuthenticationForm
+from django.http import HttpResponse
 
+def index(request):
+    """ view that renders a default home"""
+    return HttpResponse("Hello, world.")
 
 def login(request):
     """ view that renders the login """
