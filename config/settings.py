@@ -1,9 +1,17 @@
 """ Django settings for the project."""
 
-from local_settings import DEBUG, DATABASES
-
 import sys
 import os
+
+DATABASES = {}
+
+try:
+    from local_settings import LOCAL_DEBUG, LOCAL_DATABASES
+except:
+    pass
+else:
+    DATABASES.update(LOCAL_DATABASES)
+    DEBUG = LOCAL_DEBUG
 
 # the path to the root of the project
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
