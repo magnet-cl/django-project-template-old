@@ -1,5 +1,8 @@
 """ Django settings for the project."""
 
+import sys
+import os
+
 DATABASES = {}
 
 try:
@@ -11,9 +14,6 @@ except:
 else:
     DATABASES.update(LOCAL_DATABASES)
     DEBUG = LOCAL_DEBUG
-
-import sys
-import os
 
 # the path to the root of the project
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
