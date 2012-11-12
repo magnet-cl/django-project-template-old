@@ -21,8 +21,6 @@ def login(request):
     """ view that renders the login """
     # If the form has been submitted...
     template_name = "accounts/login.html"
-    from django.contrib.sites.models import get_current_site
-    print get_current_site(request)
     return django_login(request, authentication_form=AuthenticationForm,
                         template_name=template_name)
 
@@ -36,6 +34,7 @@ def password_change(request):
     """ view that renders the login """
     # If the form has been submitted...
     template_name = "accounts/password_change.html"
+
     return auth_views.password_change(request, post_change_redirect="/",
                                       template_name=template_name)
 
@@ -44,13 +43,20 @@ def password_reset(request):
 
     template_name = "accounts/password_reset_form.html"
     email_template_name = "emails/password_reset.html"
-    res = auth_views.password_reset(request, post_reset_redirect="/",
+
+    success_url = "/accounts/password_email_sent"
+
+    res = auth_views.password_reset(request,
+                                    post_reset_redirect=success_url,
                                     template_name=template_name,
                                     email_template_name=email_template_name)
+    return res
+
+def password_reset_email_sent(request):
     messages.add_message(request, messages.INFO,
                          _("An email has been sent to you. Please check it "
                            "to reset your password."))
-    return res
+    return HttpResponseRedirect('/')
 
 def password_reset_confirm(request, uidb36, token):
     """ view that handles the recover password process """
