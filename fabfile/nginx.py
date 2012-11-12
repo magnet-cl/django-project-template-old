@@ -1,0 +1,53 @@
+from fabric.api import cd, env, sudo, task
+from fabric.contrib.files import upload_template
+
+import deb_handler
+from service import nginx_handler
+
+@task 
+def install():
+    """ Installs nginx through deb_handler. """
+    deb_handler.install('nginx')
+
+
+@task
+def start():
+    """ Starts the nginx service. """
+    nginx_handler('start')
+
+
+@task
+def stop():
+    """ Stops the nginx service. """
+    nginx_handler('stop')
+
+
+@task
+def restart():
+    """ Restarts the nginx service. """
+    nginx_handler('restart')
+
+
+def add_site(filename, context):
+    """ Deploys a new nginx configuration site. """
+    destination = '/etc/nginx/sites-available' 
+    upload_template(filename, destination, context=context, use_sudo=True)
+
+
+@task
+def add_django_site():
+    """ Deploys a nginx configuration site for django. """
+    context = {
+        'domain': env.server_domain,
+        'server_root_dir': env.server_root_dir,
+        'proxy_port': 8000
+    }
+    filename = '%s/fabfile/templates/django'
+    filename %= env.local_root_dir
+
+    add_site(filename, context)
+
+    # enable site configuration
+    with cd('/etc/nginx/sites-enabled'):
+        cmd = 'ln -s -f /etc/nginx/sites-available/django .'
+        sudo(cmd)
