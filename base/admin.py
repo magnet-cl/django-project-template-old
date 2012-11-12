@@ -5,7 +5,7 @@ from base.models import User
 
 from django import forms
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.forms import UserChangeForm as DjangoUserChangeForm
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.contrib.auth.models import User as DjangoUser
 from django.utils.translation import ugettext_lazy as _
@@ -102,7 +102,7 @@ class UserCreationForm(forms.ModelForm):
         return user
 
 
-class UserChangeForm(UserChangeForm):
+class UserChangeForm(DjangoUserChangeForm):
     class Meta:
         model = User
 
