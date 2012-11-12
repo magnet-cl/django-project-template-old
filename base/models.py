@@ -1,5 +1,12 @@
-from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User as DjangoUser, UserManager
+from django.core.mail import EmailMultiAlternatives
+from django.db import models
+from django.template import Context
+from django.template.loader import get_template
+from django.utils.translation import ugettext_lazy as _
+from threading import Thread
+
 import base64
 import os
 
@@ -38,3 +45,71 @@ class User(DjangoUser, BaseModel):
 
     class Meta:
         verbose_name_plural = "users"
+
+    #static methods
+    @staticmethod
+    def send_email_to(email_list, template_name, subject,
+            template_vars={}, fail_silently=True):
+        """ Sends an email to a list of emails using a given template name """
+
+        text_template = get_template("emails/%s.txt" % template_name)
+        html_template = get_template("emails/%s.html" % template_name)
+        context = Context(template_vars)
+
+        text_content = text_template.render(context)
+        html_content = html_template.render(context)
+
+        sender = "%s <%s>" % (settings.EMAIL_SENDER_NAME,
+                              settings.EMAIL_HOST_USER)
+        msg = EmailMultiAlternatives(subject, text_content,
+            sender, email_list)
+        msg.attach_alternative(html_content, "text/html")
+        msg.send(fail_silently=fail_silently)
+
+    #private methods
+    def _send_email(self, template_name, subject, template_vars={},
+            fail_silently=True):
+        """Sends an email to the registered address using a given template
+        name
+
+        """
+        template_vars.update({'profile': self})
+        User.send_email_to(
+            email_list=[self.email],
+            template_name=template_name,
+            subject=subject,
+            template_vars=template_vars,
+            fail_silently=fail_silently,
+        )
+
+    #public methods
+    def send_email(self, template_name, subject, template_vars=None,
+            fail_silently=True):
+        """Sends an email to the registered address using a given template
+        name
+
+        """
+        try:
+            t = Thread(target=self._send_email, args=(template_name, subject,
+                template_vars, fail_silently))
+            t.start()
+        except Exception, error:
+            if settings.DEBUG:
+                print str(error)
+
+    def send_recover_password_email(self):
+        """ Sends an email with the required token so a user can recover his/her
+        password
+
+        """
+        title = _("Recover password")
+        template = "recover_password"
+
+        token_url = "%s#recover_password/%d/?token=%s"
+        token_url %= (settings.BASE_URL, self.id, self.set_random_token())
+
+        template_vars = {
+            'user': self,
+            'token_url': token_url,
+        }
+        self.send_email(template, title, template_vars, fail_silently=False)

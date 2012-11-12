@@ -15,6 +15,19 @@ else:
     DATABASES.update(LOCAL_DATABASES)
     DEBUG = LOCAL_DEBUG
 
+# email settings
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+try:
+    from local_settings import LOCAL_EMAIL_SETTINGS
+except:
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+else:
+    EMAIL_HOST_USER = LOCAL_EMAIL_SETTINGS['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = LOCAL_EMAIL_SETTINGS['EMAIL_HOST_PASSWORD']
+
 # the path to the root of the project
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 

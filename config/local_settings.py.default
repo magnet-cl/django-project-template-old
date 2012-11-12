@@ -10,3 +10,10 @@ LOCAL_DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+LOCAL_EMAIL_SETTINGS = {
+    'EMAIL_HOST_USER' = 'SENDGRID_USERNAME',
+    'EMAIL_HOST_PASSWORD': 'sendgrid_password',
+}
+
+BASE_URL = "http://127.0.0.1:8000/"
