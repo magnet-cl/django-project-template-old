@@ -61,8 +61,11 @@ def password_reset_email_sent(request):
 def password_reset_confirm(request, uidb36, token):
     """ view that handles the recover password process """
     template_name = "accounts/password_reset_confirm.html"
+    success_url = "/accounts/reset/done/"
+
     return auth_views.password_reset_confirm(request, uidb36, token,
-                                             template_name=template_name)
+                                             template_name=template_name,
+                                             post_reset_redirect=success_url)
 
 def password_reset_complete(request):
     """ view that handles the recover password process """
