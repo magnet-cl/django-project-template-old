@@ -1,7 +1,9 @@
+from django.contrib.auth.backends import ModelBackend
+
 from base.models import User
 
 
-class CustomBackend(object):
+class CustomBackend(ModelBackend):
     """
     Authenticates against base.models.User
     """
