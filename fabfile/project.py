@@ -104,7 +104,8 @@ def initial_deploy():
     with cd(env.server_root_dir):
         run('./quickstart.sh')
 
-    # gunicorn deployment
+    # gunicorn installation and configuration
+    gunicorn.install()
     gunicorn.add_gunicorn_service()
     gunicorn.start()
 

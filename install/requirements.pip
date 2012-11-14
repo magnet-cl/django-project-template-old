@@ -8,4 +8,3 @@ pycrypto==2.6
 ssh==1.8.0
 wsgiref==0.1.2
 -e git://github.com/magnet-cl/artichoke.git#egg=artichoke
-gunicorn

@@ -1,9 +1,17 @@
-from fabric.api import task, env
+from fabric.api import task, env, prefix, run, cd
 from fabric.contrib.files import upload_template
 from re import search
 
 from service import add_upstart_task
 from service import gunicorn_handler
+
+
+@task
+def install():
+    """ Installs gunicorn. """
+    with cd(env.server_root_dir):
+        with prefix('. .env/bin/activate'):
+            run('pip install gunicorn')
 
 
 @task
