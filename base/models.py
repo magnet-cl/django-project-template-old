@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.conf import settings
 from django.contrib.auth.models import User as DjangoUser, UserManager
 from django.core.mail import EmailMultiAlternatives
