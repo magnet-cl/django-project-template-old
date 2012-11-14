@@ -22,11 +22,14 @@ EMAIL_USE_TLS = True
 try:
     from local_settings import LOCAL_EMAIL_SETTINGS
 except:
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    email_settings = os.environ
 else:
-    EMAIL_HOST_USER = LOCAL_EMAIL_SETTINGS['EMAIL_HOST_USER']
-    EMAIL_HOST_PASSWORD = LOCAL_EMAIL_SETTINGS['EMAIL_HOST_PASSWORD']
+    email_settings = LOCAL_EMAIL_SETTINGS
+
+EMAIL_HOST_USER = email_settings['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = email_settings['EMAIL_HOST_PASSWORD']
+EMAIL_SENDER_NAME = email_settings['EMAIL_SENDER_NAME']
+SENDER_EMAIL = email_settings['SENDER_EMAIL']
 
 # the path to the root of the project
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
@@ -93,12 +96,12 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/uploads/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files

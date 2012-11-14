@@ -62,7 +62,7 @@ class User(DjangoUser, BaseModel):
         html_content = html_template.render(context)
 
         sender = "%s <%s>" % (settings.EMAIL_SENDER_NAME,
-                              settings.EMAIL_HOST_USER)
+                              settings.SENDER_EMAIL)
         msg = EmailMultiAlternatives(subject, text_content,
             sender, email_list)
         msg.attach_alternative(html_content, "text/html")
@@ -99,19 +99,15 @@ class User(DjangoUser, BaseModel):
             if settings.DEBUG:
                 print str(error)
 
-    def send_recover_password_email(self):
+    def send_example_email(self):
         """ Sends an email with the required token so a user can recover his/her
         password
 
         """
-        title = _("Recover password")
-        template = "recover_password"
-
-        token_url = "%s#recover_password/%d/?token=%s"
-        token_url %= (settings.BASE_URL, self.id, self.set_random_token())
+        title = _("Hello")
+        template = "example_email"
 
         template_vars = {
             'user': self,
-            'token_url': token_url,
         }
         self.send_email(template, title, template_vars, fail_silently=False)

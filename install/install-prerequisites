@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install base packages
-yes | sudo apt-get install python-pip python-virtualenv python-dev libpq-dev 
+yes | sudo apt-get install python-pip python-virtualenv python-dev 
 
 echo "Are you going to use mysql for your database? [N/y]"
 read INSTALL_MYSQL
@@ -11,4 +11,14 @@ then
     # Install mysql related packages
     yes | sudo apt-get install libmysqlclient-dev python-mysqldb
     echo 'MySQL-python' >> install/requirements.pip
+else
+    echo "Are you going to use postgre for your database? [N/y]"
+    read INSTALL_POSTGRE
+
+    if [[ "$INSTALL_POSTGRE" == "y" ]]
+    then
+        # Install mysql related packages
+        yes | sudo apt-get install libpq-dev
+    fi
 fi
+
