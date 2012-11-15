@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+""" Models for the base application.
+
+All apps should use the BaseModel as parent for all models
+All apps should use the base.User model for all users
+"""
 
 from django.conf import settings
 from django.contrib.auth.models import User as DjangoUser, UserManager
@@ -31,7 +36,7 @@ class BaseModel(models.Model):
 
 
 class User(DjangoUser, BaseModel):
-    """ The representation of a Api user """
+    """ The representation of a user """
 
     # fields
     token = models.CharField(
