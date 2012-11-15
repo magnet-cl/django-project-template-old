@@ -25,6 +25,8 @@ class BaseModel(models.Model):
         highly recommended when you need to save just one field
 
         """
+        for kw in kwargs:
+            self.__setattr__(kw, kwargs[kw])
         self.__class__.objects.filter(pk=self.pk).update(**kwargs)
 
 
