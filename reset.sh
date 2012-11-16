@@ -23,7 +23,7 @@ done
 
 if  $HEROKU ; then
     heroku pg:reset DATABASE
-    heroku run echo "no" | python manage.py syncdb
+    heroku run python manage.py syncdb
 else
     engine=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['ENGINE']"`
     debug=`python -c"from config.local_settings import LOCAL_DEBUG; print LOCAL_DEBUG"`
