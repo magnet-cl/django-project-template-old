@@ -33,7 +33,27 @@ done
 
 if  $INSTALL_APTITUDE ; then
     # sudo install virtual env and other things with aptitude
-    ./install/install-prerequisites
+
+    # Install base packages
+    yes | sudo apt-get install python-pip python-virtualenv python-dev 
+
+    echo "Are you going to use mysql for your database? [N/y]"
+    read INSTALL_MYSQL
+
+    if [[ "$INSTALL_MYSQL" == "y" ]]
+    then
+        # Install mysql related packages
+        yes | sudo apt-get install libmysqlclient-dev python-mysqldb
+    else
+        echo "Are you going to use postgre for your database? [N/y]"
+        read INSTALL_POSTGRE
+
+        if [[ "$INSTALL_POSTGRE" == "y" ]]
+        then
+            yes | sudo apt-get install postgresql-9.1
+        fi
+    fi
+
 
     # set a new virtual environment
     virtualenv .env --distribute
@@ -47,7 +67,20 @@ if  $INSTALL_PIP ; then
 
     # install pip requiredments in the virtual environment
     .env/bin/pip install --requirement install/requirements.pip
+
 fi
+
+# update pip requirements
+source .env/bin/activate
+if [[ "$INSTALL_MYSQL" == "y" ]]
+then
+    pip install MySQL-python
+elif [[ "$INSTALL_POSTGRE" == "y" ]]
+then
+    pip install psycopg2
+fi
+pip freeze > install/requirements.pip
+
 if  $INSTALL_HEROKU ; then
     # activate the environment
     source .env/bin/activate
