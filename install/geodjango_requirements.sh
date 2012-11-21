@@ -41,8 +41,8 @@ then
     cd ..
     rm -rf proj-4.8.0.tar.gz
     rm -rf proj-4.8.0
-    rm -rf roj-datumgrid-1.5.tar.gz
-    rm -rf roj-datumgrid-1.5
+    rm -rf proj-datumgrid-1.5.tar.gz
+    rm -rf proj-datumgrid-1.5
 else
     echo "Are you going to use sqlite for your database? [N/y]"
     read INSTALL_SQLITE
@@ -72,6 +72,10 @@ fi
 ###https://docs.djangoproject.com/en/dev/ref/contrib/gis/install/postgis/ ##
 if [[ "$INSTALL_POSTGRE" == "y" ]]
 then
+    # needed by PostGis
+    # http://www.postgis.org/documentation/manual-2.0/postgis_installation.html
+    sudo aptitude install postgresql-server-dev-9.1 libxml2-dev
+
     wget http://postgis.refractions.net/download/postgis-2.0.1.tar.gz
     tar xzf postgis-2.0.1.tar.gz
     cd postgis-2.0.1
@@ -81,6 +85,11 @@ then
     cd ..
     rm -rf postgis-2.0.1.tar.gz
     rm -rf postgis-2.0.1
+
+    echo "Now you should run: "
+    echo "    psql <db name>"
+    echo "     CREATE EXTENSION postgis;"
+
 fi
 
 ###https://docs.djangoproject.com/en/dev/ref/contrib/gis/install/postgis/ ##
@@ -89,3 +98,5 @@ then
     # !!! GEOS and PROJ.4 should be installed prior to building SpatiaLite.
     echo "Not implemented yet :'("
 fi
+
+echo "Add 'django.contrib.gis' to your INSTALLED_APPS"

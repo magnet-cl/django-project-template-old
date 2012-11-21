@@ -1,5 +1,5 @@
 #!/bin/bash
-yes | sudo apt-get install postgresql-9.1
+yes | sudo apt-get install postgresql
 
 echo "Would you like to set a password for your postgres user? [N/y]"
 read SET_POSTGRES_PASSWORD
