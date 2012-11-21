@@ -86,10 +86,7 @@ then
     rm -rf postgis-2.0.1.tar.gz
     rm -rf postgis-2.0.1
 
-    echo "Now you should run: "
-    echo "    psql <db name>"
-    echo "     CREATE EXTENSION postgis;"
-
+    ./install/postgis_template.sh
 fi
 
 ###https://docs.djangoproject.com/en/dev/ref/contrib/gis/install/postgis/ ##
