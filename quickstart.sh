@@ -50,7 +50,7 @@ if  $INSTALL_APTITUDE ; then
 
         if [[ "$INSTALL_POSTGRE" == "y" ]]
         then
-            yes | sudo apt-get install postgresql-9.1
+            ./install/postgres.sh
         fi
     fi
 
@@ -70,7 +70,7 @@ if  $INSTALL_PIP ; then
 
 fi
 
-# update pip requirements
+# update pip database requirements
 source .env/bin/activate
 if [[ "$INSTALL_MYSQL" == "y" ]]
 then
@@ -79,8 +79,8 @@ elif [[ "$INSTALL_POSTGRE" == "y" ]]
 then
     pip install psycopg2
 fi
-pip freeze > install/requirements.pip
 
+# HEROKU 
 if  $INSTALL_HEROKU ; then
     # activate the environment
     source .env/bin/activate
