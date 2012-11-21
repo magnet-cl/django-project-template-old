@@ -31,15 +31,20 @@ else
 
     if [ $debug = "True" ] ; then
     echo "----------------------drop-database------------------------------"
-        if [ $engine == "django.db.backends.mysql" ]; then
-            dbuser=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['USER']"`
-            dbpass=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['PASSWORD']"`
-            echo "drop database $dbname" | mysql --user=$dbuser --password=$dbpass
-            echo "create database $dbname" | mysql --user=$dbuser --password=$dbpass
-        else
+        if [ $engine == "sqlite3" ]; then
             if [ -f $dbname ] ; then
                 echo "SQLITE: deleting $dbname"
                 rm $dbname
+            fi
+        else
+            dbuser=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['USER']"`
+            dbpass=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['PASSWORD']"`
+            if [ $engine == "django.db.backends.mysql" ]; then
+                echo "drop database $dbname" | mysql --user=$dbuser --password=$dbpass
+                echo "create database $dbname" | mysql --user=$dbuser --password=$dbpass
+            else
+                dropdb $dbname
+                createdb $dbname
             fi
         fi
         echo "no" | python manage.py syncdb
