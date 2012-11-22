@@ -109,6 +109,8 @@ class UserChangeForm(DjangoUserChangeForm):
 
 class UserAdmin(DjangoUserAdmin):
     """ Configuration for the User admin page"""
+    add_form_template = 'admin/base/user/add_form.html'
+
     add_form = UserCreationForm
     list_display = ('email', 'first_name', 'last_name', 'is_staff')
     form = UserChangeForm
