@@ -2,9 +2,7 @@
 from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
-                       (r'^login/$', 'base.views.login'),
-                       url(r'^login/$','base.views.login',
-                           name='login'),
+                       url(r'^login/$','base.views.login', name='login'),
                        (r'^password_change/$', 'base.views.password_change'),
                        (r'^logout/$', 'base.views.logout'),
                        (r'^register/$', 'base.views.user_new'),
