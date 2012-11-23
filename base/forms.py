@@ -1,8 +1,12 @@
 from base.models import User
 
-from django.contrib.auth.forms import UserChangeForm as DjangoUserChangeForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import forms as auth_forms
+from django.contrib.auth.forms import UserChangeForm as DjangoUserChangeForm
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sites.models import get_current_site
+from django.template import loader
+from django.utils.http import int_to_base36
 from django.utils.translation import ugettext_lazy as _
 from django import forms
 
@@ -61,8 +65,7 @@ class UserCreationForm(forms.ModelForm):
         help_text=_("The last name of the user"),
     )
     password1 = forms.CharField(label=_("Password"),
-        widget=forms.PasswordInput, required=False,
-        help_text=_("Optional, leave empty for random password"),
+        widget=forms.PasswordInput,
     )
     password2 = forms.CharField(label=_("Password confirmation"),
         widget=forms.PasswordInput, required=False,
@@ -92,13 +95,50 @@ class UserCreationForm(forms.ModelForm):
                 self.error_messages['password_mismatch'])
         return password2
 
-    def save(self, commit=True):
+    def save(self, verify_email_address=False, domain_override=None,
+             subject_template_name='emails/user_new_subject.txt',
+             email_template_name='emails/user_new.html',
+             use_https=False, token_generator=default_token_generator,
+             from_email=None, request=None, commit=True):
+        """
+        Generates a one-use only link for resetting password and sends to the
+        user.
+        """
         user = super(UserCreationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         user.username = user.email[:30]
+        user.active = not verify_email_address
+
         if commit:
             user.save()
+
+        if verify_email_address:
+            from django.core.mail import send_mail
+
+            if not domain_override:
+                current_site = get_current_site(request)
+                site_name = current_site.name
+                domain = current_site.domain
+
+            else:
+                site_name = domain = domain_override
+            c = {
+                'email': user.email,
+                'domain': domain,
+                'site_name': site_name,
+                'uid': int_to_base36(user.id),
+                'user': user,
+                'token': token_generator.make_token(user),
+                'protocol': use_https and 'https' or 'http',
+            }
+            subject = loader.render_to_string(subject_template_name, c)
+            # Email subject *must not* contain newlines
+            subject = ''.join(subject.splitlines())
+            email = loader.render_to_string(email_template_name, c)
+            send_mail(subject, email, from_email, [user.email])
+
         return user
+
 
 
 class UserChangeForm(DjangoUserChangeForm):

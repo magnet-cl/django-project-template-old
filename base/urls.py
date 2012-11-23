@@ -3,6 +3,8 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('',
                        (r'^login/$', 'base.views.login'),
+                       url(r'^login/$','base.views.login',
+                           name='login'),
                        (r'^password_change/$', 'base.views.password_change'),
                        (r'^logout/$', 'base.views.logout'),
                        (r'^register/$', 'base.views.user_new'),
@@ -16,6 +18,11 @@ urlpatterns = patterns('',
                            '(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
                            'base.views.password_reset_confirm',
                            name='password_reset_confirm'),
+
+                       url(r'^verify/(?P<uidb36>[0-9A-Za-z]{1,13})-'
+                           '(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+                           'base.views.user_new_confirm',
+                           name='user_new_confirm'),
 
                        url(r'^reset/done/$',
                            'base.views.password_reset_complete', name='password_reset_complete'),

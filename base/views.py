@@ -3,15 +3,21 @@
 
 from base.forms import AuthenticationForm
 from base.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import views as auth_views
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.utils.http import base36_to_int
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.debug import sensitive_post_parameters
+from django.views.decorators.cache import never_cache
 
 @login_required
 def index(request):
@@ -80,7 +86,10 @@ def user_new(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save(verify_email_address=True, request=request)
+            messages.add_message(request, messages.INFO,
+                                 _("An email has been sent to you. Please "
+                                    "check it to veiry your email."))
             return HttpResponseRedirect('/')
     else:
         form = UserCreationForm()
@@ -91,3 +100,32 @@ def user_new(request):
 
     return render_to_response('accounts/user_new.html', context,
                               context_instance=RequestContext(request))
+
+# Doesn't need csrf_protect since no-one can guess the URL
+@sensitive_post_parameters()
+@never_cache
+def user_new_confirm(request, uidb36=None, token=None,
+                     token_generator=default_token_generator,
+                     current_app=None, extra_context=None):
+    """
+    View that checks the hash in a email confirmation link and activates
+    the user.
+    """
+
+    assert uidb36 is not None and token is not None # checked by URLconf
+    try:
+        uid_int = base36_to_int(uidb36)
+        user = User.objects.get(id=uid_int)
+    except (ValueError, User.DoesNotExist):
+        user = None
+
+    if user is not None and token_generator.check_token(user, token):
+        user.update(active=True)
+        messages.add_message(request, messages.INFO,
+                             _("Your email address has been verified."))
+    else:
+        messages.add_message(request, messages.ERROR,
+                             _("Invalid verification link"))
+
+    return HttpResponseRedirect(reverse('login'))
+
