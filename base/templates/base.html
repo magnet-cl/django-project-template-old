@@ -16,6 +16,7 @@
           <a href="{% url base.views.logout %}">Logout</a>
         {% else %}
           <a href="{% url base.views.password_reset %}">Recover password</a>
+          <a href="{% url base.views.user_new %}">Register</a>
         {% endif %}
       </div>
       <div class="container-fluid">

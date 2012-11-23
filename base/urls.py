@@ -5,6 +5,7 @@ urlpatterns = patterns('',
                        (r'^login/$', 'base.views.login'),
                        (r'^password_change/$', 'base.views.password_change'),
                        (r'^logout/$', 'base.views.logout'),
+                       (r'^register/$', 'base.views.user_new'),
 
                        (r'^password_email_sent/$',
                         'base.views.password_reset_email_sent'),

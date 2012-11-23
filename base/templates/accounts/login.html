@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load i18n static %}
+
 {% block content %}
 
 {% if form.errors %}
@@ -9,13 +11,7 @@
     </div>
   {% endfor %}
 {% endif %}
-{% for field in form.visible_fields %}
-  {% for error in field.errors %}
-    <div class="alert alert-error">
-      {{ error }}
-    </div>
-  {% endfor %}
-{% endfor %}
+
 
 
 <form method="post" action="{% url base.views.login %}">
@@ -24,16 +20,28 @@
 <tr>
     <td>{{ form.email.label_tag }}</td>
     <td>{{ form.email }}</td>
-    <td>{{ form.email.errors }}</td>
+    <td>
+      {% for error in form.email.errors %}
+        <div class="alert alert-error">
+          {{ error }}
+        </div>
+      {% endfor %}
+    </td>
 </tr>
 <tr>
     <td>{{ form.password.label_tag }}</td>
     <td>{{ form.password }}</td>
-    <td>{{ form.password.errors }}</td>
+    <td>
+      {% for error in form.password.errors %}
+        <div class="alert alert-error">
+          {{ error }}
+        </div>
+      {% endfor %}
+    </td>
 </tr>
 </table>
 
-<input type="submit" value="login" />
+<input type="submit" value="{% trans 'Login' %}" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 

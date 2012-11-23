@@ -38,7 +38,8 @@ class BaseModel(models.Model):
 class User(DjangoUser, BaseModel):
     """ The representation of a user """
 
-    # fields
+    # required fields
+    # optional fields
     token = models.CharField(
         max_length=30, default="", blank=True,
         help_text="A token that can be used to verify the user's email")

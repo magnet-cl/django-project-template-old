@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 """ This file contains some generic purpouse views """
 
 from base.forms import AuthenticationForm
+from base.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login as django_login
@@ -73,3 +75,19 @@ def password_reset_complete(request):
     template_name = "accounts/password_reset_complete.html"
     return auth_views.password_reset_complete(request,
                                               template_name=template_name)
+
+def user_new(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = UserCreationForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render_to_response('accounts/user_new.html', context,
+                              context_instance=RequestContext(request))
