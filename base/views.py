@@ -3,7 +3,7 @@
 
 from base.forms import AuthenticationForm
 from base.forms import UserCreationForm
-from django.contrib.auth.models import User
+from base.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
