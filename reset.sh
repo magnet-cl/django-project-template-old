@@ -31,7 +31,7 @@ else
 
     if [ $debug = "True" ] ; then
     echo "----------------------drop-database------------------------------"
-        if [ $engine == "sqlite3" ]; then
+        if [ $engine == "django.db.backends.sqlite3" ]; then
             if [ -f $dbname ] ; then
                 echo "SQLITE: deleting $dbname"
                 rm $dbname
