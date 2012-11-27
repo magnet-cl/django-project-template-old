@@ -120,7 +120,7 @@ def user_new_confirm(request, uidb36=None, token=None,
         user = None
 
     if user is not None and token_generator.check_token(user, token):
-        user.update(active=True)
+        user.update(is_active=True)
         messages.add_message(request, messages.INFO,
                              _("Your email address has been verified."))
     else:
