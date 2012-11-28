@@ -1,6 +1,6 @@
 server {
   listen 80;
-  server_name %(domain)s;
+  server_name %(domain)s www.%(domain)s;
 
   # Let's put all static files like images, js and css in sub-folder: public
   root %(server_root_dir)s;
