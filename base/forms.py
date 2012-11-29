@@ -58,10 +58,10 @@ class UserCreationForm(forms.ModelForm):
     email = forms.EmailField(label=_("E-mail"), max_length=75,
         help_text=_("Enter the same password as above, for verification."),
     )
-    first_name = forms.CharField(label=_("First name"),
+    first_name = forms.CharField(label=_("first name").capitalize(),
         help_text=_("The name of the user"),
     )
-    last_name = forms.CharField(label=_("Last name"),
+    last_name = forms.CharField(label=_("last name").capitalize(),
         help_text=_("The last name of the user"),
     )
     password1 = forms.CharField(label=_("Password"),
