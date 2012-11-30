@@ -12,8 +12,12 @@ LOCAL_DATABASES = {
 }
 
 LOCAL_EMAIL_SETTINGS = {
-    'EMAIL_HOST_USER': 'magnet',
-    'EMAIL_HOST_PASSWORD': 'erikmagnus',
+    'EMAIL_HOST_USER': 'username',
+    'EMAIL_HOST_PASSWORD': 'password',
     'EMAIL_SENDER_NAME': "mi nombre",
     'SENDER_EMAIL': "hello@example.com",
 }
+
+LOCALLY_INSTALLED_APPS = (
+    #'south',
+)

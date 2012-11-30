@@ -174,6 +174,13 @@ INSTALLED_APPS = (
     #'south',
     'base',
 )
+# Set the apps that are installed locally
+try:
+    from local_settings import LOCALLY_INSTALLED_APPS
+except:
+    pass
+else:
+    INSTALLED_APPS = INSTALLED_APPS + LOCALLY_INSTALLED_APPS
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
