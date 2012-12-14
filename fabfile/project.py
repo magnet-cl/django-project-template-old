@@ -70,14 +70,15 @@ def db_reset():
     """ Resets database. """
     print('Are you sure you want to reset the database?')
     host = prompt('Type in the host to confirm: ')
-    if host == env.host:
+    branch = prompt('Type in the branch to confirm: ')
+    if host == env.host and branch == env.branch:
         # backup database before resetting
         backup_db()
         with cd(env.server_root_dir):
             with prefix('. .env/bin/activate'):
                 run('./reset.sh')
     else:
-        print('Invalid host: %s != %s' % (host, env.host))
+        print('Invalid host or branch.')
 
 
 @task
