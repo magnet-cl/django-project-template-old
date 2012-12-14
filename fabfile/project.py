@@ -95,7 +95,7 @@ def initial_deploy():
 
     # clone repository
     deb_handler.install('git')
-    git_clone(env.server_git_url)
+    git_clone(env.server_git_url, env.server_root_dir)
 
     # mysql installation
     install_mysql()

@@ -1,8 +1,4 @@
-from fabric.api import cd, env, run, task
-from fabric.colors import green, red
-from fabric.context_managers import settings, hide
-from fabric.utils import warn
-from re import search
+from fabric.api import env, run, task
 
 from db import dump_db
 
@@ -14,7 +10,13 @@ def backup_db():
     env.config.save()
 
 
-def git_clone(url):
+def git_clone(url, path):
     """ Utility method to clone git repositories. """
-    cmd = 'git clone %s' % url
+    cmd = 'git clone %s %s' % (url, path)
+    run(cmd)
+
+
+def git_checkout(branch):
+    """ Utility method to change branches. """
+    cmd = 'git checkout %s' % branch
     run(cmd)
