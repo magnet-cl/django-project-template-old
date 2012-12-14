@@ -4,7 +4,8 @@ from fabric.contrib.files import upload_template
 import deb_handler
 from service import nginx_handler
 
-@task 
+
+@task
 def install():
     """ Installs nginx through deb_handler. """
     deb_handler.install('nginx')
@@ -30,7 +31,7 @@ def restart():
 
 def add_site(filename, context):
     """ Deploys a new nginx configuration site. """
-    destination = '/etc/nginx/sites-available' 
+    destination = '/etc/nginx/sites-available/%s' % env.branch
     upload_template(filename, destination, context=context, use_sudo=True)
 
 
@@ -40,7 +41,7 @@ def add_django_site():
     context = {
         'domain': env.server_domain,
         'server_root_dir': env.server_root_dir,
-        'proxy_port': 8000
+        'proxy_port': env.django_port
     }
     filename = '%s/fabfile/templates/django'
     filename %= env.local_root_dir
@@ -49,5 +50,5 @@ def add_django_site():
 
     # enable site configuration
     with cd('/etc/nginx/sites-enabled'):
-        cmd = 'ln -s -f /etc/nginx/sites-available/django .'
+        cmd = 'ln -s -f /etc/nginx/sites-available/%s .' % env.branch
         sudo(cmd)

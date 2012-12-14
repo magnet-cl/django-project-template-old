@@ -12,6 +12,7 @@ env.server_domain = 'example.com'
 # git repositories
 env.server_git_url = 'example/url.git'
 
+
 class Config(ArtichokeConfig):
     def __init__(self, env, config_file=None):
         super(Config, self).__init__(config_file)
@@ -23,8 +24,8 @@ env.config = Config(env, config_file)
 
 
 @task
-def set_host(host='cl', user='magnet'):
-    """ Host and user setter with shortcuts. """
+def set(host='cl', user='magnet', branch='master', django_port='8000'):
+    """ Host, user, branch and django port setter with shortcuts. """
     # host
     if host == 'cl':
         env.hosts = ['example.com']
@@ -34,3 +35,12 @@ def set_host(host='cl', user='magnet'):
 
     # user
     env.user = user
+
+    # branch and django_port
+    env.branch = branch
+    env.django_port = django_port
+    # if the branch is not master, append it to env.server_root_dir and set
+    # django to run on a different port
+    if env.branch != 'master':
+        env.server_root_dir += '-%s' % env.branch
+        env.django_port = int(env.django_port) + 1

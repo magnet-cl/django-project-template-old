@@ -10,7 +10,7 @@ import gunicorn
 import nginx
 import deb_handler
 from db import install_mysql
-from utils import backup_db, git_clone
+from utils import backup_db, git_clone, git_checkout
 
 
 @task
@@ -46,9 +46,9 @@ def restart():
 
 @task
 def update_restart():
-    """ Restarts gunicorn and nginx. """
-    restart()
+    """ Updates server repository and restarts gunicorn and nginx """
     update()
+    restart()
 
 
 @task
@@ -96,6 +96,10 @@ def initial_deploy():
     # clone repository
     deb_handler.install('git')
     git_clone(env.server_git_url, env.server_root_dir)
+
+    # checkout branch
+    with cd(env.server_root_dir):
+        git_checkout(env.branch)
 
     # mysql installation
     install_mysql()

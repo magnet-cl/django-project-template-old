@@ -40,7 +40,8 @@ def add_gunicorn_script():
     destination = env.server_root_dir
     context = {
         'user': env.user,
-        'server_root_dir': env.server_root_dir
+        'server_root_dir': env.server_root_dir,
+        'django_port': env.django_port
     }
     upload_template(filename, destination, context=context, mode=0776)
 

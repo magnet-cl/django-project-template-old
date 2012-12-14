@@ -1,5 +1,6 @@
-from fabric.api import sudo
+from fabric.api import sudo, env
 from fabric.contrib.files import upload_template
+
 
 def handler(service, action):
     """ Handler method for service operations. """
@@ -14,10 +15,11 @@ def nginx_handler(action):
 
 def gunicorn_handler(action):
     """ Helper method for gunicorn instance service operations. """
-    return handler('django', action)
+    instance = 'django-%s' % env.branch
+    return handler(instance, action)
 
 
 def add_upstart_task(filename, context):
     """ Deploys an upstart configuration task file. """
-    destination = '/etc/init' 
+    destination = '/etc/init/django-%s.conf' % env.branch
     upload_template(filename, destination, context=context, use_sudo=True)
