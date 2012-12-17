@@ -8,6 +8,7 @@ from getpass import getpass
 from re import search
 import sys
 from time import gmtime, strftime
+from os.path import basename
 
 import deb_handler
 
@@ -112,8 +113,9 @@ def dump_db(name, mysql_user, mysql_pass):
     dumps_folder = "db_dumps"
     cmd = "mkdir -p %s" % dumps_folder
     run(cmd)
+    branch_name = basename(env.branch)
     dump_name = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    dump_name = "%s/%s.sql" % (dumps_folder, dump_name)
+    dump_name = "%s/%s-%s.sql" % (dumps_folder, branch_name, dump_name)
 
     # dump into db_dumps/<dump_name>
     cmd = "mysqldump -u%s -p%s %s> '%s'"
@@ -127,6 +129,8 @@ def dump_db(name, mysql_user, mysql_pass):
     # removing raw dump
     cmd = "rm '%s'" % dump_name
     run(cmd)
+
+    return dump_name
 
 
 @task
