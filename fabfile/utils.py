@@ -1,4 +1,4 @@
-from fabric.api import env, run, task
+from fabric.api import env, run, task, get
 
 from db import dump_db
 
@@ -6,8 +6,17 @@ from db import dump_db
 @task
 def backup_db():
     """ Backups database. """
-    dump_db(env.config.DB.name, env.config.DB.user, env.config.DB.password)
+    dump_name = dump_db(env.config.DB.name, env.config.DB.user,
+                        env.config.DB.password)
     env.config.save()
+
+    return dump_name
+
+
+@task
+def download_db():
+    """ Generates a database backup through `backup_db()` and downloads it. """
+    return get('%s.zip' % backup_db())
 
 
 def git_clone(url, path):
