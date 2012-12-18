@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Django app{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  </head>
+  <body>
+    <div>
+      <div class="navbar">
+        {% if user.is_authenticated %}
+          Logged in as {{user.username}}
+          <a href="{% url base.views.password_change %}">Change password</a>
+          <a href="{% url base.views.logout %}">Logout</a>
+        {% else %}
+          <a href="{% url base.views.password_reset %}">Recover password</a>
+          <a href="{% url base.views.user_new %}">Register</a>
+        {% endif %}
+      </div>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div><!--/row-->
+      </div>
+      <div id="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </body>
+</head>
