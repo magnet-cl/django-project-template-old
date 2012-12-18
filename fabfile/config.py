@@ -18,6 +18,7 @@ class Config(ArtichokeConfig):
         super(Config, self).__init__(config_file)
 
         self.add_section('DB')
+        self.add_section('local_DB')
 
 config_file = '%s/config.ini' % env.local_root_dir
 env.config = Config(env, config_file)
