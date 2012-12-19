@@ -118,7 +118,7 @@ def dump_db(name, mysql_user, mysql_pass):
     dump_name = "%s/%s-%s.sql" % (dumps_folder, branch_name, dump_name)
 
     # dump into db_dumps/<dump_name>
-    cmd = "mysqldump -u%s -p%s %s> '%s'"
+    cmd = "mysqldump -u%s -p%s %s > '%s'"
     cmd %= (mysql_user, mysql_pass, name, dump_name)
     run(cmd)
 
