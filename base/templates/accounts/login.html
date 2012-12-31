@@ -2,6 +2,10 @@
 
 {% load i18n static %}
 
+{% block javascripts %}
+  <script src="{{STATIC_URL}}js/login.js"></script>
+{% endblock %}
+
 {% block content %}
 
 {% if form.errors %}
