@@ -17,8 +17,11 @@ class CustomBackend(ModelBackend):
         try:
             if username:
                 user = User.objects.get(username=username)
+            elif email:
+                user = User.objects.get(email=email.lower())
             else:
-                user = User.objects.get(email=email)
+                # no email or username
+                return None
         except User.DoesNotExist:
             return None
         if password is not None:

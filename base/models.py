@@ -93,6 +93,12 @@ class User(DjangoUser, BaseModel):
         )
 
     #public methods
+    def save(self, *args, **kwargs):
+        """ store all emails in lowercase """
+        self.email = self.email.lower()
+
+        super(User, self).save(*args, **kwargs)
+
     def send_email(self, template_name, subject, template_vars=None,
                    fail_silently=True):
         """Sends an email to the registered address using a given template
