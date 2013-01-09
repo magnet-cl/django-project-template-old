@@ -21,9 +21,6 @@ class Config(ArtichokeConfig):
         self.add_section('local_DB')
         self.add_section('staging_DB')
 
-config_file = '%s/config.ini' % env.local_root_dir
-env.config = Config(env, config_file)
-
 
 @task
 def set(host='cl', user='magnet', branch='master', django_port='8000'):
@@ -46,3 +43,7 @@ def set(host='cl', user='magnet', branch='master', django_port='8000'):
     if env.branch != 'master':
         env.server_root_dir += '-%s' % env.branch
         env.django_port = int(env.django_port) + 1
+
+    # artichoke config file saved considering branch
+    config_file = '%s/config-%s.ini' % (env.local_root_dir, env.branch)
+    env.config = Config(env, config_file)
