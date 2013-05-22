@@ -9,7 +9,7 @@ try:
     from local_settings import LOCAL_DEBUG, LOCAL_DATABASES
 except:
     import dj_database_url
-    DATABASES['default'] =  dj_database_url.config()
+    DATABASES['default'] = dj_database_url.config()
     DEBUG = True
 else:
     DATABASES.update(LOCAL_DATABASES)
@@ -56,12 +56,12 @@ if TEST:
 
 TEMPLATE_DEBUG = DEBUG
 
-AUTH_PROFILE_MODULE = "base.User"
+AUTH_PROFILE_MODULE = "users.User"
 
 # Since we are using our custom user model, we need to set the authentication
 # backend to the CustomBackend, so it returns the User model
 AUTHENTICATION_BACKENDS = (
-    'base.backends.CustomBackend',
+    'users.backends.CustomBackend',
 )
 
 ADMINS = (
@@ -125,7 +125,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -135,7 +135,7 @@ SECRET_KEY = 'u9+6rx&amp;&amp;mfv8xjm#t5_73bs45x06t6w-xsu_m2jt2)=&amp;95d_b^'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -168,11 +168,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     #'south',
     'base',
+    'django.contrib.admin',
+    'users',
 )
 # Set the apps that are installed locally
 try:

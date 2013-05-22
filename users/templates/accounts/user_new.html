@@ -14,7 +14,7 @@
 
 
 
-<form method="post" action="{% url 'base.views.user_new' %}">
+<form method="post" action="{% url 'users.views.user_new' %}">
 {% csrf_token %}
 <table>
   {% for field in form.visible_fields %}

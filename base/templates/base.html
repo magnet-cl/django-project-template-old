@@ -12,11 +12,11 @@
       <div class="navbar">
         {% if user.is_authenticated %}
         Logged in as {{user.username}}
-        <a href="{% url 'base.views.password_change' %}">Change password</a>
-        <a href="{% url 'base.views.logout' %}">Logout</a>
+        <a href="{% url 'users.views.password_change' %}">Change password</a>
+        <a href="{% url 'users.views.logout' %}">Logout</a>
         {% else %}
-        <a href="{% url 'base.views.password_reset' %}">Recover password</a>
-        <a href="{% url 'base.views.user_new' %}">Register</a>
+        <a href="{% url 'users.views.password_reset' %}">Recover password</a>
+        <a href="{% url 'users.views.user_new' %}">Register</a>
         {% endif %}
       </div>
       <div class="container-fluid">

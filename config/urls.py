@@ -7,14 +7,16 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
-     url(r'^admin/', include(admin.site.urls)),
-     (r'^accounts/', include('base.urls')),
-     (r'^$', 'base.views.index'),
+urlpatterns = patterns(
+    '',
+    url(r'^admin/', include(admin.site.urls)),
+    (r'^accounts/', include('users.urls')),
+    (r'^$', 'base.views.index'),
 )
 
+
 if settings.DEBUG:
-   urlpatterns += patterns('',
+    urlpatterns += patterns('',
                            (r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:],
                             'django.views.static.serve', {
                                 'document_root': settings.MEDIA_ROOT}))

@@ -1,27 +1,21 @@
 from django.contrib.auth.backends import ModelBackend
 
-from base.models import User
+from users.models import User
 
 
 class CustomBackend(ModelBackend):
     """
-    Authenticates against base.models.User
+    Authenticates against users.models.User
     """
     supports_inactive_user = True
 
-    def authenticate(self, email=None, username=None, password=None, token=None):
+    def authenticate(self, email, password=None, token=None):
         """ login using  the username validating with the password  or the
         token. If the token is used, then it's deleted
 
         """
         try:
-            if username:
-                user = User.objects.get(username=username)
-            elif email:
-                user = User.objects.get(email=email.lower())
-            else:
-                # no email or username
-                return None
+            user = User.objects.get(email=email.lower())
         except User.DoesNotExist:
             return None
         if password is not None:
@@ -30,11 +24,10 @@ class CustomBackend(ModelBackend):
         if token:
             if user.token == token and len(token) == 30:
                 user.token = ""
-                user.is_active=True
+                user.is_active = True
                 user.save()
                 return user
         return None
-
 
     def get_user(self, user_id):
         """ returns the user using the id """
