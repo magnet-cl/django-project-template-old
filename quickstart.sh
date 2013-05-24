@@ -87,8 +87,11 @@ if  $INSTALL_HEROKU ; then
 
     wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
     heroku login
-    pip install Django psycopg2 dj-database-url
+    pip install psycopg2 dj-database-url
     pip freeze > requirements.txt
+    pip uninstall psycopg2 dj-database-url
+
+    echo "web: python manage.py runserver 0.0.0.0:$PORT --noreload" > Procfile
 
     echo "Would you like to create a new heroku repo? [N/y]"
     read CREATE_REPO
@@ -96,9 +99,10 @@ if  $INSTALL_HEROKU ; then
     if [[ "$CREATE_REPO" == "y" ]]
     then
         heroku create
-        echo "You should now commit the requirements.txt file."
-        echo "Then deploy to heroku: git push heroku master"
     fi
+
+    echo "You should now commit the requirements.txt file."
+    echo "Then deploy to heroku: git push heroku master"
 fi
 
 # create the local_settings file if it does not exist
