@@ -9,6 +9,15 @@ from django.db import models
 
 class BaseModel(models.Model):
     """ An abstract class that every model should inherit from """
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        help_text="creation date",
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True, null=True,
+        help_text="edition date",
+    )
+
     class Meta:
         """ set to abstract """
         abstract = True
