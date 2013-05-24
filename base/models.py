@@ -5,6 +5,7 @@ All apps should use the BaseModel as parent for all models
 """
 
 from django.db import models
+from datetime import datetime
 
 
 class BaseModel(models.Model):
@@ -28,6 +29,9 @@ class BaseModel(models.Model):
         highly recommended when you need to save just one field
 
         """
+        kwargs['updated_at'] = datetime.now()
+
         for kw in kwargs:
             self.__setattr__(kw, kwargs[kw])
+
         self.__class__.objects.filter(pk=self.pk).update(**kwargs)
