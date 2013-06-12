@@ -3,8 +3,13 @@
 
 All apps should use the BaseModel as parent for all models
 """
+# base
+from base.managers import BaseManager
 
+# django
 from django.db import models
+
+# other
 from datetime import datetime
 
 
@@ -18,6 +23,9 @@ class BaseModel(models.Model):
         auto_now=True, null=True,
         help_text="edition date",
     )
+
+    # using BaseManager
+    objects = BaseManager()
 
     class Meta:
         """ set to abstract """

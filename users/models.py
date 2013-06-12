@@ -3,20 +3,22 @@
 
 All apps should use the users.User model for all users
 """
+# managers
+from users.managers import UserManager
 
-#models
+# models
 from base.models import BaseModel
 
-#djanto
+# djanto
 from django.conf import settings
-from django.contrib.auth.models import User as DjangoUser, UserManager
+from django.contrib.auth.models import User as DjangoUser
 from django.core.mail import EmailMultiAlternatives
 from django.db import models
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.translation import ugettext_lazy as _
 
-#other
+# other
 from threading import Thread
 import base64
 import os
