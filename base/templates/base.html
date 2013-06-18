@@ -11,7 +11,7 @@
     <div>
       <div class="navbar">
         {% if user.is_authenticated %}
-        Logged in as {{user.username}}
+        Logged in as {{user.email}}
         <a href="{% url 'users.views.password_change' %}">Change password</a>
         <a href="{% url 'users.views.logout' %}">Logout</a>
         {% else %}

@@ -56,8 +56,6 @@ if TEST:
 
 TEMPLATE_DEBUG = DEBUG
 
-AUTH_PROFILE_MODULE = "users.User"
-
 # Since we are using our custom user model, we need to set the authentication
 # backend to the CustomBackend, so it returns the User model
 AUTHENTICATION_BACKENDS = (
@@ -170,10 +168,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    #'south',
     'base',
-    'django.contrib.admin',
     'users',
+    'django.contrib.admin',
 )
 # Set the apps that are installed locally
 try:
@@ -214,3 +211,5 @@ LOGGING = {
 
 # user loggin
 LOGIN_REDIRECT_URL = "/"
+
+AUTH_USER_MODEL = 'users.User'

@@ -2,9 +2,9 @@ Django==1.5.1
 Fabric==1.4.3
 South==0.7.6
 argparse==1.2.1
+-e git://github.com/magnet-cl/artichoke.git@1f29af679e5d1133eec0557e19eb06b30ca7f50a#egg=artichoke-dev
 distribute==0.6.30
 ipython==0.13.1
 pycrypto==2.6
 ssh==1.8.0
 wsgiref==0.1.2
--e git://github.com/magnet-cl/artichoke.git#egg=artichoke

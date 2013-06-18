@@ -9,7 +9,7 @@ class CustomBackend(ModelBackend):
     """
     supports_inactive_user = True
 
-    def authenticate(self, email, password=None, token=None):
+    def authenticate(self, email, password, token=None):
         """ login using  the username validating with the password  or the
         token. If the token is used, then it's deleted
 

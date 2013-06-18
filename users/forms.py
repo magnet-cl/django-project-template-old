@@ -7,8 +7,7 @@ from users.models import User
 from base.forms import BaseForm
 
 from django.contrib.auth import authenticate
-from django.contrib.auth import forms as auth_forms
-from django.contrib.auth.forms import UserChangeForm as DjangoUserChangeForm
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import get_current_site
 from django.template import loader
@@ -17,38 +16,63 @@ from django.utils.translation import ugettext_lazy as _
 from django import forms
 
 
-class AuthenticationForm(auth_forms.AuthenticationForm):
+class AuthenticationForm(forms.Form):
     """ Custom class for authenticating users. Takes the basic
     AuthenticationForm and adds email as an alternative for login
     """
-    email = forms.EmailField(label=_("Email"))
-    username = forms.CharField(label=_("Username"), max_length=30,
-                               required=False)
-    error_messages = auth_forms.AuthenticationForm.error_messages
-    error_messages['invalid_email'] = _("Invalid email or password")
+    email = forms.EmailField(label=_("Email"), required=True)
+    password = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+
+    error_messages = {
+        'invalid_login': _("Please enter a correct email and password. "
+                           "Note that both fields may be case-sensitive."),
+        'no_cookies': _("Your Web browser doesn't appear to have cookies "
+                        "enabled. Cookies are required for logging in."),
+        'inactive': _("This account is inactive."),
+    }
+
+    def __init__(self, request=None, *args, **kwargs):
+        """
+        If request is passed in, the form will validate that cookies are
+        enabled. Note that the request (a HttpRequest object) must have set a
+        cookie with the key TEST_COOKIE_NAME and value TEST_COOKIE_VALUE before
+        running this validation.
+        """
+        self.request = request
+        self.user_cache = None
+        super(AuthenticationForm, self).__init__(*args, **kwargs)
 
     def clean(self):
         """
         validates the email and password.
-        It also validates the username and password using the django
-        AuthenticationForm clean method
         """
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
 
         if email and password:
+            print email, password
             self.user_cache = authenticate(email=email,
                                            password=password)
+            print self.user_cache
             if self.user_cache is None:
                 raise forms.ValidationError(
-                    self.error_messages['invalid_email'])
+                    self.error_messages['invalid_login'])
             elif not self.user_cache.is_active:
                 raise forms.ValidationError(self.error_messages['inactive'])
-        else:
-            # check by username and password
-            return super(AuthenticationForm, self).clean()
         self.check_for_test_cookie()
         return self.cleaned_data
+
+    def check_for_test_cookie(self):
+        if self.request and not self.request.session.test_cookie_worked():
+            raise forms.ValidationError(self.error_messages['no_cookies'])
+
+    def get_user_id(self):
+        if self.user_cache:
+            return self.user_cache.id
+        return None
+
+    def get_user(self):
+        return self.user_cache
 
 
 class UserCreationForm(BaseForm):
@@ -119,7 +143,6 @@ class UserCreationForm(BaseForm):
         user.set_password(self.cleaned_data["password1"])
         user.first_name = self.cleaned_data["first_name"]
         user.last_name = self.cleaned_data["last_name"]
-        user.username = user.email[:30]
         user.active = not verify_email_address
 
         if commit:
@@ -153,6 +176,24 @@ class UserCreationForm(BaseForm):
         return user
 
 
-class UserChangeForm(DjangoUserChangeForm):
+class UserChangeForm(forms.ModelForm):
+    password = ReadOnlyPasswordHashField(
+        label=_("Password"),
+        help_text=_("Raw passwords are not stored, so there is no way to see "
+                    "this user's password, but you can change the password "
+                    "using <a href=\"password/\">this form</a>."))
+
     class Meta:
         model = User
+
+    def __init__(self, *args, **kwargs):
+        super(UserChangeForm, self).__init__(*args, **kwargs)
+        f = self.fields.get('user_permissions', None)
+        if f is not None:
+            f.queryset = f.queryset.select_related('content_type')
+
+    def clean_password(self):
+        # Regardless of what the user provides, return the initial value.
+        # This is done here, rather than on the field, because the
+        # field does not have access to the initial value
+        return self.initial["password"]
