@@ -2,6 +2,7 @@ doctype 5
 
 - load compress
 - load staticfiles
+- load i18n static
 
 html(lang="en")
   head
@@ -32,6 +33,10 @@ html(lang="en")
             div.nav-collapse.collapse
               ul.nav
                 {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                li
+                  a(href="{% url 'admin:index' %}") {% trans 'Administration' %}
+                {% endif %}
                 {% else %}
                 li
                   a(href="{% url 'users.views.password_reset' %}")
