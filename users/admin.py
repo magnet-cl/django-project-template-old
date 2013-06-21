@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from users.models import User
-from users.forms import AuthenticationForm
+from users.forms import AdminAuthenticationForm
 from users.forms import UserCreationForm
 from users.forms import UserChangeForm
 
@@ -10,7 +10,7 @@ from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 
 # change the authentication form to use email
-admin.sites.AdminSite.login_form = AuthenticationForm
+admin.sites.AdminSite.login_form = AdminAuthenticationForm
 
 
 class UserAdmin(DjangoUserAdmin):

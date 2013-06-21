@@ -50,10 +50,8 @@ class AuthenticationForm(forms.Form):
         password = self.cleaned_data.get('password')
 
         if email and password:
-            print email, password
             self.user_cache = authenticate(email=email,
                                            password=password)
-            print self.user_cache
             if self.user_cache is None:
                 raise forms.ValidationError(
                     self.error_messages['invalid_login'])
@@ -73,6 +71,33 @@ class AuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user_cache
+
+
+class AdminAuthenticationForm(AuthenticationForm):
+    """
+    A custom authentication form used in the admin app.
+
+    """
+    error_messages = {
+        'required': _("Please log in again, because your session has expired.")
+    }
+    this_is_the_login_form = forms.BooleanField(
+        widget=forms.HiddenInput, initial=1, error_messages=error_messages)
+
+    def clean(self):
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+        message = _("Please enter the correct email and password for a staff "
+                    "account. Note that both fields may be case-sensitive.")
+
+        if email and password:
+            self.user_cache = authenticate(email=email, password=password)
+            if self.user_cache is None:
+                raise forms.ValidationError(message)
+            elif not self.user_cache.is_active or not self.user_cache.is_staff:
+                raise forms.ValidationError(message)
+        self.check_for_test_cookie()
+        return self.cleaned_data
 
 
 class UserCreationForm(BaseForm):

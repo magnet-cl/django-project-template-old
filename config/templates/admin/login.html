@@ -75,7 +75,7 @@
   {% if password_reset_url %}
   <div class="control-group">
     <div class="controls">
-        <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or username?' %}</a>
+        <a href="{{ password_reset_url }}">{% trans 'Forgotten your password or email?' %}</a>
     </div>
   </div>
   {% endif %}
@@ -87,7 +87,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#id_username').attr('autocapitalize', 'off').focus();
+  $('#id_email').attr('autocapitalize', 'off').focus();
 })
 </script>
 </div>
