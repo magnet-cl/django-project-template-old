@@ -173,6 +173,7 @@ INSTALLED_APPS = (
     "compressor",
     'base',
     'users',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
 )
 # Set the apps that are installed locally
