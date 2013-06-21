@@ -1,0 +1,84 @@
+doctype 5
+
+- load compress
+- load staticfiles
+
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    title Project {% block title %} {%endblock%}
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="")
+
+    {% compress css %}
+    link(href="{% static 'css/bootstrap.min.css' %}", rel="stylesheet")
+    link(href="{% static 'css/bootstrap-responsive.min.css' %}", rel="stylesheet")
+    link(href="{% static 'css/site.css' %}", rel="stylesheet")
+    block stylesheets
+    {% endcompress %}
+
+  body(class='{{body_class|default:""}}')
+    div
+      div.navbar.navbar-inverse.navbar-fixed-top
+        div.navbar-inner
+          div.container
+            button.btn.btn-navbar(type="button", data-toggle="collapse",
+                                  data-target=".nav-collapse")
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.brand(href="{% url 'home' %}") Project name
+            div.nav-collapse.collapse
+              ul.nav
+                {% if user.is_authenticated %}
+                {% else %}
+                li
+                  a(href="{% url 'users.views.password_reset' %}")
+                    | Recover password
+                li
+                  a(href="{% url 'users.views.user_new' %}") Register
+                {% endif %}
+
+              {% if user.is_authenticated %}
+              ul.nav.pull-right
+                li.dropdown
+                  a.dropdown-toggle(href="", data-toggle="dropdown")
+                    | Logged in as {{user.email}}
+                    b.caret
+
+                  ul.dropdown-menu
+                    li
+                      a(href="{% url 'users.views.password_change' %}")
+                        | Change password
+                    li
+                      a(href="{% url 'users.views.logout' %}") Logout
+              {% endif %}
+
+      div.container-fluid
+        div.row-fluid
+          {% if messages %}
+          {% for message in messages %}
+          div(class="alert alert-{{ message.tags }}") {{ message }}
+          {% endfor %}
+          {% endif %}
+      div.container
+        {% block content %}
+        {% endblock %}
+
+      //Le javascript
+      //Placed at the end of the document so the pages load faster
+
+      // uncompressible javascripts
+      {% if debug %}
+      script(src="{% static 'js/jquery-1.10.1.min.js' %}")
+      {% else %}
+      script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js")
+      {% endif %}
+      block uncompressible_javascripts
+
+      {% compress js %}
+      script(src="{% static 'js/bootstrap.min.js' %}")
+      script(src="{% static 'js/site.js' %}")
+      block javascripts
+      {% endcompress %}

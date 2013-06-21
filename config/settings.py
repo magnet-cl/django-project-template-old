@@ -132,9 +132,10 @@ SECRET_KEY = 'u9+6rx&amp;&amp;mfv8xjm#t5_73bs45x06t6w-xsu_m2jt2)=&amp;95d_b^'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    # 'django.template.loaders.eggs.Loader',
+    ('pyjade.ext.django.Loader', (
+        'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
+    )),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -213,5 +214,10 @@ LOGGING = {
 
 # user loggin
 LOGIN_REDIRECT_URL = "/"
+
+# Tuple of IP addresses, as strings, that:
+#   * See debug comments, when DEBUG is true
+#   * Receive x-headers
+INTERNAL_IPS = ('127.0.0.1',)
 
 AUTH_USER_MODEL = 'users.User'
