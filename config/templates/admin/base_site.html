@@ -5,6 +5,15 @@
 
 {% block branding %}
 <a class="brand" href="{% url 'admin:index' %}">{% trans 'Project administration' %}</a>
+<div class="nav-collapse collapse">
+  <ul class="nav">
+    <li class="">
+    <a href="{% url 'home' %}">
+      {% trans 'home' %}
+    </a>
+    </li>
+  </ul>
+</div>
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
