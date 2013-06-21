@@ -9,5 +9,5 @@ from django.template import RequestContext
 @login_required
 def index(request):
     """ view that renders a default home"""
-    return render_to_response('index.html',
+    return render_to_response('index.jade',
                               context_instance=RequestContext(request))
