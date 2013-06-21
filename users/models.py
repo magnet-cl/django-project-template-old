@@ -9,7 +9,7 @@ from users.managers import UserManager
 # models
 from base.models import BaseModel
 
-# djanto
+# django
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
