@@ -8,46 +8,51 @@
 
 {% block content %}
 
-{% if form.errors %}
-  {% for error in form.non_field_errors %}
+<form class="form-signin form-horizontal" action="{% url 'users.views.login' %}" method="post">
+{% csrf_token %}
+  <div class="form-signin-inner">
+  {% blocktrans %}<h2>Login</h2>{% endblocktrans %}
+  {% if form.errors and not form.non_field_errors %}
+    <div class="alert alert-error">
+       {% blocktrans count counter=form.errors.items|length %}Please correct the error below.{% plural %}Please correct the errors below.{% endblocktrans %}
+    </div>
+  {% endif %}
+  {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
     <div class="alert alert-error">
       {{ error }}
     </div>
-  {% endfor %}
-{% endif %}
+    {% endfor %}
+  {% endif %}
 
-
-
-<form method="post" action="{% url 'users.views.login' %}">
-{% csrf_token %}
-<table>
-<tr>
-    <td>{{ form.email.label_tag }}</td>
-    <td>{{ form.email }}</td>
-    <td>
-      {% for error in form.email.errors %}
-        <div class="alert alert-error">
-          {{ error }}
-        </div>
-      {% endfor %}
-    </td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-    <td>
-      {% for error in form.password.errors %}
-        <div class="alert alert-error">
-          {{ error }}
-        </div>
-      {% endfor %}
-    </td>
-</tr>
-</table>
-
-<input type="submit" class="btn" value="{% trans 'Login' %}" />
-<input type="hidden" name="next" value="{{ next }}" />
+  <div class="control-group">
+    <div class="control-label">
+        <label for="id_email" class="required">{% trans 'E-mail:' %}</label> 
+    </div>
+    <div class="controls">
+        {{ form.email }}
+        <span class="help-inline">{{ form.email.errors|striptags }}</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="control-label">
+        <label for="id_password" class="required">{% trans 'Password:' %}</label> 
+    </div>
+    <div class="controls">
+        {{ form.password }}
+        <span class="help-inline">{{ form.password.errors|striptags }}</span>
+    </div>
+    <input type="hidden" name="this_is_the_login_form" value="1" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </div>
+  <div class="control-group">
+    <div class="controls">
+        <a href="{% url 'users.views.password_reset' %}">{% trans 'Forgotten your password or email?' %}</a>
+    </div>
+  </div>
+  </div>
+  <div class="form-actions">
+    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
+  </div>
 </form>
-
 {% endblock %}
-
