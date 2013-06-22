@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-LOGFILE=/home/%(user)s/logs/gunicorn-%(django-port)s.log
+LOGFILE=/home/%(user)s/logs/gunicorn-%(django_port)s.log
 LOGDIR=$(dirname $LOGFILE)
 NUM_WORKERS=3
 # user/group to run as
