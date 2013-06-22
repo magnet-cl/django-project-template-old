@@ -42,7 +42,7 @@ class BaseManager(models.Manager):
         return BaseQuerySet(self.model, using=self._db)
 
     def last(self):
-        return self.get_queryset().last()
+        return self.get_query_set().last()
 
     def first(self):
-        return self.get_queryset().first()
+        return self.get_query_set().first()
