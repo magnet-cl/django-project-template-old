@@ -4,4 +4,6 @@
 local_settings.py
 .env
 config/media/
+config/static
 *.ini
+gunicorn.sh
