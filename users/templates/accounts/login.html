@@ -45,6 +45,20 @@
     <input type="hidden" name="this_is_the_login_form" value="1" />
     <input type="hidden" name="next" value="{{ next }}" />
   </div>
+
+  {% if form.captcha %}
+  <div class="control-group">
+    <div class="control-label">
+        {{ form.captcha.label_tag }}
+    </div>
+    <div class="controls">
+        {{ form.captcha }}
+        <span class="help-inline">{{ form.captcha.errors|striptags }}</span>
+    </div>
+  </div>
+  {% endif %}
+
+
   <div class="control-group">
     <div class="controls">
         <a href="{% url 'users.views.password_reset' %}">{% trans 'Forgotten your password or email?' %}</a>

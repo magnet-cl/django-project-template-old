@@ -7,3 +7,4 @@ django-compressor==1.3
 ipython==0.13.2
 django-admin-bootstrapped==0.4.1
 pyjade==2.0.2
+recaptcha-client==1.0.6

@@ -6,6 +6,7 @@ from users.models import User
 # forms
 from base.forms import BaseForm
 
+from base.fields import ReCaptchaField
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.contrib.auth.tokens import default_token_generator
@@ -71,6 +72,13 @@ class AuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user_cache
+
+
+class CaptchaAuthenticationForm(AuthenticationForm):
+    """ a user authentication form with a captcha """
+    captcha = ReCaptchaField(
+        label="¿Eres humano?",
+    )
 
 
 class AdminAuthenticationForm(AuthenticationForm):
@@ -199,6 +207,13 @@ class UserCreationForm(BaseForm):
             send_mail(subject, email, from_email, [user.email])
 
         return user
+
+
+class CaptchaUserCreationForm(UserCreationForm):
+    """ a user creation form with a captcha """
+    captcha = ReCaptchaField(
+        label="¿Eres humano?",
+    )
 
 
 class UserChangeForm(forms.ModelForm):
