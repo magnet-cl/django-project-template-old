@@ -14,10 +14,11 @@ class UserAdmin(DjangoUserAdmin):
     add_form_template = 'admin/users/user/add_form.html'
 
     add_form = UserCreationForm
-    list_display = ('email', 'first_name', 'last_name', 'is_staff')
+    list_display = ('email', 'first_name', 'last_name', 'is_staff',
+                    'change_password_link')
     form = UserChangeForm
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email',)}),
         (_('Personal info'), {'fields': ('first_name', 'last_name')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
@@ -32,5 +33,11 @@ class UserAdmin(DjangoUserAdmin):
     )
     search_fields = ('first_name', 'last_name', 'email')
     ordering = ('email',)
+
+    def change_password_link(self, obj):
+        return u"<a href=\"%d/password/\">%s</a>" % (obj.id,
+                                                     _("change password"))
+    change_password_link.allow_tags = True
+    change_password_link.short_description = _("change password")
 
 admin.site.register(User, UserAdmin)
