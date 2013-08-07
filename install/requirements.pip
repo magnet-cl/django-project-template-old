@@ -2,7 +2,6 @@ Django==1.5.1
 Fabric==1.6.1
 South==0.8.1
 argparse==1.2.1
--e git://github.com/magnet-cl/artichoke.git@1f29af679e5d1133eec0557e19eb06b30ca7f50a#egg=artichoke-dev
 distribute==0.6.45
 django-admin-bootstrapped==0.4.1
 django-appconf==0.6

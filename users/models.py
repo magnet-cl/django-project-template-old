@@ -21,11 +21,15 @@ from django.template.loader import get_template
 from django.utils import timezone
 from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_noop
 
 # other
 from threading import Thread
 import base64
 import os
+
+# mark for translation the app name
+ugettext_noop("Users")
 
 
 class User(AbstractBaseUser, PermissionsMixin, BaseModel):

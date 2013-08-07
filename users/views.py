@@ -111,7 +111,7 @@ def user_new(request):
             form.save(verify_email_address=True, request=request)
             messages.add_message(request, messages.INFO,
                                  _("An email has been sent to you. Please "
-                                   "check it to veiry your email."))
+                                   "check it to verify your email."))
             return HttpResponseRedirect('/')
     else:
         form = CaptchaUserCreationForm()
