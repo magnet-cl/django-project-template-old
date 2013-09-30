@@ -85,5 +85,9 @@ html(lang="en")
       {% compress js %}
       script(src="{% static 'js/bootstrap.min.js' %}")
       script(src="{% static 'js/site.js' %}")
+      script(src="{% static 'js/form.js' %}")
+      {% endcompress %}
+
+      {% compress js %}
       block javascripts
       {% endcompress %}
