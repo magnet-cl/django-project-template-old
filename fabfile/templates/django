@@ -18,6 +18,7 @@ server {
     proxy_redirect off;
   }
 
+  charset UTF-8;
   gzip on;
   gzip_comp_level 2;
   gzip_proxied any;

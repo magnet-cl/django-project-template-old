@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-06 17:31-0400\n"
+"POT-Creation-Date: 2013-08-07 18:25-0400\n"
 "PO-Revision-Date: 2013-01-10 18:54+0000\n"
 "Last-Translator: Antoni Aloy <aaloy@apsl.net>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/django/language/"
@@ -67,7 +67,7 @@ msgstr "Esta cuenta está inactiva."
 
 #: forms.py:90
 msgid "Please log in again, because your session has expired."
-msgstr ""
+msgstr "Por favor ingresa nuevamente, porque tu sesión a expirado."
 
 #: forms.py:98
 msgid ""
@@ -93,55 +93,59 @@ msgstr "Correo electrónico"
 msgid "Enter the same password as above, for verification."
 msgstr "Introduzca la misma contraseña que arriba, para verificación."
 
-#: forms.py:126 models.py:45
+#: forms.py:126 models.py:49
 msgid "first name"
 msgstr "nombre propio"
 
 #: forms.py:127
 msgid "The name of the user"
-msgstr ""
+msgstr "El nombre del usuario"
 
-#: forms.py:130 models.py:49
+#: forms.py:130 models.py:53
 msgid "last name"
 msgstr "apellidos"
 
 #: forms.py:131
 msgid "The last name of the user"
-msgstr ""
+msgstr "El apellido del usuario"
 
 #: forms.py:138
 msgid "Password confirmation"
 msgstr "Contraseña (confirmación)"
 
-#: models.py:40
+#: models.py:32
+msgid "Users"
+msgstr "Usuarios"
+
+#: models.py:44
 msgid "email address"
 msgstr "dirección de correo electrónico"
 
-#: models.py:41
+#: models.py:45
 msgid "An email address that identifies this user"
-msgstr ""
-
-#: models.py:46
-msgid "The first name of this user"
-msgstr ""
+msgstr "Un correo electrónico que identifica a este usuario"
 
 #: models.py:50
-msgid "The last name of this user"
-msgstr ""
+msgid "The first name of this user"
+msgstr "El primer nombre de este usuario"
 
-#: models.py:53
+#: models.py:54
+msgid "The last name of this user"
+msgstr "El apellido de este usuario"
+
+#: models.py:57
 msgid "staff status"
 msgstr "es staff"
 
-#: models.py:54
+#: models.py:58
 msgid "Designates whether the user can log into this admin site."
 msgstr "Indica si el usuario puede entrar en este sitio de administración."
 
-#: models.py:58
+#: models.py:62
 msgid "active"
 msgstr "activo"
 
-#: models.py:59
+#: models.py:63
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -149,51 +153,55 @@ msgstr ""
 "Indica si el usuario puede ser tratado como activo. Desmarque esta opción en "
 "lugar de borrar la cuenta."
 
-#: models.py:64
+#: models.py:68
 msgid "date joined"
 msgstr "fecha de alta"
 
-#: models.py:65
+#: models.py:69
 msgid "The date this user was created in the database"
-msgstr ""
+msgstr "La fecha en la que este usuario fue creado en la base de datos"
 
-#: models.py:78
+#: models.py:82
 msgid "user"
 msgstr "usuario"
 
-#: models.py:79
+#: models.py:83
 msgid "users"
 msgstr "usuarios"
 
-#: models.py:141
+#: models.py:145
 msgid "Hello"
-msgstr ""
+msgstr "Hola"
 
 #: views.py:84
 msgid "An email has been sent to you. Please check it to reset your password."
 msgstr ""
+"Se te ha enviado un correo electrónico. Por favor revísalo para restablecer "
+"tu contraseña."
 
 #: views.py:113
-msgid "An email has been sent to you. Please check it to veiry your email."
+msgid "An email has been sent to you. Please check it to verify your email."
 msgstr ""
+"Se te ha enviado un correo electrónico. Por favor revísalo para verificar tu "
+"correo electrónico"
 
 #: views.py:148
 msgid "Your email address has been verified."
-msgstr ""
+msgstr "Tu dirección correo electrónico ha sido verificada"
 
 #: views.py:151
 msgid "Invalid verification link"
-msgstr ""
+msgstr "Link de verificación inválido"
 
 #: templates/accounts/login.html:14
 msgid "<h2>Login</h2>"
-msgstr ""
+msgstr "<h2>Ingreso</h2>"
 
 #: templates/accounts/login.html:17 templates/accounts/password_change.html:19
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Por favor corrige el errore de abajo."
+msgstr[1] "Por favor corrige los errores de abajo."
 
 #: templates/accounts/login.html:30
 msgid "E-mail:"
@@ -205,12 +213,12 @@ msgstr "Contraseña:"
 
 #: templates/accounts/login.html:64
 msgid "Forgotten your password or email?"
-msgstr ""
+msgstr "¿Olvidaste tu contraseña?"
 
 #: templates/accounts/login.html:69
 #: templates/accounts/password_reset_complete.html:14
 msgid "Log in"
-msgstr ""
+msgstr "Ingresar"
 
 #: templates/accounts/password_change.html:7
 #: templates/accounts/password_change.html:13
@@ -222,6 +230,9 @@ msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
 msgstr ""
+"Por favor ingresa tu contraseña antigua, por seguridad, y después ingresa tu "
+"nueva contraseña dos veces para podamos verificar que la ingresaste "
+"correctamente"
 
 #: templates/accounts/password_change.html:30
 msgid "Old password"
@@ -247,7 +258,7 @@ msgstr "Restablecimiento de la contraseña completado"
 
 #: templates/accounts/password_reset_complete.html:12
 msgid "Your password has been set.  You may go ahead and log in now."
-msgstr ""
+msgstr "Tu contraseña ha sido establecida. Puedes ingresar a la página ahora."
 
 #: templates/accounts/password_reset_confirm.html:6
 #: templates/accounts/password_reset_form.html:6
@@ -264,6 +275,8 @@ msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr ""
+"Por favor ingresa tu nueva contraseña dos veces para que podamos verificar "
+"que la escribiste correctamente."
 
 #: templates/accounts/password_reset_confirm.html:18
 msgid "New password:"
@@ -282,12 +295,16 @@ msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used.  Please request a new password reset."
 msgstr ""
+"El link para restablecer tu contraseña es inválido, posiblemente ya ha sido "
+"usado. Por favor solicita un nuevo restablecimiento de contraseña"
 
 #: templates/accounts/password_reset_form.html:12
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll e-mail "
 "instructions for setting a new one."
 msgstr ""
+"¿Olvidaste tu contraseña? Ingresa tu dirección de correo electrónico, y te "
+"enviaremos las insturcciones para establecer una nueva"
 
 #: templates/accounts/password_reset_form.html:18
 msgid "E-mail address:"
@@ -299,7 +316,7 @@ msgstr "Restablece mi contraseña"
 
 #: templates/accounts/user_new.html:35
 msgid "Register"
-msgstr ""
+msgstr "Registro"
 
 #: templates/admin/users/user/add_form.html:6
 msgid ""
@@ -319,19 +336,21 @@ msgid ""
 "You're receiving this e-mail because you requested a password reset for your "
 "user account at %(site_name)s."
 msgstr ""
+"Estas recibiendo este correo porque solicitaste el restablecer la contraseña "
+"para tu cuenta de usuario en %(site_name)s."
 
 #: templates/emails/password_reset.html:4
 msgid "Please go to the following page and choose a new password:"
-msgstr ""
+msgstr "Por favor ve a la siguiente página y escoge una nueva contraseña"
 
 #: templates/emails/password_reset.html:9 templates/emails/user_new.html:9
 msgid "Thanks for using our site!"
-msgstr ""
+msgstr "¡Gracias por utilizar nuestro sitio!"
 
 #: templates/emails/password_reset.html:11 templates/emails/user_new.html:11
 #, python-format
 msgid "The %(site_name)s team"
-msgstr ""
+msgstr "El equipo de %(site_name)s"
 
 #: templates/emails/user_new.html:2
 #, python-format
@@ -339,131 +358,15 @@ msgid ""
 "You're receiving this e-mail because you registered a new account at "
 "%(site_name)s."
 msgstr ""
+"Estas recibiendo este correo porque registraste una nueva cuenta en "
+"%(site_name)s."
 
 #: templates/emails/user_new.html:4
 msgid "Please go to the following page to confirm your email address:"
 msgstr ""
+"Por favor, ve a la siguiente página para confirmar tu correo electrónico"
 
 #: templates/emails/user_new_subject.txt:2
 #, python-format
 msgid "Welcome to %(site_name)s"
 msgstr "Bienvenido a %(site_name)s"
-
-#~ msgid "Invalid password format or unknown hashing algorithm."
-#~ msgstr "Formato de clave incorrecto o algoritmo de hash desconocido"
-
-#~ msgid "Username"
-#~ msgstr "Nombre de usuario"
-
-#~ msgid ""
-#~ "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
-#~ msgstr ""
-#~ "Requerido. 30 caracteres o menos. Letras, dígitos y @/./+/-/_ solamente."
-
-#~ msgid ""
-#~ "This value may contain only letters, numbers and @/./+/-/_ characters."
-#~ msgstr "Este valor puede contener sólo letras, números y @/./+/-/_."
-
-#~ msgid ""
-#~ "Raw passwords are not stored, so there is no way to see this user's "
-#~ "password, but you can change the password using <a href=\"password/"
-#~ "\">this form</a>."
-#~ msgstr ""
-#~ "Las contraseñas no se almacenan en bruto, así que no hay manera de ver la "
-#~ "contraseña del usuario, pero se puede cambiar la contraseña mediante <a "
-#~ "href=\"password/\">este formulario</a> ."
-
-#~ msgid ""
-#~ "That email address doesn't have an associated user account. Are you sure "
-#~ "you've registered?"
-#~ msgstr ""
-#~ "Esta dirección de correo no tiene asociada cuenta de usuario. ¿Estás "
-#~ "seguro que te has registrado?"
-
-#~ msgid ""
-#~ "The user account associated with this email address cannot reset the "
-#~ "password."
-#~ msgstr ""
-#~ "La cuenta de usuario asociada a esta dirección de correo no puede "
-#~ "restablecer su clave."
-
-#~ msgid "New password confirmation"
-#~ msgstr "Contraseña nueva (confirmación):"
-
-#~ msgid "Your old password was entered incorrectly. Please enter it again."
-#~ msgstr ""
-#~ "Su contraseña antigua es incorrecta. Por favor, vuelva a introducirla "
-#~ "correctamente."
-
-#~ msgid "algorithm"
-#~ msgstr "algoritmo"
-
-#~ msgid "iterations"
-#~ msgstr "iteraciones"
-
-#~ msgid "salt"
-#~ msgstr "sal"
-
-#~ msgid "hash"
-#~ msgstr "función resumen"
-
-#~ msgid "work factor"
-#~ msgstr "factor trabajo"
-
-#~ msgid "checksum"
-#~ msgstr "suma de verificación"
-
-#~ msgid "name"
-#~ msgstr "nombre"
-
-#~ msgid "codename"
-#~ msgstr "nombre en código"
-
-#~ msgid "permission"
-#~ msgstr "permiso"
-
-#~ msgid "permissions"
-#~ msgstr "permisos"
-
-#~ msgid "group"
-#~ msgstr "grupo"
-
-#~ msgid "groups"
-#~ msgstr "grupos"
-
-#~ msgid "password"
-#~ msgstr "contraseña"
-
-#~ msgid "last login"
-#~ msgstr "último inicio de sesión"
-
-#~ msgid "superuser status"
-#~ msgstr "es superusuario"
-
-#~ msgid ""
-#~ "Designates that this user has all permissions without explicitly "
-#~ "assigning them."
-#~ msgstr ""
-#~ "Indica que este usuario tiene todos los permisos sin asignárselos "
-#~ "explícitamente."
-
-#~ msgid ""
-#~ "The groups this user belongs to. A user will get all permissions granted "
-#~ "to each of his/her group."
-#~ msgstr ""
-#~ "Los grupos a los que este usuario pertenece. Un usuario obtendrá todos "
-#~ "los permisos concedidos a cada uno sus grupos."
-
-#~ msgid "user permissions"
-#~ msgstr "permisos de usuario"
-
-#~ msgid "username"
-#~ msgstr "nombre de usuario"
-
-#~ msgid ""
-#~ "Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ "
-#~ "characters"
-#~ msgstr "Requerido. 30 caracteres o menos. Letras, números y @/./+/-/_"
-
-#~ msgid "Logged out"
-#~ msgstr "Sesión terminada"
