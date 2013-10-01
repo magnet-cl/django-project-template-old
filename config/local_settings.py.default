@@ -3,7 +3,7 @@ LOCAL_DEBUG = True
 LOCAL_DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/tmp/django-db.sql',                      # Or path to database file if using sqlite3.
+        'NAME': '/tmp/django-project-template.sql',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -12,10 +12,13 @@ LOCAL_DATABASES = {
 }
 
 LOCAL_EMAIL_SETTINGS = {
-    'EMAIL_HOST_USER': 'username',
-    'EMAIL_HOST_PASSWORD': 'password',
-    'EMAIL_SENDER_NAME': "mi nombre",
-    'SENDER_EMAIL': "hello@example.com",
+    'EMAIL_SENDER_NAME': "Sender name",
+    'SENDER_EMAIL': 'sender email',
+
+    # Amazon AWS settings
+    'AWS_ACCESS_KEY_ID': 'AWS_ACCESS_KEY_ID',
+    'AWS_SECRET_ACCESS_KEY': 'AWS_SECRET_ACCESS_KEY',
+    'ENABLE_EMAILS': False,
 }
 
 LOCALLY_INSTALLED_APPS = (

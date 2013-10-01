@@ -16,20 +16,33 @@ else:
     DEBUG = LOCAL_DEBUG
 
 # email settings
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_BACKEND = 'django_ses.SESBackend'#
+
+email_settings = {
+    'EMAIL_SENDER_NAME': "Sender name",
+    'SENDER_EMAIL': 'sender email',
+
+    # Amazon AWS settings
+    'AWS_ACCESS_KEY_ID': 'AWS_ACCESS_KEY_ID',
+    'AWS_SECRET_ACCESS_KEY': 'AWS_SECRET_ACCESS_KEY',
+    'ENABLE_EMAILS': False,
+}
+
 try:
     from local_settings import LOCAL_EMAIL_SETTINGS
 except:
-    email_settings = os.environ
+    # heroku conf
+    email_settings.update(os.environ)
 else:
-    email_settings = LOCAL_EMAIL_SETTINGS
+    email_settings.update(LOCAL_EMAIL_SETTINGS)
 
-EMAIL_HOST_USER = email_settings['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = email_settings['EMAIL_HOST_PASSWORD']
 EMAIL_SENDER_NAME = email_settings['EMAIL_SENDER_NAME']
 SENDER_EMAIL = email_settings['SENDER_EMAIL']
+
+AWS_ACCESS_KEY_ID = email_settings['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = email_settings['AWS_SECRET_ACCESS_KEY']
+
+ENABLE_EMAILS = email_settings['ENABLE_EMAILS']
 
 # the path to the root of the project
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
