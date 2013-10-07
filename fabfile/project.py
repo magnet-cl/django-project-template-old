@@ -94,8 +94,10 @@ def initial_deploy():
     # github host handshake
     run('ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts')
 
+    # install necessary dependencies to handle the project
+    install_project_handling_dependencies()
+
     # clone repository
-    deb_handler.install('git')
     git_clone(env.server_git_url, env.server_root_dir)
 
     # checkout branch
@@ -118,3 +120,10 @@ def initial_deploy():
     nginx.install()
     nginx.add_django_site()
     nginx.start()
+
+
+@task
+def install_project_handling_dependencies():
+    # install zip dependencies
+    deb_handler.install('zip')
+    deb_handler.install('unzip')
