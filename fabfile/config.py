@@ -23,14 +23,14 @@ class Config(ArtichokeConfig):
 
 
 @task
-def set(host='cl', user='magnet', branch='master', django_port='8000'):
-    """ Host, user, branch and django port setter with shortcuts. """
+def set(address='cl', user='magnet', branch='master', django_port='8000'):
+    """ Address, user, branch and django port setter with shortcuts. """
     # host
-    if host == 'cl':
+    if address == 'cl':
         env.hosts = ['example.com']
     else:
         # TODO Validate input
-        env.hosts = [host]
+        env.hosts = [address]
 
     # user
     env.user = user
