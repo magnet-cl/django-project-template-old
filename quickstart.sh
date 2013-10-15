@@ -56,14 +56,11 @@ if  $INSTALL_APTITUDE ; then
 
 
     # set a new virtual environment
-    virtualenv .env --distribute
+    virtualenv .env
 fi
 if  $INSTALL_PIP ; then
     # activate the environment
     source .env/bin/activate
-
-    # update easy_install (used by pip)
-    easy_install -U distribute
 
     # install pip requiredments in the virtual environment
     .env/bin/pip install --requirement install/requirements.pip
