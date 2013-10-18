@@ -1,0 +1,12 @@
+.form-horizontal table{
+    text-align: center;
+}
+
+.form-horizontal .alert{
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.chosen-container{
+    height: 28px;
+}

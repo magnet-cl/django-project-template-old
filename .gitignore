@@ -7,3 +7,5 @@ config/media/
 config/static
 *.ini
 gunicorn.sh
+
+bower_components

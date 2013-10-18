@@ -1,0 +1,10 @@
+.detail {
+}
+
+.detail .profile-image {
+    float: right;
+}
+
+.detail .profile-image img{
+    width: 183px;
+}

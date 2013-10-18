@@ -63,7 +63,7 @@ if  $INSTALL_PIP ; then
     source .env/bin/activate
 
     # install pip requiredments in the virtual environment
-    .env/bin/pip install --requirement install/requirements.pip
+    .env/bin/pip install --download-cache=~/.pip-cache --requirement install/requirements.pip
 
 fi
 

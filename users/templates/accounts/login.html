@@ -25,20 +25,16 @@
     {% endfor %}
   {% endif %}
 
-  <div class="control-group">
-    <div class="control-label">
-        <label for="id_email" class="required">{% trans 'E-mail:' %}</label> 
-    </div>
-    <div class="controls">
+  <div class="form-group">
+    <label for="id_email" class="control-label col-lg-2 required">{% trans 'E-mail:' %}</label> 
+    <div class="col-lg-10">
         {{ form.email }}
         <span class="help-inline">{{ form.email.errors|striptags }}</span>
     </div>
   </div>
-  <div class="control-group">
-    <div class="control-label">
-        <label for="id_password" class="required">{% trans 'Password:' %}</label> 
-    </div>
-    <div class="controls">
+  <div class="form-group">
+    <label for="id_password" class="control-label col-lg-2 required">{% trans 'Password:' %}</label> 
+    <div class="col-lg-10">
         {{ form.password }}
         <span class="help-inline">{{ form.password.errors|striptags }}</span>
     </div>
@@ -47,7 +43,7 @@
   </div>
 
   {% if form.captcha %}
-  <div class="control-group">
+  <div class="form-group">
     <div class="control-label">
         {{ form.captcha.label_tag }}
     </div>
@@ -59,14 +55,16 @@
   {% endif %}
 
 
-  <div class="control-group">
-    <div class="controls">
+  <div class="form-group">
+    <div class="col-md-offset-2 col-lg-10">
         <a href="{% url 'users.views.password_reset' %}">{% trans 'Forgotten your password or email?' %}</a>
     </div>
   </div>
   </div>
-  <div class="form-actions">
-    <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
+  <div class="form-group">
+    <div class="col-md-offset-2 col-lg-10">
+      <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
+    </div>
   </div>
 </form>
 {% endblock %}

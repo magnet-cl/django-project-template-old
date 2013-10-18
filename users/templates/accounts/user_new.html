@@ -5,34 +5,21 @@
 {% block content %}
 
 {% if form.errors %}
-  {% for error in form.non_field_errors %}
-    <div class="alert alert-error">
-      {{ error }}
-    </div>
-  {% endfor %}
+{% for error in form.non_field_errors %}
+<div class="alert alert-error">
+  {{ error }}
+</div>
+{% endfor %}
 {% endif %}
 
+{% blocktrans %}<h2>Regístrate</h2>{% endblocktrans %}
 
+<form class="form-horizontal" method="post" action="{% url 'users.views.user_new' %}">
+  {% include "includes/form.jade" %}
 
-<form method="post" action="{% url 'users.views.user_new' %}">
-{% csrf_token %}
-<table>
-  {% for field in form.visible_fields %}
-  <tr>
-      <td>{{ field.label_tag }}</td>
-      <td>{{ field }}</td>
-      <td>
-        {% for error in field.errors %}
-          <div class="alert alert-error">
-            {{ error }}
-          </div>
-        {% endfor %}
-      </td>
-  </tr>
-  {% endfor %}
-</table>
-
-<input type="submit" value="{% trans 'Register' %}" class="btn"/>
+  <div class="form-actions">
+    <input type="submit" value="{% trans 'Register' %}" class="btn"/>
+  </div>
 </form>
 
 {% endblock %}

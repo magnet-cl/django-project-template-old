@@ -1,0 +1,25 @@
+extends base
+{% load i18n static %}
+
+block javascripts
+
+block uncompressible_javascripts
+
+block stylesheets
+
+block content
+  div.content.clear_down
+    div.box_profile_info
+      h3
+        block form_title
+    div
+      {% if form.errors %}
+      {% for error in form.non_field_errors %}
+      div.alert.alert-error
+        | {{ error }}
+      {% endfor %}
+      {% endif %}
+
+    div
+      form.model-form.form-horizontal(method="post", enctype="multipart/form-data", role="form")
+        {% include "includes/form.jade"%}

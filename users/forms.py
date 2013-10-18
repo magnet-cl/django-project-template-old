@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 from django import forms
 
 
-class AuthenticationForm(BaseForm):
+class AuthenticationForm(forms.Form):
     """ Custom class for authenticating users. Takes the basic
     AuthenticationForm and adds email as an alternative for login
     """

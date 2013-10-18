@@ -1,0 +1,22 @@
+extends django_tables2/table.html
+
+{% load django_tables2 %}
+{% load i18n %}
+
+block pagination
+  .text-center
+    ul.pagination
+      {% if table.page.has_previous %}
+      li
+        a(href="{% querystring table.prefixed_page_field=table.page.previous_page_number %}") &laquo;
+      {% endif %}
+
+      {% for page in table.paginator.page_range %}
+      li
+        a(href="{% querystring table.prefixed_page_field=page %}") {{ page }}
+      {% endfor %}
+
+      {% if table.page.has_next %}
+      li
+        a(href="{% querystring table.prefixed_page_field=table.page.next_page_number %}") &raquo;
+      {% endif %}

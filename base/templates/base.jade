@@ -4,64 +4,83 @@ doctype 5
 - load staticfiles
 - load i18n static
 
-html(lang="en")
+html(lang="es")
   head
     meta(charset="utf-8")
     title Project {% block title %} {%endblock%}
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(name="description", content="")
-    meta(name="author", content="")
+    meta(name="author", content="http://magnet.cl")
 
     {% compress css %}
-    link(href="{% static 'css/bootstrap.min.css' %}", rel="stylesheet")
-    link(href="{% static 'css/bootstrap-responsive.min.css' %}", rel="stylesheet")
+    link(href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}", rel="stylesheet")
+    link(href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}", rel="stylesheet")
+    link(href="{% static 'bower_components/bootstrap-datepicker/css/datepicker.css' %}", rel="stylesheet")
+    link(href="{% static 'bower_components/chosen/chosen.css' %}", rel="stylesheet")
+    link(href="{% static 'css/bootstrap_custom.css' %}", rel="stylesheet")
     link(href="{% static 'css/site.css' %}", rel="stylesheet")
+    link(href="{% static 'css/detail.css' %}", rel="stylesheet")
+    link(href="{% static 'css/form.css' %}", rel="stylesheet")
+    link(href="{% static 'css/shifts.css' %}", rel="stylesheet")
+    {% endcompress %}
+
+    //if lte IE 7
+      link(href="{% static 'bower_components/html5shiv/dist/html5shiv.js' %}", rel="stylesheet")
+
+    //if lt IE 9
+      link(href="{% static 'css/ie.css' %}", rel="stylesheet")
+
+    {% compress css %}
     block stylesheets
     {% endcompress %}
 
   body(class='{{body_class|default:""}}')
     div
+
       div.navbar.navbar-inverse.navbar-fixed-top
-        div.navbar-inner
-          div.container
-            button.btn.btn-navbar(type="button", data-toggle="collapse",
-                                  data-target=".nav-collapse")
+        div.container
+          div.navbar-header
+            button.navbar-toggle(type="button", data-toggle="collapse",
+                                  data-target=".navbar-collapse")
               span.icon-bar
               span.icon-bar
               span.icon-bar
-            a.brand(href="{% url 'home' %}") Project name
-            div.nav-collapse.collapse
-              ul.nav
-                {% if user.is_authenticated %}
-                {% if user.is_staff %}
+            a.navbar-brand(href="{% url 'home' %}") Project
+          div.navbar-collapse.collapse
+            - if user.is_authenticated 
+              {% if user.is_staff %}
+              ul.nav.navbar-nav
                 li
-                  a(href="{% url 'admin:index' %}") {% trans 'Administration' %}
-                {% endif %}
-                {% else %}
+                  a(href="{% url 'admin:index' %}") Administración
+              {% endif %}
+              ul.nav.navbar-nav
                 li
-                  a(href="{% url 'users.views.password_reset' %}")
-                    | Recover password
+                  a(href="#") Link 1
+              ul.nav.navbar-nav
                 li
-                  a(href="{% url 'users.views.user_new' %}") Register
-                {% endif %}
+                  a(href="#") Link 2
 
+            ul.nav.navbar-nav.navbar-right
               {% if user.is_authenticated %}
-              ul.nav.pull-right
-                li.dropdown
-                  a.dropdown-toggle(href="", data-toggle="dropdown")
-                    | Logged in as {{user.email}}
-                    b.caret
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown")
+                  | Logged in as {{user.email}}
+                  b.caret
 
-                  ul.dropdown-menu
-                    li
-                      a(href="{% url 'users.views.password_change' %}")
-                        | Change password
-                    li
-                      a(href="{% url 'users.views.logout' %}") Logout
+                ul.dropdown-menu
+                  li
+                    a(href="{% url 'users.views.password_change' %}")
+                      | Modificar Contraseña
+                  li
+                    a(href="{% url 'users.views.logout' %}") Logout
+              {% else %}
+              li
+                a(href="{% url 'users.views.password_reset' %}")
+                  | Recover password
               {% endif %}
 
-      div.container-fluid
-        div.row-fluid
+      div.container
+        div.row
           {% if messages %}
           {% for message in messages %}
           div(class="alert alert-{{ message.tags }}") {{ message }}
@@ -83,7 +102,10 @@ html(lang="en")
       block uncompressible_javascripts
 
       {% compress js %}
-      script(src="{% static 'js/bootstrap.min.js' %}")
+      script(src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}")
+      script(src="{% static 'bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js' %}")
+      script(src="{% static 'bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js' %}")
+      script(src="{% static 'bower_components/chosen/chosen.jquery.js' %}")
       script(src="{% static 'js/site.js' %}")
       script(src="{% static 'js/form.js' %}")
       {% endcompress %}
