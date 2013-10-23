@@ -1,14 +1,14 @@
-.hide: {
+.hide {
     display: hidden;
 }
-@media (min-width: 979px) {
-  body {
+
+body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
 
 @media (max-width: 560px) {
-  #id_username, #id_password{
+  #id_username, #id_password {
       display: block;
       width: 96%;
       padding: 4px 2%;
