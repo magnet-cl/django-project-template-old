@@ -5,7 +5,7 @@ from fabric.contrib.files import upload_template
 def handler(service, action):
     """ Handler method for service operations. """
     cmd = 'service %s %s' % (service, action)
-    return sudo(cmd)
+    return sudo(cmd, pty=False)
 
 
 def nginx_handler(action):
