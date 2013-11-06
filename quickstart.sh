@@ -61,9 +61,19 @@ fi
 if  $INSTALL_PIP ; then
     # activate the environment
     source .env/bin/activate
+    easy_install -U distribute
 
     # install pip requiredments in the virtual environment
     .env/bin/pip install --download-cache=~/.pip-cache --requirement install/requirements.pip
+
+    if [[ "$INSTALL_MYSQL" == "y" ]] ; then 
+        pip install mysql-python
+    fi
+
+    if [[ "$INSTALL_POSTGRE" == "y" ]]
+    then
+        pip install psycopg2
+    fi
 
 fi
 

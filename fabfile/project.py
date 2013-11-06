@@ -8,6 +8,7 @@ from fabric.api import task
 
 import gunicorn
 import nginx
+import bower
 import deb_handler
 from db import install_mysql
 from utils import backup_db, git_clone, git_checkout
@@ -31,6 +32,9 @@ def update_server():
     backup_db()
 
     update_helper(env.server_root_dir)
+
+    bower.update()
+
     with cd(env.server_root_dir):
         with prefix('. .env/bin/activate'):
             run('pip install --requirement install/requirements.pip')
@@ -110,6 +114,9 @@ def initial_deploy():
     # dependencies installation (quickstart)
     with cd(env.server_root_dir):
         run('./quickstart.sh')
+
+    # bower installation
+    bower.install()
 
     # gunicorn installation and configuration
     gunicorn.install()
