@@ -86,14 +86,20 @@ def db_reset():
 
 
 @task
-def initial_deploy():
-    """ Performs a complete deploy of the project. """
-
+def set_ssh_key():
     # put ssh key
     ssh_key = '%s/fabfile/templates/ssh_key'
     ssh_key %= env.local_root_dir
     run('mkdir -p -m 0700 .ssh')
     put(ssh_key, '.ssh/id_rsa', mode=0600)
+
+
+@task
+def initial_deploy():
+    """ Performs a complete deploy of the project. """
+
+    # put ssh key
+    set_ssh_key()
 
     # github host handshake
     run('ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts')
