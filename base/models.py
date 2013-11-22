@@ -10,7 +10,7 @@ from base.managers import BaseManager
 from django.db import models
 
 # other
-from datetime import datetime
+from django.utils import timezone
 
 
 class BaseModel(models.Model):
@@ -37,7 +37,7 @@ class BaseModel(models.Model):
         highly recommended when you need to save just one field
 
         """
-        kwargs['updated_at'] = datetime.now()
+        kwargs['updated_at'] = timezone.now()
 
         for kw in kwargs:
             self.__setattr__(kw, kwargs[kw])
