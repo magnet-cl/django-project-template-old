@@ -61,7 +61,9 @@ fi
 if  $INSTALL_PIP ; then
     # activate the environment
     source .env/bin/activate
-    easy_install -U distribute
+
+    # install setuptools
+    pip install --upgrade setuptools
 
     # install pip requiredments in the virtual environment
     .env/bin/pip install --download-cache=~/.pip-cache --requirement install/requirements.pip
