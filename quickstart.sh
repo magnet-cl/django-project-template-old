@@ -120,3 +120,7 @@ if [ ! -f ./config/local_settings.py ] ; then
     EXP="s/django-db/${PWD##*/}/g"
     echo $i|sed -i $EXP config/local_settings.py
 fi
+
+cd base/static
+bower install
+cd ../..
