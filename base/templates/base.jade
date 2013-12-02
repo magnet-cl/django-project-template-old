@@ -74,9 +74,18 @@ html(lang="es")
                   li
                     a(href="{% url 'users.views.logout' %}") Logout
               {% else %}
-              li
-                a(href="{% url 'users.views.password_reset' %}")
-                  | Recover password
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown")
+                  | Login
+                  b.caret
+
+                ul.dropdown-menu
+                  li
+                    a(href="{% url 'login' %}")
+                      | Login
+                  li
+                    a(href="{% url 'users.views.password_reset' %}")
+                      | Recover password
               {% endif %}
 
       div.container
