@@ -23,10 +23,14 @@ from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext_noop
 
-# other
+# standard library
 from threading import Thread
 import base64
 import os
+import time
+
+# base
+from base import utils
 
 # mark for translation the app name
 ugettext_noop("Users")
@@ -152,9 +156,19 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
     #static methods
     @staticmethod
-    def send_email_to(email_list, template_name, subject,
-                      template_vars={}, fail_silently=True):
+    def send_email_to(email_list, template_name, subject, sender=None,
+                      template_vars=None, fail_silently=True,
+                      attachments=None):
         """ Sends an email to a list of emails using a given template name """
+
+        if template_vars is None:
+            template_vars = {}
+
+        if attachments is None:
+            attachments = []
+
+        if not settings.ENABLE_EMAILS:
+            return
 
         text_template = get_template("emails/%s.txt" % template_name)
         html_template = get_template("emails/%s.html" % template_name)
@@ -165,7 +179,21 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
         sender = "%s <%s>" % (settings.EMAIL_SENDER_NAME,
                               settings.SENDER_EMAIL)
-        msg = EmailMultiAlternatives(subject, text_content,
-                                     sender, email_list)
-        msg.attach_alternative(html_content, "text/html")
-        msg.send(fail_silently=fail_silently)
+
+        emails_in_groups_of_5 = utils.grouper(email_list, 5)
+
+        for emails in emails_in_groups_of_5:
+            msg = EmailMultiAlternatives(subject, text_content,
+                                         sender, emails)
+
+            for attachment in attachments:
+                attachment.seek(0)
+                msg.attach(attachment.name, attachment.read(),
+                           'application/pdf')
+
+            msg.attach_alternative(html_content, "text/html")
+            try:
+                msg.send(fail_silently=fail_silently)
+            except:
+                time.sleep(1)
+                msg.send(fail_silently=fail_silently)
