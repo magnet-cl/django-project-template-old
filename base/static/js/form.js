@@ -15,7 +15,6 @@ if ($datePicker.datepicker) {
 
 $('.model-form input:text').addClass('form-control');
 
-$('select').not('.filtered').chosen({
-    no_results_text: "No hay resultados para",
-    width: "95%"
+$('select').not('.filtered').select2({
+    width: "100%"
 });
