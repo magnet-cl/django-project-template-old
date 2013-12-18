@@ -37,20 +37,21 @@ if  $INSTALL_APTITUDE ; then
     # Install base packages
     yes | sudo apt-get install python-pip python-virtualenv python-dev 
 
-    echo "Are you going to use mysql for your database? [N/y]"
-    read INSTALL_MYSQL
+    echo "Are you going to use postgre for your database? [Y/n]"
+    read INSTALL_POSTGRE
 
-    if [[ "$INSTALL_MYSQL" == "y" ]]
+    if [[ "$INSTALL_POSTGRE" == "Y" ||  "$INSTALL_POSTGRE" == "y" ||  "$INSTALL_POSTGRE" == "" ]]
     then
-        # Install mysql related packages
-        yes | sudo apt-get install libmysqlclient-dev python-mysqldb
+        INSTALL_POSTGRE=true
+        ./install/postgres.sh
     else
-        echo "Are you going to use postgre for your database? [N/y]"
-        read INSTALL_POSTGRE
+        echo "Are you going to use mysql for your database? [N/y]"
+        read INSTALL_MYSQL
 
-        if [[ "$INSTALL_POSTGRE" == "y" ]]
+        if [[ "$INSTALL_MYSQL" == "y" ]]
         then
-            ./install/postgres.sh
+            # Install mysql related packages
+            yes | sudo apt-get install libmysqlclient-dev python-mysqldb
         fi
     fi
 
@@ -61,7 +62,9 @@ fi
 if  $INSTALL_PIP ; then
     # activate the environment
     source .env/bin/activate
-    easy_install -U distribute
+
+    # install setuptools
+    pip install --upgrade setuptools
 
     # install pip requiredments in the virtual environment
     .env/bin/pip install --download-cache=~/.pip-cache --requirement install/requirements.pip
@@ -70,7 +73,7 @@ if  $INSTALL_PIP ; then
         pip install mysql-python
     fi
 
-    if [[ "$INSTALL_POSTGRE" == "y" ]]
+    if [[ "$INSTALL_POSTGRE" ]]
     then
         pip install psycopg2
     fi
@@ -115,6 +118,22 @@ fi
 # create the local_settings file if it does not exist
 if [ ! -f ./config/local_settings.py ] ; then
     cp config/local_settings.py.default config/local_settings.py
-    EXP="s/django-db/${PWD##*/}/g"
-    echo $i|sed -i $EXP config/local_settings.py
+
+    if [ INSTALL_POSTGRE ] ; then 
+        EXP="s/database-name/${PWD##*/}/g"
+        echo $i|sed -i $EXP config/local_settings.py
+        
+        echo "remember to set in config/local_setings.py your database"
+        echo "settings"
+    else
+        EXP="s/postgresql_psycopg2/sqlite3/g"
+        echo $i|sed -i $EXP config/local_settings.py
+
+        EXP="s/database-name/\/tmp/${PWD##*/}.sql/g"
+        echo $i|sed -i $EXP config/local_settings.py
+    fi
 fi
+
+cd base/static
+bower install
+cd ../..

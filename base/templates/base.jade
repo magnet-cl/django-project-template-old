@@ -21,7 +21,6 @@ html(lang="es")
     link(href="{% static 'css/site.css' %}", rel="stylesheet")
     link(href="{% static 'css/detail.css' %}", rel="stylesheet")
     link(href="{% static 'css/form.css' %}", rel="stylesheet")
-    link(href="{% static 'css/shifts.css' %}", rel="stylesheet")
     {% endcompress %}
 
     //if lte IE 7
@@ -74,9 +73,18 @@ html(lang="es")
                   li
                     a(href="{% url 'users.views.logout' %}") Logout
               {% else %}
-              li
-                a(href="{% url 'users.views.password_reset' %}")
-                  | Recover password
+              li.dropdown
+                a.dropdown-toggle(href="#", data-toggle="dropdown")
+                  | Login
+                  b.caret
+
+                ul.dropdown-menu
+                  li
+                    a(href="{% url 'login' %}")
+                      | Login
+                  li
+                    a(href="{% url 'users.views.password_reset' %}")
+                      | Recover password
               {% endif %}
 
       div.container
