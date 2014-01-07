@@ -16,9 +16,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import login as django_login_view
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import views as auth_views
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.shortcuts import redirect
 from django.template import RequestContext
 from django.utils.http import base36_to_int
 from django.utils.translation import ugettext_lazy as _
@@ -28,6 +27,9 @@ from django.views.decorators.cache import never_cache
 
 def login(request):
     """ view that renders the login """
+
+    if request.user.is_authenticated():
+        return redirect('home')
 
     def chapched_form(req=None, data=None):
         return CaptchaAuthenticationForm(
@@ -51,7 +53,7 @@ def login(request):
 def logout(request):
     """ view that handles the logout """
     django_logout(request)
-    return HttpResponseRedirect('/')
+    return redirect('home')
 
 
 @login_required
@@ -83,7 +85,7 @@ def password_reset_email_sent(request):
     messages.add_message(request, messages.INFO,
                          _("An email has been sent to you. Please check it "
                            "to reset your password."))
-    return HttpResponseRedirect('/')
+    return redirect('home')
 
 
 def password_reset_confirm(request, uidb36, token):
@@ -112,7 +114,7 @@ def user_new(request):
             messages.add_message(request, messages.INFO,
                                  _("An email has been sent to you. Please "
                                    "check it to verify your email."))
-            return HttpResponseRedirect('/')
+            return redirect('home')
     else:
         form = CaptchaUserCreationForm()
 
@@ -150,4 +152,4 @@ def user_new_confirm(request, uidb36=None, token=None,
         messages.add_message(request, messages.ERROR,
                              _("Invalid verification link"))
 
-    return HttpResponseRedirect(reverse('login'))
+    return redirect('login')
