@@ -31,6 +31,11 @@ do
      esac
 done
 
+if  $INSTALL_NODE ; then
+    echo "Installing bower (Requires Node)"
+    sudo node install -g bower
+fi
+
 if  $INSTALL_APTITUDE ; then
     # sudo install virtual env and other things with aptitude
 
