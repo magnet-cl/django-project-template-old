@@ -1,5 +1,8 @@
+# django
+from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 
+# models
 from users.models import User
 
 
@@ -14,9 +17,10 @@ class CustomBackend(ModelBackend):
         token. If the token is used, then it's deleted
 
         """
+        UserModel = get_user_model()
         try:
-            user = User.objects.get(email=email.lower())
-        except User.DoesNotExist:
+            user = UserModel._default_manager.get_by_natural_key(email)
+        except UserModel.DoesNotExist:
             return None
         if password is not None:
             if user.check_password(password):
