@@ -35,7 +35,7 @@
   <div class="form-group">
     <label for="id_password" class="control-label col-lg-2 required">{% trans 'Password:' %}</label> 
     <div class="col-lg-10">
-        <input class="form-control" id="id_password" name="password" type="text" placeholder="{% trans 'Password' %}">
+        <input class="form-control" id="id_password" name="password" type="password" placeholder="{% trans 'Password' %}">
         <span class="help-inline">{{ form.password.errors|striptags }}</span>
     </div>
     <input type="hidden" name="this_is_the_login_form" value="1" />

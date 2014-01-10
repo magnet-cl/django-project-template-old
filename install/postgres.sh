@@ -1,5 +1,6 @@
 #!/bin/bash
 yes | sudo apt-get install postgresql
+yes | sudo apt-get install libpq-dev
 
 echo "Would you like to set a password for your postgres user? [N/y]"
 read SET_POSTGRES_PASSWORD

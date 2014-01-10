@@ -2,6 +2,10 @@
 
 A template for a Django project.
 
+## Requirements
+* Python 2.7: This project was tested using python 2.7
+* Node: This project uses node for bower
+
 ## Get the code
 Create a new repository in github for your django project.
 Clone your repository into your computer.
@@ -26,6 +30,11 @@ Then run `./reset.sh` to reset the database. Pass it the -s argument to start
 the server.
 
 ## Features
+
+* bootstrap integration
+* bootstrap admin
+* captcha login
+* bower integration
 
 ### Base: 
 Base is the first application of this project template.

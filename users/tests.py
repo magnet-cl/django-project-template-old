@@ -5,12 +5,15 @@ when you run "manage.py test".
 Replace this with more appropriate tests for your application.
 """
 
-from django.test import TestCase
+# tests
+from base.tests import BaseTestCase
 
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
+class SimpleTest(BaseTestCase):
+    def test_lower_case_emails(self):
         """
-        Tests that 1 + 1 always equals 2.
+        Tests that users are created with lower case emails
         """
-        self.assertEqual(1 + 1, 2)
+        self.user.email = "Hello@magnet.cl"
+        self.user.save()
+        self.assertEqual(self.user.email, 'hello@magnet.cl')
