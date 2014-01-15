@@ -109,6 +109,8 @@ def initial_deploy():
 
     # github host handshake
     run('ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts')
+    # bitbucket host handshake
+    run('ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts')
 
     # install necessary dependencies to handle the project
     install_project_handling_dependencies()
