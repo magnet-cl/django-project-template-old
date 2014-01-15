@@ -7,6 +7,7 @@ from fabric.api import run
 from fabric.api import task
 from fabric.api import local
 from fabric.contrib import files
+from os.path import isfile
 
 import gunicorn
 import nginx
@@ -89,15 +90,22 @@ def db_reset():
 
 @task
 def set_deploy_key():
+    # check if the ssh key is already present
+    if files.exists('.ssh/id_rsa'):
+        # key already deployed
+        return
+
     # put ssh key
     ssh_key = '%s/fabfile/templates/ssh_key'
     ssh_key %= env.local_root_dir
 
-    if not files.exists(ssh_key):
+    if not isfile(ssh_key):
         local('ssh-keygen -t rsa -f %s' % ssh_key)
 
     run('mkdir -p -m 0700 .ssh')
     put(ssh_key, '.ssh/id_rsa', mode=0600)
+    pub_key = '{}.pub'.format(ssh_key)
+    put(pub_key, '.ssh/id_rsa.pub', mode=0644)
 
 
 @task
