@@ -139,6 +139,12 @@ if [ ! -f ./config/local_settings.py ] ; then
     fi
 fi
 
+# bower.json modification
+EXP="s/NAME/${PWD##*/}/g"
+echo $i|sed -i $EXP base/static/bower.json
+EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"
+echo $i|sed -i $EXP base/static/bower.json
+
 cd base/static
 bower install
 cd ../..
