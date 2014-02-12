@@ -16,16 +16,20 @@ def backup_db():
 
 
 @task
-def download_db():
+def download_db(zip_file=None):
     """ Generates a database backup through `backup_db()` and downloads it. """
-    return get('%s.zip' % backup_db())
+
+    if zip_file is None:
+        zip_file = '%s.zip' % backup_db()
+
+    return get(zip_file)
 
 
 @task
-def import_db():
+def import_db(zip_file=None):
     """ Imports a zipped database backup generated through `download_db()`. """
 
-    dump_name_zip = download_db()[0]  # download_db returns a list
+    dump_name_zip = download_db(zip_file)[0]  # download_db returns a list
     dump_name = splitext(dump_name_zip)[0]  # name without zip extension
 
     # unzip dump
