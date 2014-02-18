@@ -13,8 +13,9 @@ import gunicorn
 import nginx
 import bower
 import deb_handler
-from db import install_mysql
-from utils import backup_db, git_clone, git_checkout
+from utils import backup_db
+from utils import git_clone
+from utils import git_checkout
 
 
 @task
@@ -129,9 +130,6 @@ def initial_deploy():
     # checkout branch
     with cd(env.server_root_dir):
         git_checkout(env.branch)
-
-    # mysql installation
-    install_mysql()
 
     # dependencies installation (quickstart)
     with cd(env.server_root_dir):

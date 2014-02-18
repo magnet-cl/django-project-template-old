@@ -1,16 +1,24 @@
 from fabric.api import env, run, task, get, local, put
 from fabric.context_managers import settings
-from os.path import splitext, basename, dirname
-
-from db import dump_db
+from os.path import splitext
+from time import gmtime, strftime
 
 
 @task
 def backup_db():
-    """ Backups database. """
-    dump_name = dump_db(env.config.DB.name, env.config.DB.user,
-                        env.config.DB.password)
+    """ Backups database (postgreSQL). """
+    db_name = env.config.DB.name
     env.config.save()
+
+    # generating dump file name
+    dumps_folder = "db_dumps/%s" % env.branch
+    cmd = "mkdir -p %s" % dumps_folder
+    run(cmd)
+    dump_name = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    dump_name = "%s/%s.sql.gz" % (dumps_folder, dump_name)
+
+    cmd = 'pg_dump %s | gzip > "%s"' % (db_name, dump_name)
+    run(cmd)
 
     return dump_name
 
@@ -32,20 +40,19 @@ def import_db(zip_file=None):
     dump_name_zip = download_db(zip_file)[0]  # download_db returns a list
     dump_name = splitext(dump_name_zip)[0]  # name without zip extension
 
-    # unzip dump
-    local('unzip -j "%s" -d %s' % (dump_name_zip, env.host))
+    # gunzip dump
+    local('gunzip "%s"' % dump_name_zip)
 
     # database engine
     engine = env.config.local_DB.engine
     env.config.save()
 
     # import considering database engine
-    if engine == 'mysql':
-        local('echo "create database if not exists %s" | mysql -u root -p%s' %
-              (env.config.local_DB.name, env.config.local_DB.password))
-        local('mysql -u root -p%s %s < "%s"' % (env.config.local_DB.password,
-                                                env.config.local_DB.name,
-                                                dump_name))
+    if engine == 'psql':
+        local('echo "drop database if exists %s" | psql' %
+              env.config.local_DB.name)
+        local('echo "create database %s" | psql' % env.config.local_DB.name)
+        local('psql %s < "%s"' % (env.config.local_DB.name, dump_name))
         env.config.save()
 
     else:
@@ -56,29 +63,28 @@ def import_db(zip_file=None):
 
 @task
 def export_db():
-    """ Exports a database backup generated through `import_db()`. """
-    dump_name_zip = import_db()
+    """ Exports a database backup generated through `download_db()` into a
+    staging server."""
+    dump_name_zip = download_db()[0]  # download_db returns a list
     dump_name = splitext(dump_name_zip)[0]  # name without zip extension
 
     # env.host replaced with staging host
     with settings(host_string=env.config.staging_DB.host):
         # upload the zipped file
-        remote_path = put(dump_name_zip)[0]  # put returns a list
+        dump_name_zip = put(dump_name_zip)[0]  # put returns a list
+        dump_name = splitext(dump_name_zip)[0]  # name without zip extension
 
-        # unzip dump
-        run('unzip -j "%s" -d %s' % (basename(dump_name_zip), env.host))
+        # gunzip dump
+        run('gunzip "%s"' % dump_name_zip)
 
-        run('echo "create database if not exists %s" | mysql -u root -p%s' %
-            (env.config.staging_DB.name, env.config.staging_DB.password))
-        run('mysql -u root -p%s %s < "%s/%s"' %
-            (env.config.staging_DB.password, env.config.staging_DB.name,
-             env.host, basename(dump_name)))
+        run('echo "drop database if exists %s" | psql' %
+            env.config.staging_DB.name)
+        run('echo "create database %s" | psql' % env.config.staging_DB.name)
+        run('psql %s < "%s"' % (env.config.staging_DB.name, dump_name))
         env.config.save()
 
         # cleanup files
-        run('rm -f "%s"' % remote_path)  # zip file
-        run('rm -f "%s/%s/%s"' % (dirname(remote_path), env.host,
-                                  basename(dump_name)))  # raw file
+        run('rm -f "%s"' % dump_name)  # raw file
 
 
 def git_clone(url, path):
