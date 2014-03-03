@@ -4,7 +4,7 @@
 from users.models import User
 
 # forms
-from base.forms import BaseForm
+from base.forms import BaseModelForm
 
 from base.fields import ReCaptchaField
 from django.contrib.auth import authenticate
@@ -107,7 +107,7 @@ class AdminAuthenticationForm(AuthenticationForm):
         return self.cleaned_data
 
 
-class UserCreationForm(BaseForm):
+class UserCreationForm(BaseModelForm):
     """
     A form that creates a user, with no privileges, from the given email and
     password.

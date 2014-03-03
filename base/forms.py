@@ -1,17 +1,23 @@
 from django import forms
-from django.db import models
+from django.forms import HiddenInput
+
+setattr(
+    forms.fields.Field, 'is_checkbox',
+    lambda self: isinstance(self.widget, forms.CheckboxInput)
+)
 
 
-def make_custom_datefield(f):
-    formfield = f.formfield()
+class BaseModelForm(forms.ModelForm):
 
-    if isinstance(f, models.DateField):
-        formfield.widget.format = '%d/%m/%Y'
-        formfield.widget.attrs.update({'class': 'date-picker'})
-    return formfield
+    def __init__(self, *args, **kwargs):
+        super(BaseModelForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if isinstance(field.widget, forms.widgets.DateInput):
+                field.widget.attrs['class'] = 'date-picker form-control'
+            elif isinstance(field.widget, forms.widgets.Textarea):
+                field.widget.attrs['class'] = 'form-control'
+            elif isinstance(field.widget, forms.widgets.TextInput):
+                field.widget.attrs['class'] = 'form-control'
 
-
-class BaseForm(forms.ModelForm):
-    formfield_callback = make_custom_datefield
-
-    pass
+    def hide_field(self, field_name):
+        self.fields[field_name].widget = HiddenInput()
