@@ -31,7 +31,7 @@ def login(request):
     if request.user.is_authenticated():
         return redirect('home')
 
-    def chapched_form(req=None, data=None):
+    def captched_form(req=None, data=None):
         return CaptchaAuthenticationForm(
             req, data, initial={'captcha': request.META['REMOTE_ADDR']})
 
@@ -43,7 +43,7 @@ def login(request):
         request.session['login_try_count'] = login_try_count + 1
         if login_try_count >= 2:
             return django_login_view(request,
-                                     authentication_form=chapched_form,
+                                     authentication_form=captched_form,
                                      template_name=template_name)
 
     return django_login_view(request, authentication_form=AuthenticationForm,
