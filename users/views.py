@@ -108,7 +108,8 @@ def password_reset_complete(request):
 
 def user_new(request):
     if request.method == 'POST':
-        form = CaptchaUserCreationForm(request.POST)
+        form = CaptchaUserCreationForm(
+            request.POST, initial={'captcha': request.META['REMOTE_ADDR']})
         if form.is_valid():
             form.save(verify_email_address=True, request=request)
             messages.add_message(request, messages.INFO,
