@@ -7,12 +7,17 @@ All apps should use the BaseModel as parent for all models
 from base.managers import BaseManager
 
 # django
+from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
+from django.forms.models import model_to_dict
 
 # other
 from django.utils import timezone
 
 # standard library
+import glob
+import json
+import os
 
 
 class BaseModel(models.Model):
@@ -45,3 +50,14 @@ class BaseModel(models.Model):
             self.__setattr__(kw, kwargs[kw])
 
         self.__class__.objects.filter(pk=self.pk).update(**kwargs)
+
+    def model_to_dict(self):
+        # this uses the forms.models method 'model_to_dict'. This means that
+        # all editable=False fields won't show up in the dictionary
+        return model_to_dict(
+            self,
+            fields=[field.name for field in self._meta.fields]
+        )
+
+    def to_json(self):
+        return json.dumps(self.model_to_dict(), cls=DjangoJSONEncoder)
