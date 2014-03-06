@@ -15,9 +15,18 @@ from django.forms.models import model_to_dict
 from django.utils import timezone
 
 # standard library
-import glob
 import json
-import os
+
+
+class ModelEncoder(DjangoJSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, models.fields.files.FieldFile):
+            if obj:
+                return obj.url
+            else:
+                return None
+
+        return super(ModelEncoder, self).default(obj)
 
 
 class BaseModel(models.Model):
@@ -60,4 +69,4 @@ class BaseModel(models.Model):
         )
 
     def to_json(self):
-        return json.dumps(self.model_to_dict(), cls=DjangoJSONEncoder)
+        return json.dumps(self.model_to_dict(), cls=ModelEncoder)
