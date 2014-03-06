@@ -119,6 +119,8 @@ html(lang="es")
       script(src="{% static 'js/form.js' %}")
       {% endcompress %}
 
+      block javascript_data
+
       {% compress js %}
       block javascripts
       {% endcompress %}
