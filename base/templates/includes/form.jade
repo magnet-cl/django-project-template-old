@@ -1,27 +1,7 @@
 {% csrf_token %}
-{% for field in form.hidden_fields %}
-{{field}}
-{% endfor %}
-{% for field in form.visible_fields %}
-- if field.field.is_checkbox
-  div.col-md-offset-3.col-md-9
-    div.checkbox
-      label {{field.label}}
-        {{field }}
-- else
-  div.form-group(class="{% if field.errors %}has-error{% endif %}")
-    label.control-label.col-md-3(for="id_{{field.name}}")
-      | {{field.label}}
-    div.col-md-9
-      {{ field }}
-    p.col-md-offset-3.col-md-9.help-block(for="id_{{field.name}}")
-      {% for error in field.errors %}
-      | {{ error }}
-      {% endfor %}
-{% endfor %}
+- for field in form.hidden_fields
+  {{field}}
 
-div.form-group
-  div.col-md-offset-3.col-md-9
-    a.btn.btn-danger(href="/") Cancelar
-    button.btn.btn-primary(type="submit")
-      | {% block submit_button_value%}Guardar{% endblock%}
+- for fieldset in form.fieldsets
+  fieldset(class="{{ fieldset.classes }}", data-index="{{forloop.counter0}}")
+    {% include "includes/fieldset.jade"%}

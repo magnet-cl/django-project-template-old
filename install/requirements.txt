@@ -9,4 +9,4 @@ django-tables2==0.15.0
 ipython==1.2.1
 pyjade==2.1.0
 recaptcha-client==1.0.6
-# sorl-thumbnail
+django-form-utils==1.0.1
