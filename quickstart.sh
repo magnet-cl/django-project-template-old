@@ -3,7 +3,7 @@
 INSTALL_APTITUDE=true
 INSTALL_PIP=true
 INSTALL_HEROKU=false
-while getopts “ahp” OPTION
+while getopts “ahpb” OPTION
 do
     case $OPTION in
         a)
@@ -11,18 +11,28 @@ do
              INSTALL_APTITUDE=true
              INSTALL_PIP=false
              INSTALL_HEROKU=false
+             INSTALL_BOWER=false
              ;;
         p)
              echo "only pip install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=true
              INSTALL_HEROKU=false
+             INSTALL_BOWER=false
              ;;
         h)
              echo "only heroku install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=false
              INSTALL_HEROKU=true
+             INSTALL_BOWER=false
+             ;;
+        b)
+             echo "only bower install"
+             INSTALL_APTITUDE=false
+             INSTALL_PIP=false
+             INSTALL_HEROKU=false
+             INSTALL_BOWER=true
              ;;
         ?)
              echo "fail"
@@ -30,11 +40,6 @@ do
              ;;
      esac
 done
-
-if  $INSTALL_NODE ; then
-    echo "Installing bower (Requires Node)"
-    sudo npm install -g bower
-fi
 
 if  $INSTALL_APTITUDE ; then
     echo "Installing aptitude dependencies"
@@ -139,12 +144,14 @@ if [ ! -f ./config/local_settings.py ] ; then
     fi
 fi
 
-# bower.json modification
-EXP="s/NAME/${PWD##*/}/g"
-echo $i|sed -i $EXP base/static/bower.json
-EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"
-echo $i|sed -i $EXP base/static/bower.json
+if  $INSTALL_BOWER ; then
+    echo "Installing bower (Requires Node)"
+    sudo npm install -# bower.json modification
 
-cd base/static
-bower install
-cd ../..
+    EXP="s/NAME/${PWD##*/}/g"
+    echo $i|sed -i $EXP bower.json
+    EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"
+    echo $i|sed -i $EXP bower.json
+
+    bower install
+fi

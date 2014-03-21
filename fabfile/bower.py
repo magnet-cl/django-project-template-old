@@ -16,5 +16,4 @@ def update():
     print(green('Updating bower dependencies'))
 
     with cd(env.server_root_dir):
-        with cd('base/static/'):
-            run('bower install')
+        run('bower install')
