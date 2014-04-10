@@ -146,8 +146,9 @@ fi
 
 if  $INSTALL_BOWER ; then
     echo "Installing bower (Requires Node)"
-    sudo npm install -# bower.json modification
+    sudo npm install -g bower
 
+    # bower.json modification
     EXP="s/NAME/${PWD##*/}/g"
     echo $i|sed -i $EXP bower.json
     EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"

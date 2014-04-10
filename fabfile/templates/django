@@ -2,8 +2,11 @@ server {
   listen 80;
   server_name %(domain)s www.%(domain)s;
 
-  # Let's put all static files like images, js and css in sub-folder: public
   root %(server_root_dir)s;
+
+  location /uploads/ {
+    alias %(server_root_dir)s/config/media/;
+  }
 
   location /static {
     root %(server_root_dir)s/config;
@@ -18,7 +21,12 @@ server {
     proxy_redirect off;
   }
 
+  # encoding
   charset UTF-8;
+
+  # max allowed body size
+  client_max_body_size 1m;
+
   gzip on;
   gzip_comp_level 2;
   gzip_proxied any;
