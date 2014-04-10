@@ -22,7 +22,9 @@ block content
 
     div
       form.model-form.form-horizontal(method="post", enctype="multipart/form-data", role="form")
+        block form_top
         {% include "includes/form.jade"%}
+        block form_bottom
 
         div.form-group
           div.col-md-offset-3.col-md-9

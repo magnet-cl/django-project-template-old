@@ -2,6 +2,10 @@
 - for field in form.hidden_fields
   {{field}}
 
-- for fieldset in form.fieldsets
-  fieldset(class="{{ fieldset.classes }}", data-index="{{forloop.counter0}}")
-    {% include "includes/fieldset.jade"%}
+- if form.fieldsets
+  - for fieldset in form.fieldsets
+    fieldset(class="{{ fieldset.classes }}", data-index="{{forloop.counter0}}")
+      {% include "includes/fieldset.jade"%}
+- else 
+  - for field in form.fields
+    {% include "includes/field.jade"%}
