@@ -7,7 +7,7 @@ from users.models import User
 from base.forms import BaseModelForm
 
 from base.fields import ReCaptchaField
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import get_current_site
 from django.template import loader
@@ -40,6 +40,8 @@ class AuthenticationForm(forms.Form):
         """
         self.request = request
         self.user_cache = None
+        UserModel = get_user_model()
+        self.email_field = UserModel._meta.get_field(UserModel.USERNAME_FIELD)
         super(AuthenticationForm, self).__init__(*args, **kwargs)
 
     def clean(self):
@@ -54,15 +56,16 @@ class AuthenticationForm(forms.Form):
                                            password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(
-                    self.error_messages['invalid_login'])
+                    self.error_messages['invalid_login'],
+                    code='invalid_login',
+                    params={'email': self.email_field.verbose_name},
+                )
             elif not self.user_cache.is_active:
-                raise forms.ValidationError(self.error_messages['inactive'])
-        self.check_for_test_cookie()
+                raise forms.ValidationError(
+                    self.error_messages['inactive'],
+                    code='inactive',
+                )
         return self.cleaned_data
-
-    def check_for_test_cookie(self):
-        if self.request and not self.request.session.test_cookie_worked():
-            raise forms.ValidationError(self.error_messages['no_cookies'])
 
     def get_user_id(self):
         if self.user_cache:
