@@ -23,6 +23,10 @@ server {
 
   # encoding
   charset UTF-8;
+
+  # max allowed body size
+  client_max_body_size 1m;
+
   gzip on;
   gzip_comp_level 2;
   gzip_proxied any;
