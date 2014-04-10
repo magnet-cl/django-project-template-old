@@ -36,15 +36,16 @@ def login(request):
             req, data, initial={'captcha': request.META['REMOTE_ADDR']})
 
     # If the form has been submitted...
-    template_name = "accounts/login.html"
+    template_name = "accounts/login.jade"
+
+    login_try_count = request.session.get('login_try_count', 0)
 
     if request.method == "POST":
-        login_try_count = request.session.get('login_try_count', 0)
         request.session['login_try_count'] = login_try_count + 1
-        if login_try_count >= 2:
-            return django_login_view(request,
-                                     authentication_form=captched_form,
-                                     template_name=template_name)
+
+    if login_try_count >= 2:
+        return django_login_view(request, authentication_form=captched_form,
+                                 template_name=template_name)
 
     return django_login_view(request, authentication_form=AuthenticationForm,
                              template_name=template_name)
@@ -60,7 +61,7 @@ def logout(request):
 def password_change(request):
     """ view that renders the login """
     # If the form has been submitted...
-    template_name = "accounts/password_change.html"
+    template_name = "accounts/password_change.jade"
 
     return auth_views.password_change(request, post_change_redirect="/",
                                       template_name=template_name)
