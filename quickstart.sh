@@ -161,6 +161,10 @@ if [ ! -f ./config/local_settings.py ] ; then
     fi
 fi
 
+if  $INSTALL_NPM ; then
+    npm install
+fi
+
 if  $INSTALL_BOWER ; then
     # bower.json modification
     EXP="s/NAME/${PWD##*/}/g"
@@ -169,8 +173,4 @@ if  $INSTALL_BOWER ; then
     echo $i|sed -i $EXP bower.json
 
     ./node_modules/bower/bin/bower install
-fi
-
-if  $INSTALL_NPM ; then
-    npm install
 fi
