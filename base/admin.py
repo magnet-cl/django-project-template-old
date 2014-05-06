@@ -23,7 +23,7 @@ class AdminSite(admin.sites.AdminSite):
                 req, data, initial={'captcha': request.META['REMOTE_ADDR']})
 
         # If the form has been submitted...
-        template_name = "accounts/login.html"
+        template_name = "accounts/login.jade"
 
         context = {
             'title': _('Log in'),
