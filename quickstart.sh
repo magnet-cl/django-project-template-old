@@ -3,7 +3,9 @@
 INSTALL_APTITUDE=true
 INSTALL_PIP=true
 INSTALL_HEROKU=false
-while getopts “ahpb” OPTION
+INSTALL_BOWER=true
+INSTALL_NPM=true
+while getopts “nahpb” OPTION
 do
     case $OPTION in
         a)
@@ -12,6 +14,7 @@ do
              INSTALL_PIP=false
              INSTALL_HEROKU=false
              INSTALL_BOWER=false
+             INSTALL_NPM=false
              ;;
         p)
              echo "only pip install"
@@ -19,6 +22,7 @@ do
              INSTALL_PIP=true
              INSTALL_HEROKU=false
              INSTALL_BOWER=false
+             INSTALL_NPM=false
              ;;
         h)
              echo "only heroku install"
@@ -26,6 +30,7 @@ do
              INSTALL_PIP=false
              INSTALL_HEROKU=true
              INSTALL_BOWER=false
+             INSTALL_NPM=false
              ;;
         b)
              echo "only bower install"
@@ -33,6 +38,15 @@ do
              INSTALL_PIP=false
              INSTALL_HEROKU=false
              INSTALL_BOWER=true
+             INSTALL_NPM=false
+             ;;
+        n)
+             echo "only node install"
+             INSTALL_APTITUDE=false
+             INSTALL_PIP=false
+             INSTALL_HEROKU=false
+             INSTALL_BOWER=false
+             INSTALL_NPM=true
              ;;
         ?)
              echo "fail"
@@ -46,6 +60,9 @@ if  $INSTALL_APTITUDE ; then
 
     # Install base packages
     yes | sudo apt-get install python-pip python-virtualenv python-dev 
+    
+    # Install image libs
+    yes | sudo apt-get install libjpeg-dev zlib1g-dev zlib1g-dev
 
     echo "Are you going to use postgre for your database? [Y/n]"
     read INSTALL_POSTGRE
@@ -145,14 +162,15 @@ if [ ! -f ./config/local_settings.py ] ; then
 fi
 
 if  $INSTALL_BOWER ; then
-    echo "Installing bower (Requires Node)"
-    sudo npm install -g bower
-
     # bower.json modification
     EXP="s/NAME/${PWD##*/}/g"
     echo $i|sed -i $EXP bower.json
     EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"
     echo $i|sed -i $EXP bower.json
 
-    bower install
+    ./node_modules/bower/bin/bower install
+fi
+
+if  $INSTALL_NPM ; then
+    npm install
 fi

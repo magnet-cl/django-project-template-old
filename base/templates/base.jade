@@ -12,13 +12,17 @@ html(lang="es")
     meta(name="description", content="")
     meta(name="author", content="http://magnet.cl")
 
+    // font-awesome
+    link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css",
+      rel="stylesheet")
+
     {% compress css %}
+    link(href="{% static 'css/bootstrap/bootstrap.less' %}", rel="stylesheet", type="text/less", charset="utf-8")
     link(href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}", rel="stylesheet")
-    link(href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}", rel="stylesheet")
     link(href="{% static 'bower_components/bootstrap-datepicker/css/datepicker.css' %}", rel="stylesheet")
     link(href="{% static 'bower_components/select2/select2.css' %}", rel="stylesheet")
-    link(href="{% static 'css/bootstrap_custom.css' %}", rel="stylesheet")
-    link(href="{% static 'css/site.css' %}", rel="stylesheet")
+    link(type="text/less", rel="stylesheet", href="{% static 'css/site.less' %}",
+      charset="utf-8")
     link(href="{% static 'css/detail.css' %}", rel="stylesheet")
     link(href="{% static 'css/form.css' %}", rel="stylesheet")
     {% endcompress %}
@@ -115,7 +119,8 @@ html(lang="es")
       script(src="{% static 'bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js' %}")
       script(src="{% static 'bower_components/select2/select2.min.js' %}")
       script(src="{% static 'bower_components/select2/select2_locale_es.js' %}")
-      script(src="{% static 'js/site.js' %}")
+      script(src="{% static 'js/vendor/oop.js' %}")
+      script(src="{% static 'js/app.js' %}")
       script(src="{% static 'js/form.js' %}")
       {% endcompress %}
 

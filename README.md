@@ -1,10 +1,11 @@
 # django-project-template
 
-A template for a Django project.
+A template for a Django project. It's simply project that was created with django 1.6.2
+project with a lot of tweaks, usually things that we do in all projects.
 
 ## Requirements
 * Python 2.7: This project was tested using python 2.7
-* Node: This project uses node for bower
+* Node: This project uses node for bower, less and jade.
 
 ## Get the code
 Create a new repository in github for your django project.
@@ -19,19 +20,34 @@ Push to your own repo
 * `git push origin master`
 Now you have your own django project in your repository
 
-For a quick start, run 
-* `./quickstart.sh`
-It should install all the dependencies you need to start the project
-
-Configure your database settings in config/local_settings.py
 
 ## Quickstart
-Then run `./reset.sh` to reset the database. Pass it the -s argument to start
-the server.
+
+For a quick start, run 
+
+* `./quickstart.sh`
+
+It should install all the dependencies you need to start the project. Then you
+need to Configure your database settings in config/local_settings.py.
+
+You can reset the database with:
+
+* `./reset.sh`
 
 ## Features
 
-* bootstrap integration
+### Bootstrap 3 integration
+Since We have been using bootstrap 3 for all our project, we made that all
+templates in the project are written for bootstrap 3. 
+
+Also, the project compiles the source code for bootstrap 3 from less. This is
+done so a rapid customization can be made of your site's style. The source
+code for less is in `base/static/css/bootstrap/`
+
+### Bootstrap 3 admin
+bootstrap-admin==0.3.0
+Since We have been using bootstrap 3 for all our project, we made that all
+templates in the project are written for bootstrap 3. 
 * bootstrap admin
 * captcha login
 * bower integration

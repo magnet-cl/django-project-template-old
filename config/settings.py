@@ -230,6 +230,12 @@ LOGGING = {
     }
 }
 
+# set the precompilers for less and jade client templates
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'node_modules/less/bin/lessc {infile} > {outfile}'),
+    ('text/jade', 'base.filters.jade.JadeCompilerFilter'),
+)
+
 # user loggin
 LOGIN_REDIRECT_URL = "/"
 

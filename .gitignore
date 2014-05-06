@@ -11,3 +11,5 @@ gunicorn.sh
 fabfile/templates/ssh_key
 fabfile/templates/ssh_key.pub
 bower_components
+
+node_modules
