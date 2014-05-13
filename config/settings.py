@@ -1,7 +1,18 @@
-""" Django settings for the project."""
+"""
+Django settings for config project.
 
-import sys
+For more information on this file, see
+https://docs.djangoproject.com/en/1.6/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/1.6/ref/settings/
+"""
+
 import os
+import sys
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DATABASES = {}
 
@@ -43,9 +54,6 @@ AWS_ACCESS_KEY_ID = email_settings['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = email_settings['AWS_SECRET_ACCESS_KEY']
 
 ENABLE_EMAILS = email_settings['ENABLE_EMAILS']
-
-# the path to the root of the project
-PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 # TEST should be true if we are running python tests
 TEST = 'test' in sys.argv
@@ -98,7 +106,7 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 LOCALE_PATHS = (
-    os.path.join(PROJECT_ROOT, 'locale'),
+    os.path.join(BASE_DIR, 'locale'),
 )
 
 # If you set this to False, Django will not format dates, numbers and
@@ -110,7 +118,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -121,7 +129,7 @@ MEDIA_URL = '/uploads/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -143,8 +151,9 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+# SECURITY WARNING: keep the secret key used in production secret!
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'u9+6rx&amp;&amp;mfv8xjm#t5_73bs45x06t6w-xsu_m2jt2)=&amp;95d_b^'
+SECRET_KEY = 'CHANGE ME!'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -243,6 +252,10 @@ LOGIN_REDIRECT_URL = "/"
 #   * See debug comments, when DEBUG is true
 #   * Receive x-headers
 INTERNAL_IPS = ('127.0.0.1',)
+
+# Hosts/domain names that are valid for this site.
+# "*" matches anything, ".example.com" matches example.com and all subdomains
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.User'
 
