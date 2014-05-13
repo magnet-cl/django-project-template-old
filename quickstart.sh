@@ -161,6 +161,13 @@ if [ ! -f ./config/local_settings.py ] ; then
     fi
 fi
 
+# Change the config/settings.py file it contains the CHANGE ME string
+if grep -q "CHANGE ME" "config/settings.py"; then
+    # change the SECRET_KEY value on config settings
+    python manage.py generatesecretkey
+fi
+
+
 if  $INSTALL_NPM ; then
     npm install
 fi
