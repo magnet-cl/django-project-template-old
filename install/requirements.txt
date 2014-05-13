@@ -1,5 +1,5 @@
 # this document declares the real requirements for this project
-Django==1.6.2
+Django==1.6.4
 Fabric==1.8.2
 South==0.8.4
 -e git://github.com/magnet-cl/artichoke.git@1f29af679e5d1133eec0557e19eb06b30ca7f50a#egg=artichoke-dev
