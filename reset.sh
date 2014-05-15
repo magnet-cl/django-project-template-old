@@ -25,10 +25,10 @@ if  $HEROKU ; then
     heroku pg:reset DATABASE
     heroku run python manage.py syncdb
 else
-    engine=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['ENGINE']"`
-    debug=`python -c"from config.local_settings import LOCAL_DEBUG; print LOCAL_DEBUG"`
-    dbname=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['NAME']"`
-    south_installed=`python -c"from config.settings import INSTALLED_APPS; print 'south' in INSTALLED_APPS"`
+    engine=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['ENGINE']"`
+    debug=`python -c"from project.local_settings import LOCAL_DEBUG; print LOCAL_DEBUG"`
+    dbname=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['NAME']"`
+    south_installed=`python -c"from project.settings import INSTALLED_APPS; print 'south' in INSTALLED_APPS"`
 
     if [ $debug = "True" ] ; then
     echo "----------------------drop-database------------------------------"
@@ -38,8 +38,8 @@ else
                 rm $dbname
             fi
         else
-            dbuser=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['USER']"`
-            dbpass=`python -c"from config.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['PASSWORD']"`
+            dbuser=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['USER']"`
+            dbpass=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['PASSWORD']"`
             if [ $engine == "django.db.backends.mysql" ]; then
                 echo "drop database $dbname" | mysql --user=$dbuser --password=$dbpass
                 echo "create database $dbname" | mysql --user=$dbuser --password=$dbpass

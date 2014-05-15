@@ -3,8 +3,8 @@
 *.pyc
 local_settings.py
 .env
-config/media/
-config/static
+project/media/
+project/static
 *.ini
 gunicorn.sh
 

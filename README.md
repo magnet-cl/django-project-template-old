@@ -28,7 +28,7 @@ For a quick start, run
 * `./quickstart.sh`
 
 It should install all the dependencies you need to start the project. Then you
-need to Configure your database settings in config/local_settings.py.
+need to Configure your database settings in project/local_settings.py.
 
 You can reset the database with:
 

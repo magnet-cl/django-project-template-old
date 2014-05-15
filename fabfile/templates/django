@@ -5,11 +5,11 @@ server {
   root %(server_root_dir)s;
 
   location /uploads/ {
-    alias %(server_root_dir)s/config/media/;
+    alias %(server_root_dir)s/project/media/;
   }
 
   location /static {
-    root %(server_root_dir)s/config;
+    root %(server_root_dir)s/project;
   }
 
   location / {

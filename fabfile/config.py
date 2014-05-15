@@ -45,5 +45,5 @@ def set(address='cl', user='magnet', branch='master', django_port='8000'):
         env.django_port = int(env.django_port) + 1
 
     # artichoke config file saved considering branch
-    config_file = '%s/config-%s.ini' % (env.local_root_dir, env.branch)
+    config_file = '%s/project/config-%s.ini' % (env.local_root_dir, env.branch)
     env.config = Config(env, config_file)

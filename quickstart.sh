@@ -143,27 +143,27 @@ if  $INSTALL_HEROKU ; then
 fi
 
 # create the local_settings file if it does not exist
-if [ ! -f ./config/local_settings.py ] ; then
-    cp config/local_settings.py.default config/local_settings.py
+if [ ! -f ./project/local_settings.py ] ; then
+    cp project/local_settings.py.default project/local_settings.py
 
     if [ INSTALL_POSTGRE ] ; then 
         EXP="s/database-name/${PWD##*/}/g"
-        echo $i|sed -i $EXP config/local_settings.py
+        echo $i|sed -i $EXP project/local_settings.py
         
-        echo "remember to set in config/local_setings.py your database"
+        echo "remember to set in project/local_setings.py your database"
         echo "settings"
     else
         EXP="s/postgresql_psycopg2/sqlite3/g"
-        echo $i|sed -i $EXP config/local_settings.py
+        echo $i|sed -i $EXP project/local_settings.py
 
         EXP="s/database-name/\/tmp/${PWD##*/}.sql/g"
-        echo $i|sed -i $EXP config/local_settings.py
+        echo $i|sed -i $EXP project/local_settings.py
     fi
 fi
 
-# Change the config/settings.py file it contains the CHANGE ME string
-if grep -q "CHANGE ME" "config/settings.py"; then
-    # change the SECRET_KEY value on config settings
+# Change the project/settings.py file it contains the CHANGE ME string
+if grep -q "CHANGE ME" "project/settings.py"; then
+    # change the SECRET_KEY value on project settings
     python manage.py generatesecretkey
 fi
 
