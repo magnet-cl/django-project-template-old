@@ -246,6 +246,11 @@ COMPRESS_PRECOMPILERS = (
     ('text/jade', 'base.filters.jade.JadeCompilerFilter'),
 )
 
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+
 # user loggin
 LOGIN_REDIRECT_URL = "/"
 
