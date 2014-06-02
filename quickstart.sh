@@ -59,7 +59,7 @@ if  $INSTALL_APTITUDE ; then
     echo "Installing aptitude dependencies"
 
     # Install base packages
-    yes | sudo apt-get install python-pip python-virtualenv python-dev 
+    yes | sudo apt-get install python-pip python-virtualenv python-dev build-essential
     
     # Install image libs
     yes | sudo apt-get install libjpeg-dev zlib1g-dev zlib1g-dev
