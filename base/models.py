@@ -48,6 +48,27 @@ class BaseModel(models.Model):
         abstract = True
 
     # public methods
+    def file_path(self, name):
+        """
+        Generic method to give to a FileField or ImageField in it's upload_to
+        parameter.
+
+        This returns the name of the class, concatenated with the id of the
+        object and the name of the file.
+        """
+        base_path = "{}/{}/{}"
+
+        if self.id:
+            return base_path.format(self.__class__.__name__, self.id, name)
+
+        try:
+            previous_id = self.__class__.objects.all().order_by(
+                '-pk').values_list('id', flat=True)[0]
+        except IndexError:
+            previous_id = 0
+
+        return base_path.format(self.__class__.__name__, previous_id + 1, name)
+
     def update(self, **kwargs):
         """ proxy method for the QuerySet: update method
         highly recommended when you need to save just one field
