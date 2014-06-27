@@ -31,7 +31,8 @@ def restart():
 
 def add_site(filename, context):
     """ Deploys a new nginx configuration site. """
-    destination = '/etc/nginx/sites-available/%s' % env.branch
+    destination = '/etc/nginx/sites-available/{}-{}'.format(
+        env.prefix, env.branch)
     upload_template(filename, destination, context=context, use_sudo=True)
 
 
@@ -50,5 +51,6 @@ def add_django_site():
 
     # enable site configuration
     with cd('/etc/nginx/sites-enabled'):
-        cmd = 'ln -s -f /etc/nginx/sites-available/%s .' % env.branch
+        cmd = 'ln -s -f /etc/nginx/sites-available/{}-{} .'.format(
+            env.prefix, env.branch)
         sudo(cmd)

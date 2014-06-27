@@ -1,9 +1,15 @@
-from fabric.api import task, env, prefix, run, cd
+from fabric.api import cd
+from fabric.api import env
+from fabric.api import prefix
+from fabric.api import run
+from fabric.api import task
 from fabric.contrib.files import upload_template
-from re import search
 
 from service import add_upstart_task
 from service import gunicorn_handler
+
+# standard library
+from re import search
 
 
 @task
