@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function print_green(){
+    echo -e "\e[32m$1\e[39m"
+}
+
 INSTALL_APTITUDE=true
 INSTALL_PIP=true
 INSTALL_HEROKU=false
@@ -9,7 +13,7 @@ while getopts “nahpb” OPTION
 do
     case $OPTION in
         a)
-             echo "only install aptitude"
+             print_green "only install aptitude"
              INSTALL_APTITUDE=true
              INSTALL_PIP=false
              INSTALL_HEROKU=false
@@ -17,7 +21,7 @@ do
              INSTALL_NPM=false
              ;;
         p)
-             echo "only pip install"
+             print_green "only pip install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=true
              INSTALL_HEROKU=false
@@ -25,7 +29,7 @@ do
              INSTALL_NPM=false
              ;;
         h)
-             echo "only heroku install"
+             print_green "only heroku install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=false
              INSTALL_HEROKU=true
@@ -33,7 +37,7 @@ do
              INSTALL_NPM=false
              ;;
         b)
-             echo "only bower install"
+             print_green "only bower install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=false
              INSTALL_HEROKU=false
@@ -41,7 +45,7 @@ do
              INSTALL_NPM=false
              ;;
         n)
-             echo "only node install"
+             print_green "only node install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=false
              INSTALL_HEROKU=false
@@ -49,22 +53,23 @@ do
              INSTALL_NPM=true
              ;;
         ?)
-             echo "fail"
+             print_green "fail"
              exit
              ;;
      esac
 done
 
 if  $INSTALL_APTITUDE ; then
-    echo "Installing aptitude dependencies"
+    print_green "Installing aptitude dependencies"
 
     # Install base packages
     yes | sudo apt-get install python-pip python-virtualenv python-dev build-essential
-    
+
+    print_green "Installing image libraries"
     # Install image libs
     yes | sudo apt-get install libjpeg-dev zlib1g-dev zlib1g-dev
 
-    echo "Are you going to use postgre for your database? [Y/n]"
+    print_green "Are you going to use postgre for your database? [Y/n]"
     read INSTALL_POSTGRE
 
     if [[ "$INSTALL_POSTGRE" == "Y" ||  "$INSTALL_POSTGRE" == "y" ||  "$INSTALL_POSTGRE" == "" ]]
@@ -72,7 +77,7 @@ if  $INSTALL_APTITUDE ; then
         INSTALL_POSTGRE=true
         ./install/postgres.sh
     else
-        echo "Are you going to use mysql for your database? [N/y]"
+        print_green "Are you going to use mysql for your database? [N/y]"
         read INSTALL_MYSQL
 
         if [[ "$INSTALL_MYSQL" == "y" ]]
@@ -128,9 +133,9 @@ if  $INSTALL_HEROKU ; then
     pip freeze > requirements.txt
     pip uninstall psycopg2 dj-database-url
 
-    echo "web: python manage.py runserver 0.0.0.0:$PORT --noreload" > Procfile
+    print_green "web: python manage.py runserver 0.0.0.0:$PORT --noreload" > Procfile
 
-    echo "Would you like to create a new heroku repo? [N/y]"
+    print_green "Would you like to create a new heroku repo? [N/y]"
     read CREATE_REPO
 
     if [[ "$CREATE_REPO" == "y" ]]
@@ -138,8 +143,8 @@ if  $INSTALL_HEROKU ; then
         heroku create
     fi
 
-    echo "You should now commit the requirements.txt file."
-    echo "Then deploy to heroku: git push heroku master"
+    print_green "You should now commit the requirements.txt file."
+    print_green "Then deploy to heroku: git push heroku master"
 fi
 
 # create the local_settings file if it does not exist
@@ -148,16 +153,15 @@ if [ ! -f ./project/local_settings.py ] ; then
 
     if [ INSTALL_POSTGRE ] ; then 
         EXP="s/database-name/${PWD##*/}/g"
-        echo $i|sed -i $EXP project/local_settings.py
+        print_green $i|sed -i $EXP project/local_settings.py
         
-        echo "remember to set in project/local_setings.py your database"
-        echo "settings"
+        print_green "remember to configure in project/local_setings.py your database"
     else
         EXP="s/postgresql_psycopg2/sqlite3/g"
-        echo $i|sed -i $EXP project/local_settings.py
+        print_green $i|sed -i $EXP project/local_settings.py
 
         EXP="s/database-name/\/tmp/${PWD##*/}.sql/g"
-        echo $i|sed -i $EXP project/local_settings.py
+        print_green $i|sed -i $EXP project/local_settings.py
     fi
 fi
 
@@ -175,9 +179,9 @@ fi
 if  $INSTALL_BOWER ; then
     # bower.json modification
     EXP="s/NAME/${PWD##*/}/g"
-    echo $i|sed -i $EXP bower.json
+    print_green $i|sed -i $EXP bower.json
     EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"
-    echo $i|sed -i $EXP bower.json
+    print_green $i|sed -i $EXP bower.json
 
     ./node_modules/bower/bin/bower install
 fi
