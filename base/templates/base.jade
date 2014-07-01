@@ -84,7 +84,7 @@ html(lang="es")
 
                 ul.dropdown-menu
                   li
-                    a(href="{% url 'login' %}")
+                    a(href="{% url 'login' %}?next={{request.path}}")
                       | Login
                   li
                     a(href="{% url 'users.views.password_reset' %}")
