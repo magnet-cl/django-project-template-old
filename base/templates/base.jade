@@ -28,10 +28,7 @@ html(lang="es")
     {% endcompress %}
 
     //if lte IE 7
-      link(href="{% static 'bower_components/html5shiv/dist/html5shiv.js' %}", rel="stylesheet")
-
-    //if lt IE 9
-      link(href="{% static 'css/ie.css' %}", rel="stylesheet")
+      script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
 
     {% compress css %}
     block stylesheets
