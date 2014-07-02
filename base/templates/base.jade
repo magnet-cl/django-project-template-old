@@ -30,6 +30,9 @@ html(lang="es")
     //if lte IE 7
       script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
 
+    //if lt IE 9
+      script(src="{% static 'bower_components/respond/respond.min.js' %}")
+
     {% compress css %}
     block stylesheets
     {% endcompress %}
