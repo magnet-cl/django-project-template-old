@@ -154,7 +154,7 @@ STATICFILES_FINDERS = (
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'xpnqweb*rm1-8mp)pgh#g_3apv^!j2@3lwj=r02@1z($_s4%*%'
+SECRET_KEY = 'CHANGE ME'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
