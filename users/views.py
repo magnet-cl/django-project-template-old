@@ -35,11 +35,11 @@ def login(request):
         return CaptchaAuthenticationForm(
             req, data, initial={'captcha': request.META['REMOTE_ADDR']})
 
-    # If the form has been submitted...
     template_name = "accounts/login.jade"
 
     login_try_count = request.session.get('login_try_count', 0)
 
+    # If the form has been submitted...
     if request.method == "POST":
         request.session['login_try_count'] = login_try_count + 1
 
