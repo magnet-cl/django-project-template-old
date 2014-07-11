@@ -115,7 +115,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         self.save()
         return token
 
-    #public methods
+    # public methods
     def save(self, *args, **kwargs):
         """ store all emails in lowercase """
         self.email = self.email.lower()
@@ -123,17 +123,18 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         super(User, self).save(*args, **kwargs)
 
     def send_email(self, template_name, subject, template_vars={},
-                   fail_silently=True):
+                   fail_silently=True, headers=None):
         """
         Sends an email to the registered address using a given template name
         """
         try:
             kwargs = {
-                "email_list": [self.email],
-                "template_name": template_name,
-                "subject": subject,
-                "template_vars": template_vars,
-                "fail_silently": fail_silently,
+                'email_list': [self.email],
+                'template_name': template_name,
+                'subject': subject,
+                'template_vars': template_vars,
+                'fail_silently': fail_silently,
+                'headers': headers,
             }
             t = Thread(target=User.send_email_to, kwargs=kwargs)
             t.start()
@@ -154,11 +155,11 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         }
         self.send_email(template, title, template_vars, fail_silently=False)
 
-    #static methods
+    # static methods
     @staticmethod
     def send_email_to(email_list, template_name, subject, sender=None,
                       template_vars=None, fail_silently=True,
-                      attachments=None):
+                      attachments=None, headers=None):
         """ Sends an email to a list of emails using a given template name """
 
         if template_vars is None:
@@ -184,7 +185,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
         for emails in emails_in_groups_of_5:
             msg = EmailMultiAlternatives(subject, text_content,
-                                         sender, emails)
+                                         sender, emails, headers=headers)
 
             for attachment in attachments:
                 attachment.seek(0)
