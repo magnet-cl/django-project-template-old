@@ -63,11 +63,11 @@ if  $INSTALL_APTITUDE ; then
     print_green "Installing aptitude dependencies"
 
     # Install base packages
-    yes | sudo apt-get install python-pip python-virtualenv python-dev build-essential
+    sudo apt-get -y install python-pip python-virtualenv python-dev build-essential
 
     print_green "Installing image libraries"
     # Install image libs
-    yes | sudo apt-get install libjpeg-dev zlib1g-dev zlib1g-dev
+    sudo apt-get -y install libjpeg-dev zlib1g-dev zlib1g-dev
 
     print_green "Are you going to use postgre for your database? [Y/n]"
     read INSTALL_POSTGRE
@@ -83,7 +83,7 @@ if  $INSTALL_APTITUDE ; then
         if [[ "$INSTALL_MYSQL" == "y" ]]
         then
             # Install mysql related packages
-            yes | sudo apt-get install libmysqlclient-dev python-mysqldb
+            sudo apt-get -y install libmysqlclient-dev python-mysqldb
         fi
     fi
 
