@@ -62,10 +62,10 @@ def import_db(zip_file=None):
 
 
 @task
-def export_db():
+def export_db(zip_file=None):
     """ Exports a database backup generated through `download_db()` into a
     staging server."""
-    dump_name_zip = download_db()[0]  # download_db returns a list
+    dump_name_zip = download_db(zip_file)[0]  # download_db returns a list
     dump_name = splitext(dump_name_zip)[0]  # name without zip extension
 
     # env.host replaced with staging host
