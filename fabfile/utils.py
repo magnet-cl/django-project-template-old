@@ -14,7 +14,7 @@ def backup_db():
     dumps_folder = "db_dumps/%s" % env.branch
     cmd = "mkdir -p %s" % dumps_folder
     run(cmd)
-    dump_name = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    dump_name = strftime("%Y-%m-%d-%H:%M:%S", gmtime())
     dump_name = "%s/%s.sql.gz" % (dumps_folder, dump_name)
 
     cmd = 'pg_dump %s | gzip > "%s"' % (db_name, dump_name)
