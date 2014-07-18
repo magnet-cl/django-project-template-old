@@ -30,10 +30,10 @@ class Config(ArtichokeConfig):
 
 
 @task
-def set(address='cl', user='magnet', branch='master', django_port='8000'):
+def set(address='default', user='magnet', branch='master', django_port='8000'):
     """ Address, user, branch and django port setter with shortcuts. """
     # host
-    if address == 'cl':
+    if address == 'default':
         env.hosts = ['example.com']
     else:
         # TODO Validate input
