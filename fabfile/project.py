@@ -13,7 +13,7 @@ import gunicorn
 import nginx
 import bower
 import deb_handler
-from utils import backup_db
+from db import backup_db
 from utils import git_clone
 from utils import git_checkout
 

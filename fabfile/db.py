@@ -1,48 +1,29 @@
 from fabric.api import cd
 from fabric.api import env
+from fabric.api import get
+from fabric.api import local
 from fabric.api import prefix
+from fabric.api import put
 from fabric.api import run
-from fabric.api import sudo
 from fabric.api import task
-from getpass import getpass
-from re import search
+from fabric.colors import red
+from fabric.context_managers import settings
+
+# standard library
+from os.path import splitext
+from os.path import dirname
+from os import environ
+from time import gmtime
+from time import strftime
 import sys
-from time import gmtime, strftime
-from os.path import basename
-
-import deb_handler
 
 
-@task
-def install_mysql():
-    """ Installs mysql. """
+# add django settings module to the import search path
+sys.path.append(dirname(dirname(__file__)))
+environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
 
-    # if not installed
-    if search('un', run('dpkg-query -l mysql-server| cut -d " " -f1')):
-        # mysql password workaround
-        # http://www.muhuk.com/2010/05/how-to-install-mysql-with-fabric/
-        while True:
-            mysql_password = getpass(
-                'Please enter MySQL root password: ')
-            mysql_password_confirmation = getpass(
-                'Please confirm your password: ')
-            if mysql_password == mysql_password_confirmation:
-                break
-            else:
-                print "Passwords don't match"
-
-        # get mysql-server version available
-        mysql_version = run('aptitude show mysql-server| grep Version | '
-            'cut -d "." -f2')
-        # insert the given password into the debconf database
-        sudo('echo "mysql-server-5.%s mysql-server/root_password password '
-            '%s" | debconf-set-selections' % (mysql_version, 
-                                                mysql_password))
-        sudo('echo "mysql-server-5.%s mysql-server/root_password_again '
-                'password %s" | debconf-set-selections' % (mysql_version,
-                                                        mysql_password))
-        # install the package
-        deb_handler.install('mysql-server')
+# django settings
+from django.conf import settings as django_settings
 
 
 @task
@@ -54,98 +35,101 @@ def migrate():
 
 
 @task
-def query(sql, db="", mysql_user='root', mysql_pass=""):
-    if type(sql) is list:
-        sql = " ".join(sql)
-    run('mysql --user=%s --password=%s -e "%s" %s' % (mysql_user, mysql_pass, sql, db))
+def backup_db():
+    """ Backups database (postgreSQL). """
+    db_name = env.config.DB.name
+    env.config.save()
 
-
-@task
-def create_user(user, password, root_pass):
-    sql = []
-    sql.append("GRANT USAGE ON *.* TO '%s'@'localhost';" % (user))
-    sql.append("DROP USER %s@localhost;" % user)
-    sql.append("CREATE USER '%s'@'localhost' IDENTIFIED BY '%s';" % (user, password))
-    sql.append("FLUSH PRIVILEGES;")
-    query(sql=sql, db="mysql", mysql_user="root", mysql_pass=root_pass)
-
-
-@task
-def grant_db(name, owner, root_pass):
-    sql = []
-    sql.append("GRANT USAGE ON %s.* TO '%s'@'localhost';" % (name, owner))
-    sql.append("GRANT ALL ON %s.* TO '$dbuser'@'localhost' WITH GRANT OPTION;" % name)
-    sql.append("FLUSH PRIVILEGES;")
-    query(sql=sql, db="mysql", mysql_user="root", mysql_pass=root_pass)
-
-
-@task
-def create_db(name, root_pass, owner=None):
-    sql = []
-    sql.append("CREATE DATABASE %s;" % name)
-    query(sql=sql, db="mysql", mysql_user="root", mysql_pass=root_pass)
-    if owner is not None:
-        grant_db(name, owner, root_pass)
-
-
-@task
-def drop_db(name, root_pass):
-    sql = []
-    sql.append("DROP DATABASE IF EXISTS %s;" % name)
-    query(sql=sql, db="mysql", mysql_user="root", mysql_pass=root_pass)
-
-
-@task
-def drop_user(user, root_pass):
-    if user == "":
-        raise Exception("Must provide a valid username")
-
-    sql = []
-    sql.append("GRANT USAGE ON *.* TO '%s'@'localhost';" % (user))
-    sql.append("DROP USER %s@localhost;" % user)
-    sql.append("FLUSH PRIVILEGES;")
-    query(sql=sql, db="mysql", mysql_user="root", mysql_pass=root_pass)
-
-
-@task
-def dump_db(name, mysql_user, mysql_pass):
-    # generating dump file name
-    dumps_folder = "db_dumps"
-    cmd = "mkdir -p %s" % dumps_folder
+    # dumps folder creation
+    dumps_folder = 'db_dumps/{}'.format(env.branch)
+    cmd = 'mkdir -p {}'.format(dumps_folder)
     run(cmd)
-    branch_name = basename(env.branch)
-    dump_name = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    dump_name = "%s/%s-%s.sql" % (dumps_folder, branch_name, dump_name)
+    # generate backup file name based on its branch and current time
+    dump_name = strftime("%Y-%m-%d-%H:%M:%S", gmtime())
+    dump_name = '{}/{}.sql.gz'.format(dumps_folder, dump_name)
 
-    # dump into db_dumps/<dump_name>
-    cmd = "mysqldump --add-drop-database -u%s -p%s %s > '%s'"
-    cmd %= (mysql_user, mysql_pass, name, dump_name)
-    run(cmd)
-
-    # compressing dump
-    cmd = "zip '%s.zip' '%s'" % (dump_name, dump_name)
-    run(cmd)
-
-    # removing raw dump
-    cmd = "rm '%s'" % dump_name
+    cmd = 'pg_dump {} | gzip > "{}"'.format(db_name, dump_name)
     run(cmd)
 
     return dump_name
 
 
 @task
-def flush_db(name, mysql_user, mysql_pass):
-    query = ("Are you sure you want to flush the database?"
-        " Type in the host to confirm")
+def download_db(compressed_file=None):
+    """ Downloads the given compressed dump or generates it through
+    `backup_db()` and downloads it. """
 
-    selected = run(query)
-    if selected != env.host:
-        print "%s != %s... aborting database flush" % (selected, env.host)
-        sys.exit(1);
+    if compressed_file is None:
+        compressed_file = backup_db()
 
-    dump_db(name, mysql_user, mysql_pass)
-    cmd = ("mysqldump -u%s -p%s --add-drop-table --no-data %s "
-            "| grep ^DROP | mysql -u%s -p%s %s")
-    cmd %= (mysql_user, mysql_pass, name,
-            mysql_user, mysql_pass, name)
-    run(cmd)
+    # get returns a list, the first element is returned
+    return get(compressed_file)[0]
+
+
+@task
+def import_db(compressed_file=None):
+    """ Imports a compressed database backup into the local system.
+
+    In order to use this task, your local database engine must be postgreSQL.
+
+    """
+
+    if compressed_file is None:
+        compressed_file = download_db(compressed_file)
+
+    # name without gzip extension
+    dump_name = splitext(compressed_file)[0]
+
+    # gunzip dump
+    local('gunzip "{}"'.format(compressed_file))
+
+    # get local database information
+    local_engine = django_settings.DATABASES['default']['ENGINE']
+    local_name = django_settings.DATABASES['default']['NAME']
+
+    # check local database engine
+    if local_engine != 'django.db.backends.postgresql_psycopg2':
+        print(red('Please set your local database engine to postgreSQL.'))
+        print(red('Aborting current task.'))
+        return
+
+    local('echo "drop database if exists {}" | psql'.format(local_name))
+    local('echo "create database {}" | psql'.format(local_name))
+    local('psql {} < "{}"'.format(local_name, dump_name))
+
+    return compressed_file
+
+
+@task
+def export_db(compressed_file=None):
+    """ Exports the given compressed database backup into a staging server.
+
+    If no compressed_file is given, then it is generated through
+    `download_db()`.
+
+    """
+
+    if compressed_file is None:
+        compressed_file = download_db(compressed_file)
+
+    # name without gzip extension
+    dump_name = splitext(compressed_file)[0]
+
+    # env.host replaced with staging host
+    with settings(host_string=env.config.staging_DB.host):
+        # upload the compressed file
+        compressed_file = put(compressed_file)[0]  # put returns a list
+        dump_name = splitext(compressed_file)[0]  # name without gzip extension
+
+        # gunzip dump
+        run('gunzip "{}"'.format(compressed_file))
+
+        run('echo "drop database if exists {}" | psql'.format(
+            env.config.staging_DB.name))
+        run('echo "create database {}" | psql'.format(
+            env.config.staging_DB.name))
+        run('psql {} < "{}"'.format(env.config.staging_DB.name, dump_name))
+        env.config.save()
+
+        # cleanup files
+        run('rm -f "{}"'.format(dump_name))  # raw file
