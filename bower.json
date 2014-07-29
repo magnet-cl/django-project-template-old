@@ -23,6 +23,6 @@
   },
   "resolutions": {
     "jquery": "~2.1.0",
-    "bootstrap": ">=3.0.0"
+    "bootstrap": "~3.2.0"
   }
 }
