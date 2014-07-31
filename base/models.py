@@ -33,11 +33,11 @@ class BaseModel(models.Model):
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        help_text="creation date",
+        help_text=_("creation date"),
     )
     updated_at = models.DateTimeField(
         auto_now=True, null=True,
-        help_text="edition date",
+        help_text=_("edition date"),
     )
 
     # using BaseManager
@@ -96,7 +96,7 @@ class BaseModel(models.Model):
         opts = instance._meta
         data = {}
         for f in opts.fields + opts.many_to_many:
-            if fields and not f.name in fields:
+            if fields and f.name not in fields:
                 continue
             if exclude and f.name in exclude:
                 continue
