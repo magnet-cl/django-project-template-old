@@ -16,17 +16,32 @@ import deb_handler
 from db import backup_db
 from utils import git_clone
 from utils import git_checkout
+from fabric.colors import red
 
 
 @task
 def update():
     """ Updates server repository. """
+    branch = local('git rev-parse --abbrev-ref HEAD', capture=True)
+
+    if env.branch != branch:
+        msg = 'Wrong branch. You need to be on branch "{}" to deploy'.format(
+            env.branch
+        )
+        print(red(msg))
+        return
+
+    prepare_deployment()
     update_server()
 
 
 def update_helper(root_dir):
     with cd(root_dir):
         run('git pull')
+
+
+def prepare_deployment():
+    local('python manage.py test --failfast')
 
 
 @task
@@ -41,6 +56,7 @@ def update_server():
 
     with cd(env.server_root_dir):
         with prefix('. .env/bin/activate'):
+
             run('pip install --requirement install/requirements.pip')
             run('yes yes | python manage.py collectstatic')
 
