@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" This file contains some generic purpouse views """
+""" The users app views"""
 
 # forms
 from users.forms import AuthenticationForm
