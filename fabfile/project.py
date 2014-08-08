@@ -1,22 +1,26 @@
+# fabric
 from fabric.api import cd
 from fabric.api import env
+from fabric.api import local
 from fabric.api import prefix
 from fabric.api import prompt
 from fabric.api import put
 from fabric.api import run
 from fabric.api import task
-from fabric.api import local
+from fabric.colors import red
 from fabric.contrib import files
-from os.path import isfile
 
-import gunicorn
-import nginx
+# local tasks
+from db import backup_db
+from utils import git_checkout
+from utils import git_clone
+
+# standard library
+from os.path import isfile
 import bower
 import deb_handler
-from db import backup_db
-from utils import git_clone
-from utils import git_checkout
-from fabric.colors import red
+import gunicorn
+import nginx
 
 
 @task
