@@ -3,7 +3,6 @@ from fabric.api import cd
 from fabric.api import env
 from fabric.api import local
 from fabric.api import prefix
-from fabric.api import prompt
 from fabric.api import put
 from fabric.api import run
 from fabric.api import task
@@ -14,6 +13,7 @@ from fabric.contrib import files
 from db import backup_db
 from utils import git_checkout
 from utils import git_clone
+from utils import confirm_target
 
 # standard library
 from os.path import isfile
@@ -96,17 +96,14 @@ def start():
 @task
 def db_reset():
     """ Resets database. """
-    print('Are you sure you want to reset the database?')
-    host = prompt('Type in the host to confirm: ')
-    branch = prompt('Type in the branch to confirm: ')
-    if host == env.host and branch == env.branch:
-        # backup database before resetting
-        backup_db()
-        with cd(env.server_root_dir):
-            with prefix('. .env/bin/activate'):
-                run('./reset.sh')
-    else:
-        print('Invalid host or branch.')
+
+    confirm_target('Are you sure you want to reset the database?')
+
+    # backup database before resetting
+    backup_db()
+    with cd(env.server_root_dir):
+        with prefix('. .env/bin/activate'):
+            run('./reset.sh')
 
 
 @task
