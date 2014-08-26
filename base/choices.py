@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+This document defines choices to be used on the models
+"""
 
 AREA_CODES = (
     (35, 'ALGARROBO'),
