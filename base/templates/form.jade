@@ -1,5 +1,5 @@
 extends base
-- load i18n static
+{% load i18n static %}
 
 block javascripts
 
@@ -11,6 +11,7 @@ block content
   div.content.clear_down
     h1.page-header
         block form_title
+    block content_header
     div
       {% if form.errors %}
       {% for error in form.non_field_errors %}
@@ -20,16 +21,31 @@ block content
       {% endif %}
 
     div
-      form.model-form.form-horizontal(method="post", enctype="multipart/form-data", role="form")
-        block form_top
-        {% include "includes/form.jade"%}
-        block form_bottom
+      form.model-form.form-horizontal(method="post",
+        enctype="multipart/form-data", role="form", action="{{action}}")
+        block top_fields
+        block form_fields
+          {% include "includes/form.jade"%}
+        block bottom_fields
 
-        div.form-group
-          div.col-md-offset-3.col-md-9
-            block form_buttons
-              a.btn.btn-danger(href="{{cancel_url}}") Cancelar
-              button.btn.btn-primary.btn-submit(type="submit")
-                | {% block submit_button_value%}Guardar{% endblock%}
-    div
-      block after_form
+        {{ formset.management_form }}
+
+        if formset
+          for form in formset
+            div
+              {% include "includes/form.jade" with form=form%}
+            hr
+        
+
+        - if not hide_buttons
+          div.form-group
+            div.col-md-offset-3.col-md-6.pull-right
+              .btn-group
+                button.btn.btn-primary.js-submit-button(type="submit")
+                  | {% block submit_button_value%}Guardar{% endblock%}
+                block extra_buttons
+                a.btn.btn-danger.js-cancel-btn(
+                  href="{% block cancel_button_url %}{{cancel_url}}{% endblock %}")
+                  | {% block cancel_button_value%}Cancelar{% endblock%}
+
+    block extra_content
