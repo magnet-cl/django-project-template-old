@@ -138,7 +138,7 @@ def user_edit(request):
         if form.is_valid():
             form.save()
             messages.add_message(request, messages.SUCCESS,
-                                 _("your data has been successfully saved"))
+                                 _("Your data has been successfully saved."))
             return redirect('home')
     else:
         form = UserForm(instance=request.user)

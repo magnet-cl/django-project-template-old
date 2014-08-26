@@ -12,7 +12,7 @@
 {% endfor %}
 {% endif %}
 
-{% blocktrans %}<h2>Regístrate</h2>{% endblocktrans %}
+<h2>{% blocktrans %}Create new account{% endblocktrans %}</h2>
 
 <form class="form-horizontal" method="post" action="{% url 'users.views.user_new' %}">
   {% include "includes/form.jade" %}

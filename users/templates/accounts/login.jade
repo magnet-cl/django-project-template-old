@@ -3,7 +3,7 @@ extends "base.jade"
 - load i18n static
 
 block javascripts
-  script(src='{{STATIC_URL}}js/login.js')
+  script(src="{% static 'js/login.js' %}")
 
 block content
   .row 
@@ -12,7 +12,7 @@ block content
         {% csrf_token %}
 
         .form-signin-inner
-          {% blocktrans %}<h2>Login</h2>{% endblocktrans %}
+          h2 {% blocktrans %}Login{% endblocktrans %}
 
           - if form.non_field_errors
             - for error in form.non_field_errors
@@ -29,7 +29,7 @@ block content
 
           .form-group(class="{% if form.password.errors %}has-error{% endif %}")
             label.control-label.col-lg-2.required(for='id_password')
-              | {% trans 'Password:' %}
+              | {% trans 'Password' %}
 
             .col-lg-10
               input#id_password.form-control(name='password', type='password',
@@ -49,8 +49,12 @@ block content
 
           .form-group
             .col-md-offset-2.col-lg-10
-              a(href="{% url 'users.views.password_reset' %}")
-                | {% trans 'Forgotten your password or email?' %}
+              a(href="{% url 'password_reset' %}")
+                | {% trans 'Forgotten your password?' %}
+          .form-group
+            .col-md-offset-2.col-lg-10
+              a(href="{% url 'register' %}")
+                | {% trans 'New? Register here.' %}
         .form-group
           .col-sm-12.text-right
             input.btn.btn-primary(type='submit', value="{% trans 'Log in' %}")
