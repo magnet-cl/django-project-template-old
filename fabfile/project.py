@@ -14,13 +14,13 @@ from fabric.contrib import files
 from db import backup_db
 from utils import git_checkout
 from utils import git_clone
-
-# standard library
-from os.path import isfile
 import bower
 import deb_handler
 import gunicorn
 import nginx
+
+# standard library
+from os.path import isfile
 
 
 @task

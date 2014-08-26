@@ -229,3 +229,10 @@ class UserChangeForm(forms.ModelForm):
         f = self.fields.get('user_permissions', None)
         if f is not None:
             f.queryset = f.queryset.select_related('content_type')
+
+
+class UserForm(BaseModelForm):
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')

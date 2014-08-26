@@ -5,24 +5,26 @@
 from users.forms import AuthenticationForm
 from users.forms import CaptchaAuthenticationForm
 from users.forms import CaptchaUserCreationForm
+from users.forms import UserForm
 
 # models
 from users.models import User
 
 # django
 from django.contrib import messages
+from django.contrib.auth import logout as django_logout
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import login as django_login_view
-from django.contrib.auth import logout as django_logout
-from django.contrib.auth import views as auth_views
-from django.shortcuts import render_to_response
+from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.http import base36_to_int
 from django.utils.translation import ugettext_lazy as _
-from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.cache import never_cache
+from django.views.decorators.debug import sensitive_post_parameters
 
 
 def login(request):
@@ -126,6 +128,36 @@ def user_new(request):
     }
 
     return render_to_response('accounts/user_new.html', context,
+                              context_instance=RequestContext(request))
+
+
+@login_required
+def user_edit(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 _("your data has been successfully saved"))
+            return redirect('home')
+    else:
+        form = UserForm(instance=request.user)
+
+    context = {
+        'cancel_url': reverse('user_profile'),
+        'form': form,
+    }
+
+    return render_to_response('accounts/edit.jade', context,
+                              context_instance=RequestContext(request))
+
+
+@login_required
+def user_profile(request):
+    context = {
+    }
+
+    return render_to_response('accounts/detail.jade', context,
                               context_instance=RequestContext(request))
 
 
