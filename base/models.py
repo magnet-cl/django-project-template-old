@@ -58,16 +58,7 @@ class BaseModel(models.Model):
         """
         base_path = "{}/{}/{}"
 
-        if self.id:
-            return base_path.format(self.__class__.__name__, self.id, name)
-
-        try:
-            previous_id = self.__class__.objects.all().order_by(
-                '-pk').values_list('id', flat=True)[0]
-        except IndexError:
-            previous_id = 0
-
-        return base_path.format(self.__class__.__name__, previous_id + 1, name)
+        return base_path.format(self.__class__.__name__, name)
 
     def update(self, **kwargs):
         """ proxy method for the QuerySet: update method
