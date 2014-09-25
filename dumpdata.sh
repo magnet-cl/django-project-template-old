@@ -1,5 +1,6 @@
 BASE_FIXTURES_PATH="base/fixtures/initial_data.json"
 
+mkdir -p base/fixtures
 python manage.py dumpdata auth.group > $BASE_FIXTURES_PATH --natural --indent=4
 NUMOFLINES=$(wc -l < $BASE_FIXTURES_PATH)
 
