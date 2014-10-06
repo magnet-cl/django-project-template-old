@@ -143,9 +143,8 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
                 print str(error)
 
     def send_example_email(self):
-        """ Sends an email with the required token so a user can recover
-        his/her password
-
+        """
+        Sends an email to test the email funcionality.
         """
         title = _("Hello")
         template = "example_email"
