@@ -9,7 +9,6 @@
         "is_active": true, 
         "updated_at": "2013-06-21T14:03:37.852Z", 
         "is_superuser": true, 
-        "token": "", 
         "is_staff": true, 
         "last_login": "2013-06-21T14:03:31Z", 
         "groups": [], 
