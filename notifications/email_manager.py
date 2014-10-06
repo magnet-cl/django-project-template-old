@@ -48,6 +48,11 @@ def _send_emails(emails, template_name, subject, sender=None,
                        'application/pdf')
 
         msg.attach_alternative(html_content, "text/html")
+
+        # do not send emails if in testing
+        if not settings.TEST:
+            return
+
         try:
             msg.send(fail_silently=fail_silently)
         except:
@@ -59,7 +64,6 @@ def send_emails(**kwargs):
     """
     Sends an email to a list of emails using a given template name
     """
-
     t = Thread(target=send_emails, kwargs=kwargs)
     t.start()
 
