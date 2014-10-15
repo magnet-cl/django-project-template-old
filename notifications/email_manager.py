@@ -64,8 +64,11 @@ def send_emails(**kwargs):
     """
     Sends an email to a list of emails using a given template name
     """
-    t = Thread(target=send_emails, kwargs=kwargs)
-    t.start()
+    if settings.TEST:
+        _send_emails(**kwargs)
+    else:
+        t = Thread(target=_send_emails, kwargs=kwargs)
+        t.start()
 
 
 def send_example_email(email):
