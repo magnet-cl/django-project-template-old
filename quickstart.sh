@@ -9,6 +9,7 @@ INSTALL_PIP=true
 INSTALL_HEROKU=false
 INSTALL_BOWER=true
 INSTALL_NPM=true
+TRANSLATE=true
 while getopts “nahpb” OPTION
 do
     case $OPTION in
@@ -19,6 +20,7 @@ do
              INSTALL_HEROKU=false
              INSTALL_BOWER=false
              INSTALL_NPM=false
+             TRANSLATE=false
              ;;
         p)
              print_green "only pip install"
@@ -27,6 +29,7 @@ do
              INSTALL_HEROKU=false
              INSTALL_BOWER=false
              INSTALL_NPM=false
+             TRANSLATE=false
              ;;
         h)
              print_green "only heroku install"
@@ -35,6 +38,7 @@ do
              INSTALL_HEROKU=true
              INSTALL_BOWER=false
              INSTALL_NPM=false
+             TRANSLATE=false
              ;;
         b)
              print_green "only bower install"
@@ -43,6 +47,7 @@ do
              INSTALL_HEROKU=false
              INSTALL_BOWER=true
              INSTALL_NPM=false
+             TRANSLATE=false
              ;;
         n)
              print_green "only node install"
@@ -51,6 +56,7 @@ do
              INSTALL_HEROKU=false
              INSTALL_BOWER=false
              INSTALL_NPM=true
+             TRANSLATE=false
              ;;
         ?)
              print_green "fail"
@@ -184,4 +190,8 @@ if  $INSTALL_BOWER ; then
     print_green $i|sed -i $EXP bower.json
 
     ./node_modules/bower/bin/bower install
+fi
+ 
+if $TRANSLATE ; then 
+    ./translate -c
 fi

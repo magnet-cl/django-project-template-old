@@ -13,3 +13,5 @@ fabfile/templates/ssh_key.pub
 bower_components
 
 node_modules
+
+*.mo
