@@ -6,6 +6,7 @@ from fabric.api import prefix
 from fabric.api import put
 from fabric.api import run
 from fabric.api import task
+from fabric.colors import green
 from fabric.colors import red
 from fabric.contrib import files
 
@@ -61,7 +62,10 @@ def update_server():
     with cd(env.server_root_dir):
         with prefix('. .env/bin/activate'):
 
+            print(green('installing pip requirements'))
             run('pip install --requirement install/requirements.pip')
+
+            print(green('collecting static files'))
             run('yes yes | python manage.py collectstatic')
 
 

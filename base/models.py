@@ -124,3 +124,10 @@ class BaseModel(models.Model):
 
         # turn the dict to json
         return json.dumps(data, cls=ModelEncoder, **kargs)
+
+    def refresh(self):
+        """
+        returns a new object of the same class as the caller, with it's
+        data taken form the database
+        """
+        return self.__class__.objects.get(id=self.id)
