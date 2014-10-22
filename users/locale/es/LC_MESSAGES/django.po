@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 08:58-0400\n"
+"POT-Creation-Date: 2014-10-22 19:36-0300\n"
 "PO-Revision-Date: 2013-01-10 18:54+0000\n"
 "Last-Translator: Antoni Aloy <aaloy@apsl.net>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/django/language/"
@@ -41,7 +41,8 @@ msgstr "Cambiar contraseña"
 msgid "Email"
 msgstr "Correo electrónico"
 
-#: forms.py:24 forms.py:136 templates/accounts/login.jade:36
+#: forms.py:24 forms.py:136 templates/accounts/login.jade:32
+#: templates/accounts/login.jade.py:36
 msgid "Password"
 msgstr "Contraseña"
 
@@ -93,7 +94,7 @@ msgstr "Correo electrónico"
 msgid "Enter the same password as above, for verification."
 msgstr "Introduzca la misma contraseña que arriba, para verificación."
 
-#: forms.py:128 models.py:53
+#: forms.py:128 models.py:47
 msgid "first name"
 msgstr "nombre propio"
 
@@ -101,7 +102,7 @@ msgstr "nombre propio"
 msgid "The name of the user"
 msgstr "El nombre del usuario"
 
-#: forms.py:132 models.py:57
+#: forms.py:132 models.py:51
 msgid "last name"
 msgstr "apellidos"
 
@@ -113,39 +114,39 @@ msgstr "El apellido del usuario"
 msgid "Password confirmation"
 msgstr "Contraseña (confirmación)"
 
-#: models.py:36
+#: models.py:30
 msgid "Users"
 msgstr "Usuarios"
 
-#: models.py:48
+#: models.py:42
 msgid "email address"
 msgstr "dirección de correo electrónico"
 
-#: models.py:49
+#: models.py:43
 msgid "An email address that identifies this user"
 msgstr "Un correo electrónico que identifica a este usuario"
 
-#: models.py:54
+#: models.py:48
 msgid "The first name of this user"
 msgstr "El primer nombre de este usuario"
 
-#: models.py:58
+#: models.py:52
 msgid "The last name of this user"
 msgstr "El apellido de este usuario"
 
-#: models.py:61
+#: models.py:55
 msgid "staff status"
 msgstr "es staff"
 
-#: models.py:62
+#: models.py:56
 msgid "Designates whether the user can log into this admin site."
 msgstr "Indica si el usuario puede entrar en este sitio de administración."
 
-#: models.py:66
+#: models.py:60
 msgid "active"
 msgstr "activo"
 
-#: models.py:67
+#: models.py:61
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
@@ -153,25 +154,21 @@ msgstr ""
 "Indica si el usuario puede ser tratado como activo. Desmarque esta opción en "
 "lugar de borrar la cuenta."
 
-#: models.py:72
+#: models.py:66
 msgid "date joined"
 msgstr "fecha de alta"
 
-#: models.py:73
+#: models.py:67
 msgid "The date this user was created in the database"
 msgstr "La fecha en la que este usuario fue creado en la base de datos"
 
-#: models.py:86
+#: models.py:76
 msgid "user"
 msgstr "usuario"
 
-#: models.py:87
+#: models.py:77
 msgid "users"
 msgstr "usuarios"
-
-#: models.py:150
-msgid "Hello"
-msgstr "Hola"
 
 #: views.py:90
 msgid "An email has been sent to you. Please check it to reset your password."
@@ -308,13 +305,15 @@ msgstr ""
 msgid ""
 "Forgotten your password? Enter your e-mail address below, and we'll e-mail "
 "instructions for setting a new one."
-msgstr "¿Olvidaste tu contraseña?, ingresa abajo tu dirección de correo electrónico, y te enviaremos las instrucciones para establecer una nueva."
+msgstr ""
+"¿Olvidaste tu contraseña?, ingresa abajo tu dirección de correo electrónico, "
+"y te enviaremos las instrucciones para establecer una nueva."
 
 #: templates/accounts/password_reset_form.jade:18
 msgid "E-mail address"
 msgstr "Dirección de correo electrónico"
 
-#: templates/accounts/password_reset_form.jade:22
+#: templates/accounts/password_reset_form.jade:24
 msgid "Reset my password"
 msgstr "Reestablecer mi contraseña"
 
@@ -378,3 +377,6 @@ msgstr ""
 #, python-format
 msgid "Welcome to %(site_name)s"
 msgstr "Bienvenido a %(site_name)s"
+
+#~ msgid "Hello"
+#~ msgstr "Hola"

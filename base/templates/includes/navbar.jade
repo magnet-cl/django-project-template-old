@@ -1,3 +1,5 @@
+- load i18n
+
 div.navbar.navbar-inverse.navbar-fixed-top
   div.container
     div.navbar-header
@@ -25,7 +27,7 @@ div.navbar.navbar-inverse.navbar-fixed-top
         {% if user.is_authenticated %}
         li.dropdown
           a.dropdown-toggle(href="#", data-toggle="dropdown")
-            | Logged in as {{user.email}}
+            | {% trans 'Logged in as' %} {{user.email}}
             b.caret
 
           ul.dropdown-menu
