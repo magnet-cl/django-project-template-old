@@ -193,5 +193,5 @@ if  $INSTALL_BOWER ; then
 fi
  
 if $TRANSLATE ; then 
-    ./translate -c
+    ./translate.sh -c
 fi
