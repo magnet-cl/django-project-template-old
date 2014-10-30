@@ -175,3 +175,10 @@ def install_project_handling_dependencies():
     # install zip dependencies
     deb_handler.install('zip')
     deb_handler.install('unzip')
+
+
+@task
+def run_django_command(command):
+    with cd(env.server_root_dir):
+        with prefix('. .env/bin/activate'):
+            run('python manage.py {}'.format(command))
