@@ -2,3 +2,26 @@
 .alert-error {
   .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
 }
+
+.highlight.alert-success {
+  background-color: saturate(darken(@alert-success-bg, 20%), 40%);
+}
+.highlight.alert-info {
+  background-color: saturate(darken(@alert-info-bg, 20%), 40%);
+}
+.highlight.alert-warning {
+  background-color: saturate(darken(@alert-warning-bg, 20%), 40%);
+}
+.highlight.alert-error,
+.highlight.alert-danger {
+  background-color: saturate(darken(@alert-danger-bg, 20%), 40%);
+}
+
+.dim {
+    background-color: #transparent;
+    -webkit-transition: background-color 1000ms ease-in-out;
+    -moz-transition: background-color 1000ms ease-in-out;
+    -o-transition: background-color 1000ms ease-in-out;
+    -ms-transition: background-color 1000ms ease-in-out;
+    transition: background-color 1000ms ease-in-out;
+}
