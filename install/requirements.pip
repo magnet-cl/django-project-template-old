@@ -1,6 +1,6 @@
 Django==1.6.4
 Fabric==1.8.2
-South==0.8.4
+South==1.0.1
 argparse==1.2.1
 -e git://github.com/magnet-cl/artichoke.git@1f29af679e5d1133eec0557e19eb06b30ca7f50a#egg=artichoke-dev
 bootstrap-admin==0.3.0
