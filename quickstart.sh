@@ -179,6 +179,12 @@ fi
 
 
 if  $INSTALL_NPM ; then
+    # package.json modification
+    EXP="s/NAME/${PWD##*/}/g"
+    print_green $i|sed -i $EXP package.json
+    EXP="s/HOMEPAGE/https:\/\/bitbucket.org\/magnet-cl\/${PWD##*/}/g"
+    print_green $i|sed -i $EXP package.json
+
     npm install
 fi
 

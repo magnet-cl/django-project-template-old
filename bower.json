@@ -1,7 +1,7 @@
 {
-  "name": "django-project-template",
-  "version": "0.0.0",
-  "homepage": "https://bitbucket.org/magnet-cl/django-project-template",
+  "name": "NAME",
+  "version": "0.1.0",
+  "homepage": "HOMEPAGE",
   "authors": [
     "Ignacio Munizaga <ignacio.munizaga.t@gmail.com>"
   ],
