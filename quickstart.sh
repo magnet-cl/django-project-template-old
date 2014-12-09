@@ -104,6 +104,9 @@ if  $INSTALL_PIP ; then
     # install setuptools
     pip install --upgrade setuptools
 
+    # upgrade pip
+    pip install --upgrade pip
+
     # install pip requiredments in the virtual environment
     .env/bin/pip install --download-cache=~/.pip-cache --requirement install/requirements.pip
 
