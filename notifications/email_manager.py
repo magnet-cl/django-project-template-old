@@ -34,7 +34,11 @@ def _send_emails(emails, template_name, subject, sender=None,
     text_content = text_template.render(context)
     html_content = html_template.render(context)
 
-    sender = "%s <%s>" % (settings.EMAIL_SENDER_NAME, settings.SENDER_EMAIL)
+    if sender is None:
+        sender = "{} <{}>".format(
+            settings.EMAIL_SENDER_NAME,
+            settings.SENDER_EMAIL
+        )
 
     emails_in_groups_of_5 = utils.grouper(emails, 5)
 
