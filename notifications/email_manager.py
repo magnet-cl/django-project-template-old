@@ -54,7 +54,7 @@ def _send_emails(emails, template_name, subject, sender=None,
         msg.attach_alternative(html_content, "text/html")
 
         # do not send emails if in testing
-        if not settings.TEST:
+        if settings.TEST:
             return
 
         try:
