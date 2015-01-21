@@ -75,7 +75,7 @@ def password_reset(request):
     template_name = "accounts/password_reset_form.jade"
     email_template_name = "emails/password_reset.html"
 
-    success_url = "/accounts/password_email_sent"
+    success_url = "/accounts/password-email-sent"
 
     res = auth_views.password_reset(
         request,
@@ -92,12 +92,12 @@ def password_reset_email_sent(request):
     return redirect('home')
 
 
-def password_reset_confirm(request, uidb36, token):
+def password_reset_confirm(request, uidb64, token):
     """ view that handles the recover password process """
     template_name = "accounts/password_reset_confirm.html"
     success_url = "/accounts/reset/done/"
 
-    return auth_views.password_reset_confirm(request, uidb36, token,
+    return auth_views.password_reset_confirm(request, uidb64, token,
                                              template_name=template_name,
                                              post_reset_redirect=success_url)
 

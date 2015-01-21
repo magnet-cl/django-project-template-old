@@ -11,7 +11,8 @@ from django.contrib.sites.models import get_current_site
 from django.db import models
 from django.template import loader
 from django.utils import timezone
-from django.utils.http import int_to_base36
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext_noop
 
@@ -114,7 +115,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
             'email': self.email,
             'domain': domain,
             'site_name': site_name,
-            'uid': int_to_base36(self.pk),
+            'uid': urlsafe_base64_encode(force_bytes(self.pk)),
             'user': self,
             'token': default_token_generator.make_token(self),
             'protocol': 'http',

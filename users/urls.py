@@ -34,8 +34,7 @@ urlpatterns = patterns(
         name='password_reset'
     ),
     url(
-        r'^reset/(?P<uidb36>[0-9A-Za-z]{1,13})-'
-        '(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$',
         'password_reset_confirm',
         name='password_reset_confirm'
     ),
