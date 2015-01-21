@@ -98,7 +98,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     def send_example_email(self):
         email_manager.send_example_email(self.email)
 
-    def send_recover_password_email(self, request):
+    def send_recover_password_email(self, request=None):
         """
         Sends an email with the required token so a user can recover
         his/her password
