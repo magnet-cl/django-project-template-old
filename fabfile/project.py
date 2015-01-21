@@ -34,7 +34,7 @@ def update():
             env.branch
         )
         print(red(msg))
-        return
+        exit()
 
     prepare_deployment()
     update_server()
