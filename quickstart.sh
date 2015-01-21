@@ -75,6 +75,9 @@ if  $INSTALL_APTITUDE ; then
     # Install image libs
     sudo apt-get -y install libjpeg-dev zlib1g-dev zlib1g-dev
 
+    print_green "Installing translation libraries"
+    sudo apt-get -y install gettext
+
     print_green "Are you going to use postgre for your database? [Y/n]"
     read INSTALL_POSTGRE
 
