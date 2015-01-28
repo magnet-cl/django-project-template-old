@@ -24,3 +24,7 @@ def add_upstart_task(filename, context):
     """ Deploys an upstart configuration task file. """
     destination = '/etc/init/django-{}-{}.conf'.format(env.prefix, env.branch)
     upload_template(filename, destination, context=context, use_sudo=True)
+
+    # set root as file owner
+    cmd = 'chown root:root {}'.format(destination)
+    sudo(cmd)

@@ -1,4 +1,7 @@
-from fabric.api import cd, env, sudo, task
+from fabric.api import cd
+from fabric.api import env
+from fabric.api import sudo
+from fabric.api import task
 from fabric.contrib.files import upload_template
 
 import deb_handler
@@ -34,6 +37,10 @@ def add_site(filename, context):
     destination = '/etc/nginx/sites-available/{}-{}'.format(
         env.prefix, env.branch)
     upload_template(filename, destination, context=context, use_sudo=True)
+
+    # set root as file owner
+    cmd = 'chown root:root {}'.format(destination)
+    sudo(cmd)
 
 
 @task
