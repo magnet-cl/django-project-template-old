@@ -68,6 +68,8 @@ def update_server():
             print(green('collecting static files'))
             run('yes yes | python manage.py collectstatic')
 
+            print(green('generating translations'))
+            run('./translate -c')
 
 @task
 def restart():
