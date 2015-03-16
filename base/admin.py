@@ -1,11 +1,19 @@
 """ Admin base configuration """
+
+# django
 from django.contrib import admin
 from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.utils.translation import ugettext as _
+from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
 
+# forms
 from users.forms import AdminAuthenticationForm
 from users.forms import CaptchaAuthenticationForm
+
+
+# standard library
+import csv
 
 
 class AdminSite(admin.sites.AdminSite):
@@ -50,3 +58,22 @@ class AdminSite(admin.sites.AdminSite):
         return login(request, **defaults)
 
 admin.site = AdminSite()
+
+
+def download_report(modeladmin, request, queryset):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+
+    writer = csv.writer(response)
+
+    queryset = queryset.select_related()
+    data = queryset.values()
+    writer.writerow(data[0].keys())
+
+    for datum in data:
+        writer.writerow([unicode(s).encode("utf-8") for s in datum.values()])
+
+    return response
+
+download_report.short_description = _("Download Data")

@@ -1,12 +1,19 @@
 """ Admin page configuration for the users app """
-from django.contrib import admin
 
+# models
 from users.models import User
+
+# forms
 from users.forms import UserCreationForm
 from users.forms import UserChangeForm
 
+# django
+from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
+
+# base
+from base.admin import download_report
 
 
 class UserAdmin(DjangoUserAdmin):
@@ -17,6 +24,13 @@ class UserAdmin(DjangoUserAdmin):
     list_display = ('email', 'first_name', 'last_name', 'is_staff',
                     'change_password_link')
     form = UserChangeForm
+
+    actions = (download_report,)
+
+    search_fields = ('first_name', 'last_name', 'email')
+
+    list_filter = ('created_at', 'last_login')
+
     fieldsets = (
         (None, {'fields': ('email',)}),
         (_('Personal info'), {'fields': ('first_name', 'last_name')}),
