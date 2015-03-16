@@ -36,7 +36,7 @@ def update():
         print(red(msg))
         exit()
 
-    prepare_deployment()
+    validate_deployment()
     update_server()
 
 
@@ -45,7 +45,8 @@ def update_helper(root_dir):
         run('git pull')
 
 
-def prepare_deployment():
+@task
+def validate_deployment():
     local('python manage.py test --failfast')
 
 
