@@ -17,10 +17,7 @@ function makemessages {
     diff=$(git diff --numstat locale/es/LC_MESSAGES/django.po)
     lineCount=(${diff// / })
 
-    echo $lineCount
-
     if [ $lineCount ] ; then
-        echo 'holi'
         if [ $lineCount == 1 ] ; then
             git checkout locale/es/LC_MESSAGES/django.po
         fi
