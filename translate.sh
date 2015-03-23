@@ -1,23 +1,36 @@
 #!/bin/bash
-green='\e[0;32m'
-NC='\e[0m' # No Color
+
+function print_green(){
+    echo -e "\e[32m$1\e[39m"
+}
+
+function print_blue(){
+    echo -e "\e[34m$1\e[39m"
+}
 
 function makemessages {
     cd $1
 
+    mkdir -p locale
 
     django-admin.py makemessages -l es -e jade,html,txt,py
     diff=$(git diff --numstat locale/es/LC_MESSAGES/django.po)
     lineCount=(${diff// / })
-    if [ $lineCount == 1 ] ; then
-        git checkout locale/es/LC_MESSAGES/django.po
+
+    echo $lineCount
+
+    if [ $lineCount ] ; then
+        echo 'holi'
+        if [ $lineCount == 1 ] ; then
+            git checkout locale/es/LC_MESSAGES/django.po
+        fi
     fi
 
     cd ..
 }
 
 function translate {
-    echo -e "${green}translating $1${NC}"
+    print_green "translating $1"
     if $COMPILE ; then
         cd $1
         django-admin.py compilemessages
@@ -33,6 +46,7 @@ while getopts “c” OPTION
 do
     case $OPTION in
         c)
+            print_blue "Compiling"
             COMPILE=true
              ;;
         ?)
@@ -42,10 +56,15 @@ do
      esac
 done
 
-if [ $2 ] ; then 
+if [ $1 ] && [ $1 != '-c' ] ; then 
+    print_blue "Only on app $1"
+    translate $1
+elif [ $2 ] && [ $2 != '-c' ] ; then 
+    print_blue "Only on app $2"
     translate $2
 else
-    translate "users"
     translate "base"
+    translate "notifications"
     translate "project"
+    translate "users"
 fi
