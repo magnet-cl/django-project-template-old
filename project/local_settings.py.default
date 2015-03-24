@@ -29,5 +29,5 @@ LOCAL_EMAIL_SETTINGS = {
 }
 
 LOCALLY_INSTALLED_APPS = (
-    #'south',
+    'debug_toolbar',
 )

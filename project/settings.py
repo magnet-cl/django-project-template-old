@@ -216,7 +216,6 @@ INSTALLED_APPS = (
     'users',
     'bootstrap_admin',
     'django.contrib.admin',
-    'debug_toolbar',
 )
 # Set the apps that are installed locally
 try:
