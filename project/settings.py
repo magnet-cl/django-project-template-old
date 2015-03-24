@@ -2,10 +2,10 @@
 Django settings for the project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.6/topics/settings/
+https://docs.djangoproject.com/en/1.7/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.6/ref/settings/
+https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 import os
@@ -180,13 +180,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -282,3 +282,5 @@ AUTH_USER_MODEL = 'users.User'
 
 RECAPTCHA_PUBLIC = '6LfLr90SAAAAABRD5AIfqIIYyIJ8Ls698OkQacNy'
 RECAPTCHA_PRIVATE = '6LfLr90SAAAAAMJ63_e1jrxg-31NAJynZtF3VGmJ'
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
