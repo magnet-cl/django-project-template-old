@@ -22,8 +22,13 @@ import sys
 sys.path.append(dirname(dirname(__file__)))
 environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
 
-# django settings
-from django.conf import settings as django_settings
+
+@task
+def get_db_name():
+    """ Returns the name of the default database """
+    with cd(env.server_root_dir):
+        with prefix('. .env/bin/activate'):
+            return run('python manage.py printdatabasename')
 
 
 @task
@@ -37,8 +42,8 @@ def migrate():
 @task
 def backup_db():
     """ Backups database (postgreSQL). """
-    db_name = env.config.DB.name
-    env.config.save()
+    # get database name
+    db_name = get_db_name()
 
     # dumps folder creation
     dumps_folder = 'db_dumps/{}'.format(env.branch)
@@ -73,6 +78,8 @@ def import_db(compressed_file=None):
     In order to use this task, your local database engine must be postgreSQL.
 
     """
+    # local django settings
+    from django.conf import settings as django_settings
 
     if compressed_file is None:
         compressed_file = download_db(compressed_file)
@@ -117,6 +124,9 @@ def export_db(compressed_file=None):
 
     # env.host replaced with staging host
     with settings(host_string=env.config.staging_DB.host):
+        # get database name on staging
+        db_name = get_db_name()
+
         # upload the compressed file
         compressed_file = put(compressed_file)[0]  # put returns a list
         dump_name = splitext(compressed_file)[0]  # name without gzip extension
@@ -124,12 +134,9 @@ def export_db(compressed_file=None):
         # gunzip dump
         run('gunzip "{}"'.format(compressed_file))
 
-        run('echo "drop database if exists {}" | psql'.format(
-            env.config.staging_DB.name))
-        run('echo "create database {}" | psql'.format(
-            env.config.staging_DB.name))
-        run('psql {} < "{}"'.format(env.config.staging_DB.name, dump_name))
-        env.config.save()
+        run('echo "drop database if exists {}" | psql'.format(db_name))
+        run('echo "create database {}" | psql'.format(db_name))
+        run('psql {} < "{}"'.format(db_name, dump_name))
 
         # cleanup files
         run('rm -f "{}"'.format(dump_name))  # raw file
