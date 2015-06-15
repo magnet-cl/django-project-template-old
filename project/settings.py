@@ -60,23 +60,6 @@ ENABLE_EMAILS = email_settings['ENABLE_EMAILS']
 # TEST should be true if we are running python tests
 TEST = 'test' in sys.argv
 
-if TEST:
-    try:
-        DATABASES['default'] = DATABASES['test']
-        del DATABASES['test']
-    except KeyError as e:
-        print "%s is not defined in the DATABASES dict" % e.message
-        print "Using default in-memory DB for tests"
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': ":memory:",
-                "HOST": "",
-                "USER": "",
-                "PASSWORD": "",
-            }
-        }
-
 TEMPLATE_DEBUG = DEBUG
 
 # Since we are using our custom user model, we need to set the authentication
