@@ -1,7 +1,6 @@
 -e git://github.com/magnet-cl/artichoke.git@1f29af679e5d1133eec0557e19eb06b30ca7f50a#egg=artichoke-dev
-Django==1.7.7
+Django==1.7.10
 Fabric==1.8.2
-South==1.0.1
 argparse==1.2.1
 bootstrap-admin==0.3.4
 django-appconf==0.6
