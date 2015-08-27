@@ -22,8 +22,8 @@ from users.managers import UserManager
 # models
 from base.models import BaseModel
 
-# notifications
-from notifications import email_manager
+# messaging
+from messaging import email_manager
 
 # standard library
 

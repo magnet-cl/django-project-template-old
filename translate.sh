@@ -61,7 +61,7 @@ elif [ $2 ] && [ $2 != '-c' ] ; then
     translate $2
 else
     translate "base"
-    translate "notifications"
+    translate "messaging"
     translate "project"
     translate "users"
 fi
