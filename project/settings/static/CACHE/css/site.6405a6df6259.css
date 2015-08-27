@@ -1,0 +1,48 @@
+.hide {
+  display: hidden;
+}
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+body .page-loading-icon {
+  color: #337ab7;
+  display: none;
+  left: 10px;
+  position: relative;
+}
+body.wait {
+  cursor: wait !important;
+}
+body.wait .page-loading-icon {
+  display: inline-block;
+}
+@media (max-width: 560px) {
+  #id_username,
+  #id_password {
+    display: block;
+    width: 96%;
+    padding: 4px 2%;
+  }
+}
+.brand img {
+  width: 19px;
+}
+footer hr {
+  margin-bottom: 0px;
+}
+footer .copyright {
+  vertical-align: top;
+  position: relative;
+  top: 15px;
+}
+/* display clases*/
+.inline {
+  display: inline;
+}
+.block {
+  display: block;
+}
+.none {
+  display: none;
+}

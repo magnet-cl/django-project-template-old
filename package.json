@@ -1,9 +1,9 @@
 {
-  "name": "NAME",
+  "name": "django-project-template",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "HOMEPAGE"
+    "url": "https://bitbucket.org/magnet-cl/django-project-template"
   },
   "author": "Magnet S.P.A.",
   "dependencies": {

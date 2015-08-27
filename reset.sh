@@ -9,11 +9,6 @@ do
              echo "Start Server"
              RUNSERVER=true
              ;;
-        h)
-             echo "heroku restart"
-             RUNSERVER=false
-             HEROKU=true
-             ;;
         ?)
              echo "fail"
              exit
@@ -25,10 +20,9 @@ if  $HEROKU ; then
     heroku pg:reset DATABASE
     heroku run python manage.py syncdb
 else
-    engine=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['ENGINE']"`
-    debug=`python -c"from project.local_settings import LOCAL_DEBUG; print LOCAL_DEBUG"`
-    dbname=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['NAME']"`
-    south_installed=`python -c"from project.settings import INSTALLED_APPS; print 'south' in INSTALLED_APPS"`
+    engine=`python -c"from project.settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['ENGINE']"`
+    debug=`python -c"from project.settings import LOCAL_DEBUG; print LOCAL_DEBUG"`
+    dbname=`python -c"from project.settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['NAME']"`
 
     if [ $debug = "True" ] ; then
     echo "----------------------drop-database------------------------------"
@@ -38,8 +32,8 @@ else
                 rm $dbname
             fi
         else
-            dbuser=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['USER']"`
-            dbpass=`python -c"from project.local_settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['PASSWORD']"`
+            dbuser=`python -c"from project.settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['USER']"`
+            dbpass=`python -c"from project.settings import LOCAL_DATABASES; print LOCAL_DATABASES['default']['PASSWORD']"`
             if [ $engine == "django.db.backends.mysql" ]; then
                 echo "drop database $dbname" | mysql --user=$dbuser --password=$dbpass
                 echo "create database $dbname" | mysql --user=$dbuser --password=$dbpass
@@ -49,14 +43,11 @@ else
             fi
         fi
         echo "no" | python manage.py syncdb
-        if [ $south_installed = "True" ] ; then
-            python manage.py migrate --no-initial-data
-            python manage.py migrate
-        fi
+        python manage.py migrate
     fi
 
     if  $RUNSERVER ; then
-        python manage.py runserver
+        python manage.py runserver 0.0.0.0:8000 --nothreading
     fi
 fi
 
