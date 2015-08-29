@@ -6,18 +6,16 @@ function print_green(){
 
 INSTALL_APTITUDE=true
 INSTALL_PIP=true
-INSTALL_HEROKU=false
 INSTALL_BOWER=true
 INSTALL_NPM=true
 TRANSLATE=true
-while getopts “nahpb” OPTION
+while getopts “napb” OPTION
 do
     case $OPTION in
         a)
              print_green "only install aptitude"
              INSTALL_APTITUDE=true
              INSTALL_PIP=false
-             INSTALL_HEROKU=false
              INSTALL_BOWER=false
              INSTALL_NPM=false
              TRANSLATE=false
@@ -26,16 +24,6 @@ do
              print_green "only pip install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=true
-             INSTALL_HEROKU=false
-             INSTALL_BOWER=false
-             INSTALL_NPM=false
-             TRANSLATE=false
-             ;;
-        h)
-             print_green "only heroku install"
-             INSTALL_APTITUDE=false
-             INSTALL_PIP=false
-             INSTALL_HEROKU=true
              INSTALL_BOWER=false
              INSTALL_NPM=false
              TRANSLATE=false
@@ -44,7 +32,6 @@ do
              print_green "only bower install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=false
-             INSTALL_HEROKU=false
              INSTALL_BOWER=true
              INSTALL_NPM=false
              TRANSLATE=false
@@ -53,7 +40,6 @@ do
              print_green "only node install"
              INSTALL_APTITUDE=false
              INSTALL_PIP=false
-             INSTALL_HEROKU=false
              INSTALL_BOWER=false
              INSTALL_NPM=true
              TRANSLATE=false
@@ -101,11 +87,15 @@ if  $INSTALL_APTITUDE ; then
     virtualenv .env
 fi
 if  $INSTALL_PIP ; then
+    
+    print_green "1"
     # activate the environment
     source .env/bin/activate
+    print_green "2"
 
     # install setuptools
     pip install --upgrade setuptools
+    print_green "3"
 
     # upgrade pip
     pip install --upgrade pip
@@ -134,51 +124,27 @@ then
     pip install psycopg2
 fi
 
-# HEROKU 
-if  $INSTALL_HEROKU ; then
-    # activate the environment
-    source .env/bin/activate
-
-    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-    heroku login
-    pip install psycopg2 dj-database-url
-    pip freeze > requirements.txt
-    pip uninstall psycopg2 dj-database-url
-
-    print_green "web: python manage.py runserver 0.0.0.0:$PORT --noreload" > Procfile
-
-    print_green "Would you like to create a new heroku repo? [N/y]"
-    read CREATE_REPO
-
-    if [[ "$CREATE_REPO" == "y" ]]
-    then
-        heroku create
-    fi
-
-    print_green "You should now commit the requirements.txt file."
-    print_green "Then deploy to heroku: git push heroku master"
-fi
 
 # create the local_settings file if it does not exist
-if [ ! -f ./project/local_settings.py ] ; then
-    cp project/local_settings.py.default project/local_settings.py
+if [ ! -f ./project/settings/local_settings.py ] ; then
+    cp project/settings/local_settings.py.default project/settings/local_settings.py
 
     if [ INSTALL_POSTGRE ] ; then 
         EXP="s/database-name/${PWD##*/}/g"
-        print_green $i|sed -i $EXP project/local_settings.py
+        print_green $i|sed -i $EXP project/settings/local_settings.py
         
         print_green "remember to configure in project/local_setings.py your database"
     else
         EXP="s/postgresql_psycopg2/sqlite3/g"
-        print_green $i|sed -i $EXP project/local_settings.py
+        print_green $i|sed -i $EXP project/settings/local_settings.py
 
         EXP="s/database-name/\/tmp/${PWD##*/}.sql/g"
-        print_green $i|sed -i $EXP project/local_settings.py
+        print_green $i|sed -i $EXP project/settings/local_settings.py
     fi
 fi
 
 # Change the project/settings.py file it contains the CHANGE ME string
-if grep -q "CHANGE ME" "project/settings.py"; then
+if grep -q "CHANGE ME" "project/settings/__init__.py"; then
     # change the SECRET_KEY value on project settings
     python manage.py generatesecretkey
 fi
