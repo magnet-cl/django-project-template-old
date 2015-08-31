@@ -88,14 +88,11 @@ if  $INSTALL_APTITUDE ; then
 fi
 if  $INSTALL_PIP ; then
     
-    print_green "1"
     # activate the environment
     source .env/bin/activate
-    print_green "2"
 
     # install setuptools
     pip install --upgrade setuptools
-    print_green "3"
 
     # upgrade pip
     pip install --upgrade pip
