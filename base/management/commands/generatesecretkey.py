@@ -1,4 +1,4 @@
-from django.core.management.templates import TemplateCommand
+from django.core.management.templates import BaseCommand
 from django.utils.crypto import get_random_string
 
 import fileinput
@@ -6,7 +6,7 @@ import fileinput
 from django.conf import settings
 
 
-class Command(TemplateCommand):
+class Command(BaseCommand):
     help = ("Replaces the SECRET_KEY VALUE in settings.py with a new one.")
 
     def handle(self, *args, **options):
