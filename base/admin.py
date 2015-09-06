@@ -2,7 +2,6 @@
 
 # django
 from django.contrib import admin
-from django.contrib.auth import REDIRECT_FIELD_NAME
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
@@ -36,7 +35,6 @@ class AdminSite(admin.sites.AdminSite):
         context = {
             'title': _('Log in'),
             'app_path': request.get_full_path(),
-            REDIRECT_FIELD_NAME: request.get_full_path(),
         }
         context.update(extra_context or {})
 
