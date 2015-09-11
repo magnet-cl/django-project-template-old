@@ -82,6 +82,10 @@ class BaseTestCase(TestCase):
             self.random_string(length=2)
         )
 
+    def random_hex_int(self, *args, **kwargs):
+        val = self.random_int(*args, **kwargs)
+        return hex(val)
+
     def random_int(self, minimum=-100000, maximum=100000):
         return random.randint(minimum, maximum)
 
