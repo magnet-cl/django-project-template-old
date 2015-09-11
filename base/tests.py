@@ -94,9 +94,13 @@ class BaseTestCase(TestCase):
 
         return ''.join(random.choice(chars) for x in range(length))
 
-    def set_required_boolean(self, data, field, **kwargs):
+    def set_required_boolean(self, data, field, default=None, **kwargs):
         if field not in data:
-            data[field] = not not random.randint(0, 1)
+
+            if default is None:
+                data[field] = not not random.randint(0, 1)
+            else:
+                data[field] = default
 
     def set_required_date(self, data, field, **kwargs):
         if field not in data:
@@ -124,6 +128,16 @@ class BaseTestCase(TestCase):
     def set_required_int(self, data, field, **kwargs):
         if field not in data:
             data[field] = self.random_int(**kwargs)
+
+    def set_required_ip_address(self, data, field, **kwargs):
+        if field not in data:
+            ip = '{}.{}.{}.{}'.format(
+                self.random_int(minimum=1, maximum=255),
+                self.random_int(minimum=1, maximum=255),
+                self.random_int(minimum=1, maximum=255),
+                self.random_int(minimum=1, maximum=255),
+            )
+            data[field] = ip
 
     def set_required_rut(self, data, field, length=6):
         if field not in data:
