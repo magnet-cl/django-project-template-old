@@ -6,10 +6,11 @@ Replace this with more appropriate tests for your application.
 """
 
 # standard library
-import random
-import string
-import re
 import os
+import random
+import re
+import string
+import uuid
 
 # django
 from django.contrib import admin
@@ -97,6 +98,10 @@ class BaseTestCase(TestCase):
             chars = string.ascii_uppercase + string.digits
 
         return ''.join(random.choice(chars) for x in range(length))
+
+    def random_uuid(self, *args, **kwargs):
+        chars = string.digits
+        return uuid.UUID(''.join(random.choice(chars) for x in range(32)))
 
     def set_required_boolean(self, data, field, default=None, **kwargs):
         if field not in data:
