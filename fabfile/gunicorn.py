@@ -68,7 +68,8 @@ def add_gunicorn_service():
     gunicorn_script = '%s/gunicorn.sh'
     gunicorn_script %= env.server_root_dir
     context = {
-        'gunicorn_script': gunicorn_script
+        'gunicorn_script': gunicorn_script,
+        'user': env.user,
     }
 
     add_upstart_task(filename, context)
