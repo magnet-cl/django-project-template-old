@@ -6,7 +6,7 @@ local_settings.py
 project/media/
 project/static
 *.ini
-gunicorn.sh
+gunicorn_conf.py
 
 fabfile/templates/ssh_key
 fabfile/templates/ssh_key.pub

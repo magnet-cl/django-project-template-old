@@ -51,7 +51,7 @@ def add_django_site():
         'server_root_dir': env.server_root_dir,
         'proxy_port': env.django_port
     }
-    filename = '%s/fabfile/templates/django'
+    filename = '%s/fabfile/templates/nginx_site.conf'
     filename %= env.local_root_dir
 
     add_site(filename, context)

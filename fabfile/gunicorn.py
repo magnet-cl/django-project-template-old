@@ -43,32 +43,32 @@ def restart():
     gunicorn_handler('restart')
 
 
-def add_gunicorn_script():
-    """ Deploys a script to run django. """
-    filename = '%s/fabfile/templates/gunicorn.sh'
-    filename %= env.local_root_dir
-    destination = env.server_root_dir
+def add_gunicorn_conf():
+    """ Deploys the gunicorn configuration file. """
+    filename = '{}/fabfile/templates/gunicorn.conf'
+    filename = filename.format(env.local_root_dir)
+    destination = '{}/gunicorn_conf.py'.format(env.server_root_dir)
     context = {
         'user': env.user,
         'server_root_dir': env.server_root_dir,
         'django_port': env.django_port
     }
-    upload_template(filename, destination, context=context, mode=0776)
+    upload_template(filename, destination, context=context)
 
 
 @task
 def add_gunicorn_service():
-    """ Deploys a gunicorn configuration file. """
+    """ Deploys an upstart service for gunicorn. """
 
-    # deploys the gunicorn script first
-    add_gunicorn_script()
+    # deploys the gunicorn config file
+    add_gunicorn_conf()
 
-    filename = '%s/fabfile/templates/django.conf'
-    filename %= env.local_root_dir
-    gunicorn_script = '%s/gunicorn.sh'
-    gunicorn_script %= env.server_root_dir
+    filename = '{}/fabfile/templates/gunicorn_upstart.conf'
+    filename = filename.format(env.local_root_dir)
+
     context = {
-        'gunicorn_script': gunicorn_script,
+        'prefix': env.prefix,
+        'server_root_dir': env.server_root_dir,
         'user': env.user,
     }
 
