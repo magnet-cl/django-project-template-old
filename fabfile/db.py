@@ -28,7 +28,7 @@ def get_db_name():
     """ Returns the name of the default database """
     with cd(env.server_root_dir):
         with prefix('. .env/bin/activate'):
-            return run('python manage.py printdatabasename')
+            return run('python -Wi manage.py printdatabasename')
 
 
 @task
