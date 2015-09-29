@@ -1,7 +1,7 @@
 # django-project-template
 
 A template for a Django project. It's simply project that was created with
-django 1.6.2 project with a lot of tweaks, usually things that we, at
+Django 1.8.4 project with a lot of tweaks, usually things that we, at
 Magnet.cl do in all projects.
 
 ## Requirements
@@ -102,7 +102,7 @@ To get a list of the available tasks run: `fab -l`.
 
 Make sure to run the following task before any other task in any of the these
 formats:
-* `fab config.set_host`: Uses the host specified in `env.hosts` and `magnet`
+* `fab config.set`: Uses the host specified in `env.hosts` and `magnet`
   as user.
-* `fab config.set_host:examplehost`: Manually specify host.
-* `fab config.set_host:examplehost,user`: Manually specify host and user.
+* `fab config.set:examplehost`: Manually specify host.
+* `fab config.set:examplehost,user`: Manually specify host and user.
