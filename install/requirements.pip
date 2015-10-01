@@ -1,4 +1,3 @@
--e git://github.com/magnet-cl/artichoke.git@1f29af679e5d1133eec0557e19eb06b30ca7f50a#egg=artichoke-dev
 bootstrap-admin==0.3.6
 Django==1.8.4
 Fabric==1.10.2

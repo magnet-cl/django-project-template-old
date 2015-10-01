@@ -1,9 +1,9 @@
-from artichoke import Config as ArtichokeConfig
-from fabric.api import env
-from fabric.api import task
-
 # standard library
 from os import path
+
+# fabric
+from fabric.api import env
+from fabric.api import task
 
 # local and remote paths
 env.local_root_dir = path.join(path.dirname(__file__), "..")
@@ -18,15 +18,6 @@ env.server_git_url = 'example/url.git'
 # prefix used by configuration files
 env.prefix = path.split(env.server_git_url)[1]  # split tail
 env.prefix = path.splitext(env.prefix)[0]  # discard git suffix
-
-
-class Config(ArtichokeConfig):
-    def __init__(self, env, config_file=None):
-        super(Config, self).__init__(config_file)
-
-        self.add_section('DB')
-        self.add_section('local_DB')
-        self.add_section('staging_DB')
 
 
 @task
@@ -50,7 +41,3 @@ def set(address='default', user='magnet', branch='master', django_port='8000'):
     if env.branch != 'master':
         env.server_root_dir += '-%s' % env.branch
         env.django_port = int(env.django_port) + 1
-
-    # artichoke config file saved considering branch
-    config_file = '%s/project/config-%s.ini' % (env.local_root_dir, env.branch)
-    env.config = Config(env, config_file)
