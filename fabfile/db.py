@@ -1,21 +1,24 @@
+# standard library
+from os import environ
+from os.path import dirname
+from os.path import splitext
+from time import gmtime
+from time import strftime
+import sys
+
+# fabric
 from fabric.api import cd
 from fabric.api import env
 from fabric.api import get
 from fabric.api import local
 from fabric.api import prefix
+from fabric.api import prompt
 from fabric.api import put
 from fabric.api import run
 from fabric.api import task
+from fabric.colors import green
 from fabric.colors import red
 from fabric.context_managers import settings
-
-# standard library
-from os.path import splitext
-from os.path import dirname
-from os import environ
-from time import gmtime
-from time import strftime
-import sys
 
 
 # add django settings module to the import search path
@@ -24,9 +27,11 @@ environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
 
 
 @task
-def get_db_name():
+def get_db_name(root_dir=None):
     """ Returns the name of the default database """
-    with cd(env.server_root_dir):
+    if not root_dir:
+        root_dir = env.server_root_dir
+    with cd(root_dir):
         with prefix('. .env/bin/activate'):
             return run('python -Wi manage.py printdatabasename')
 
@@ -122,10 +127,18 @@ def export_db(compressed_file=None):
     # name without gzip extension
     dump_name = splitext(compressed_file)[0]
 
+    # set host and branch for staging server
+    staging_host = prompt(green('Type in the staging host: '))
+    staging_branch = prompt(green('Type in the staging branch: '),
+                            default='testing')
+    staging_root_dir = env.server_root_dir
+    if staging_branch != 'master':
+        staging_root_dir = "{}-{}".format(staging_root_dir, staging_branch)
+
     # env.host replaced with staging host
-    with settings(host_string=env.config.staging_DB.host):
+    with settings(host_string=staging_host):
         # get database name on staging
-        db_name = get_db_name()
+        db_name = get_db_name(staging_root_dir)
 
         # upload the compressed file
         compressed_file = put(compressed_file)[0]  # put returns a list
@@ -134,9 +147,11 @@ def export_db(compressed_file=None):
         # gunzip dump
         run('gunzip "{}"'.format(compressed_file))
 
-        run('echo "drop database if exists {}" | psql'.format(db_name))
-        run('echo "create database {}" | psql'.format(db_name))
+        run('dropdb "{}"'.format(db_name))
+        run('createdb "{}"'.format(db_name))
         run('psql {} < "{}"'.format(db_name, dump_name))
 
         # cleanup files
         run('rm -f "{}"'.format(dump_name))  # raw file
+
+    print(green('Remember that there are settings established at DB level'))
