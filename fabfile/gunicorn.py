@@ -19,9 +19,9 @@ def install():
         with prefix('. .env/bin/activate'):
             run('pip install gunicorn')
 
-        # create logs directory
-        cmd = 'mkdir -p logs'
-        run(cmd)
+    # create logs directory
+    cmd = 'mkdir -p logs'
+    run(cmd)
 
 
 @task
