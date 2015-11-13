@@ -2,6 +2,8 @@
 
 # standard library
 import itertools
+import re
+import unicodedata
 import urlparse
 
 
@@ -37,3 +39,34 @@ def extract_youtube_id(url):
                 return query.path.split('/')[2]
         else:
             return ''
+
+
+def format_rut(rut):
+    if not rut:
+        return ''
+
+    rut = rut.replace(' ', '').replace('.', '').replace('-', '')
+    rut = rut[:9]
+
+    verifier = rut[-1]
+    code = rut[0:-1][::-1]
+
+    code = re.sub("(.{3})", "\\1.", code, 0, re.DOTALL)
+
+    code = code[::-1]
+
+    return '%s-%s' % (code, verifier)
+
+
+def camel_to_underscore(string):
+    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', string)
+    return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
+
+
+def underscore_to_camel(word):
+    return ''.join(x.capitalize() or '_' for x in word.split('_'))
+
+
+def strip_accents(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s)
+                   if unicodedata.category(c) != 'Mn')
