@@ -77,23 +77,27 @@ def download_db(compressed_file=None):
 
 
 @task
-def import_db(compressed_file=None):
+def import_db(dump_name=None):
     """ Imports a compressed database backup into the local system.
-
     In order to use this task, your local database engine must be postgreSQL.
+    You can specify an sql dump file to use. If no file is supplied, then a
+    copy of the production database is downloaded.
+
+    Keyword arguments:
+    dump_name -- The name of a .sql dump of the database (default None)
 
     """
     # local django settings
     from django.conf import settings as django_settings
 
-    if compressed_file is None:
-        compressed_file = download_db(compressed_file)
+    if dump_name is None:
+        compressed_file = download_db()
 
-    # name without gzip extension
-    dump_name = splitext(compressed_file)[0]
+        # name without gzip extension
+        dump_name = splitext(compressed_file)[0]
 
-    # gunzip dump
-    local('gunzip "{}"'.format(compressed_file))
+        # gunzip dump
+        local('gunzip "{}"'.format(compressed_file))
 
     # get local database information
     local_engine = django_settings.DATABASES['default']['ENGINE']
@@ -109,7 +113,7 @@ def import_db(compressed_file=None):
     local('echo "create database {}" | psql'.format(local_name))
     local('psql {} < "{}"'.format(local_name, dump_name))
 
-    return compressed_file
+    return dump_name
 
 
 @task
