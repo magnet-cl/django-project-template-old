@@ -14,3 +14,13 @@ urlpatterns = patterns(
     (r'^accounts/', include('users.urls')),
     url(r'^$', 'base.views.index', name='home'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# custom error pages
+handler404 = 'base.views.page_not_found_view'
+
+handler500 = 'base.views.error_view'
+
+handler403 = 'base.views.permission_denied_view'
+
+handler400 = 'base.views.bad_request_view'
