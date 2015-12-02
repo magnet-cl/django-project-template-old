@@ -138,5 +138,5 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         """
         # delete all the sessions that match the user
         for s in Session.objects.all():
-            if s.get_decoded().get('_auth_user_id') == self.id:
+            if int(s.get_decoded().get('_auth_user_id')) == self.id:
                 s.delete()
