@@ -1,5 +1,11 @@
 """ Admin page configuration for the users app """
 
+# django
+from django.contrib import admin
+from django.contrib import messages
+from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
+from django.utils.translation import ugettext_lazy as _
+
 # models
 from users.models import User
 
@@ -7,13 +13,20 @@ from users.models import User
 from users.forms import UserCreationForm
 from users.forms import UserChangeForm
 
-# django
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
-from django.utils.translation import ugettext_lazy as _
-
 # base
 from base.admin import download_report
+
+
+def force_logout(modeladmin, request, queryset):
+    for user in queryset:
+        user.force_logout()
+
+    # TODO add log to register this action
+
+    messages.add_message(request, messages.SUCCESS,
+                         _("Selected users where logged out"))
+
+force_logout.short_description = _("Logs out the user from all devices")
 
 
 class UserAdmin(DjangoUserAdmin):

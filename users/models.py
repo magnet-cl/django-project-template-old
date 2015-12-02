@@ -7,6 +7,7 @@ All apps should use the users.User model for all users
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.tokens import default_token_generator
+from django.contrib.sessions.models import Session
 from django.contrib.sites.models import get_current_site
 from django.db import models
 from django.template import loader
@@ -130,3 +131,12 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
             subject=title,
             context=template_vars
         )
+
+    def force_logout(self):
+        """
+        Deletes all the sessions of the User
+        """
+        # delete all the sessions that match the user
+        for s in Session.objects.all():
+            if s.get_decoded().get('_auth_user_id') == self.id:
+                s.delete()
