@@ -10,7 +10,6 @@ import json
 # django
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
-from django.db.models import Count
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
@@ -133,8 +132,3 @@ class BaseModel(models.Model):
         data taken form the database
         """
         return self.__class__.objects.get(id=self.id)
-
-    @classmethod
-    def find_duplicates(cls, *fields):
-        duplicates = cls.objects.values(*fields).annotate(Count('id'))
-        return duplicates.order_by().filter(id__count__gt=1)

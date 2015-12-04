@@ -3,6 +3,7 @@
 # django
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
+from django.db.models import Count
 
 # standard library
 import json
@@ -11,6 +12,10 @@ import json
 class QuerySet(models.query.QuerySet):
     def to_json(self):
         return json.dumps(list(self.values()), cls=DjangoJSONEncoder)
+
+    def find_duplicates(self, *fields):
+        duplicates = self.values(*fields).annotate(Count('id'))
+        return duplicates.order_by().filter(id__count__gt=1)
 
 
 class BaseManager(models.Manager):
@@ -28,3 +33,7 @@ class BaseManager(models.Manager):
         qs = self.get_queryset()
 
         return json.dumps(list(qs.values()), cls=DjangoJSONEncoder)
+
+    def find_duplicates(self, *fields):
+        qs = self.get_query_set()
+        return qs.find_duplicates(*fields)
