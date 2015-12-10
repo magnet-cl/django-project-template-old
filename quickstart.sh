@@ -142,6 +142,7 @@ fi
 
 # Change the project/settings/__init__.py file it contains the CHANGE ME string
 if grep -q "CHANGE ME" "project/settings/__init__.py"; then
+    print_green "Generate secret key"
     # change the SECRET_KEY value on project settings
     python manage.py generatesecretkey
 fi
