@@ -18,6 +18,15 @@ import csv
 class AdminSite(admin.sites.AdminSite):
     login_form = AdminAuthenticationForm
 
+    # Text to put at the end of each page's <title>.
+    site_title = _('My site admin')
+
+    # Text to put in each page's <h1>.
+    site_header = _('My administration')
+
+    # Text to put at the top of the admin index page.
+    index_title = _('Site administration')
+
     @never_cache
     def login(self, request, extra_context=None):
         """
