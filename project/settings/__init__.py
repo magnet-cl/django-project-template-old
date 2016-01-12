@@ -203,6 +203,11 @@ except:
 else:
     INSTALLED_APPS = INSTALLED_APPS + LOCALLY_INSTALLED_APPS
 
+if DEBUG:
+    env = 'development'
+else:
+    env = 'production'
+
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
@@ -221,11 +226,16 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
-        }
+        },
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': '{}/logs/{}/error.log'.format(BASE_DIR, env),
+        },
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins', 'file'],
             'level': 'ERROR',
             'propagate': True,
         },
