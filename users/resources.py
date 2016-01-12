@@ -38,7 +38,7 @@ from api.resources import MultipartResource
 from users.models import User
 
 # forms
-from users.forms import InsuredForm
+from users.forms import UserForm
 
 # Get an instance of a logger
 logger = logging.getLogger('api.user')
@@ -300,7 +300,7 @@ class UserResource(MultipartResource):
                 content_type=bundle.request.META['CONTENT_TYPE'])
             raise ImmediateHttpResponse(response=response)
 
-        form = InsuredForm(bundle.data)
+        form = UserForm(bundle.data)
 
         if not form.is_valid():
             response = http.HttpBadRequest(
