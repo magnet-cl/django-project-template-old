@@ -12,6 +12,7 @@ from fabric.contrib import files
 
 # local tasks
 from db import backup_db
+from db import migrate
 from utils import confirm_target
 from utils import git_checkout
 from utils import git_clone
@@ -71,6 +72,9 @@ def update_server():
 
             print(green('compiling translations'))
             run('./translate.sh -c')
+
+    print(green('Migrate database'))
+    migrate()
 
 
 @task
