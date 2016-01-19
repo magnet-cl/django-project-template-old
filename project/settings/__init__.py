@@ -194,6 +194,7 @@ INSTALLED_APPS = (
     'users',
     'bootstrap_admin',
     'django.contrib.admin',
+    'captcha',
 )
 # Set the apps that are installed locally
 try:
@@ -267,7 +268,11 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.User'
 
-RECAPTCHA_PUBLIC = '6LfLr90SAAAAABRD5AIfqIIYyIJ8Ls698OkQacNy'
-RECAPTCHA_PRIVATE = '6LfLr90SAAAAAMJ63_e1jrxg-31NAJynZtF3VGmJ'
+# default keys, replace with somethign your own
+RECAPTCHA_PUBLIC_KEY = 'place recaptcha public key here'
+RECAPTCHA_PRIVATE_KEY = 'place recaptcha private key here'
+NOCAPTCHA = True
+# un comment when we start using only SSL
+# RECAPTCHA_USE_SSL = True
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

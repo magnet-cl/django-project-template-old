@@ -40,12 +40,10 @@ block content
             input(type='hidden', name='next', value='{{ next }}')
 
           - if form.captcha
-            .form-group(class="{% if form.captcha.errors %}has-error{% endif %}")
-              label.control-label.col-lg-2.required(for='id_captcha')
-                | {{ form.captcha.label }}
-              .col-lg-10
-                | {{ form.captcha }}
-                span.help-inline.help-block {{ form.captcha.errors|striptags }}
+            label.control-label.required(for='id_captcha')
+              | {{ form.captcha.label }}
+            {{ form.captcha }}
+            span.help-inline.help-block {{ form.captcha.errors|striptags }}
 
           .form-group
             .col-md-offset-2.col-lg-10

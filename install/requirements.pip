@@ -8,4 +8,4 @@ ipython==4.0.0
 psycopg2==2.6.1
 pyjade==3.1.0
 pytz==2015.4
-recaptcha-client==1.0.6
+django-recaptcha==1.0.5

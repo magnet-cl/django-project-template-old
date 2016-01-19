@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# models
-from users.models import User
-
-# forms
-from base.forms import BaseModelForm
-
-from base.fields import ReCaptchaField
+# django
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import get_current_site
@@ -14,6 +8,13 @@ from django.template import loader
 from django.utils.http import int_to_base36
 from django.utils.translation import ugettext_lazy as _
 from django import forms
+
+# models
+from users.models import User
+
+# forms
+from base.forms import BaseModelForm
+from captcha.fields import ReCaptchaField
 
 
 class AuthenticationForm(forms.Form):
