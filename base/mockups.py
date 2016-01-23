@@ -4,15 +4,20 @@ project models
 """
 
 # standard library
+import os
 import random
 import string
 import uuid
 
 # django
 from django.utils import timezone
+from django.apps import apps
 
 # models
 from users.models import User
+
+# utils
+from base.utils import camel_to_underscore
 
 
 class Mockup(object):
@@ -127,3 +132,33 @@ class Mockup(object):
         if field not in data:
             data[field] = 'http://{}.com'.format(
                 self.random_string(length=length))
+
+
+def add_get_or_create(cls, model):
+    model_name = camel_to_underscore(model.__name__)
+
+    def get_or_create(self, **kwargs):
+        try:
+            return model.objects.get(**kwargs), False
+        except model.DoesNotExist:
+            pass
+
+        method_name = 'create_{}'.format(model_name)
+        return getattr(cls, method_name)(self, **kwargs), True
+
+    get_or_create.__doc__ = "Get or create for {}".format(model_name)
+    get_or_create.__name__ = "get_or_create_{}".format(model_name)
+    setattr(cls, get_or_create.__name__, get_or_create)
+
+
+def get_our_models():
+    for model in apps.get_models():
+        app_label = model._meta.app_label
+
+        # test only those models that we created
+        if os.path.isdir(app_label):
+            yield model
+
+
+for model in get_our_models():
+    add_get_or_create(Mockup, model)

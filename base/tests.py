@@ -6,7 +6,6 @@ Replace this with more appropriate tests for your application.
 """
 
 # standard library
-import os
 
 # django
 from django.contrib import admin
@@ -14,11 +13,13 @@ from django.core.urlresolvers import NoReverseMatch
 from django.core.urlresolvers import resolve
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models import get_models
 from django.test import TestCase
 
 # urls
 from project.urls import urlpatterns
+
+# models
+from base.mockups import get_our_models
 
 # utils
 from base.utils import camel_to_underscore
@@ -84,15 +85,6 @@ class IntegrityOnDeleteTestCase(BaseTestCase):
 
             # feedback that the test passed
             print '.',
-
-
-def get_our_models():
-    for model in get_models():
-        app_label = model._meta.app_label
-
-        # test only those models that we created
-        if os.path.isdir(app_label):
-            yield model
 
 
 def reverse_pattern(pattern, namespace, args=None, kwargs=None):
