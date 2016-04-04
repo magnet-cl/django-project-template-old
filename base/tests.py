@@ -108,6 +108,10 @@ class UrlsTest(BaseTestCase):
         # tie id 1
         self.user.delete()
         self.user.id = 1
+
+        # give the user all the permissions, so we test every page
+        self.user.is_superuser = True
+
         self.user.save()
         self.login()
 
