@@ -58,6 +58,9 @@ def format_rut(rut):
     rut = rut.replace(' ', '').replace('.', '').replace('-', '')
     rut = rut[:9]
 
+    if not rut:
+        return ''
+
     verifier = rut[-1]
     code = rut[0:-1][::-1]
 
