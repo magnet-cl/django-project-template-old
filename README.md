@@ -1,6 +1,6 @@
 # django-project-template
 
-A template for a Django project. It's simply project that was created with
+A template for a Django project. It's simply a project that was created with
 Django 1.8.4 project with a lot of tweaks, usually things that we, at
 Magnet.cl do in all projects.
 
@@ -11,7 +11,7 @@ Magnet.cl do in all projects.
 ## Get the code
 Create a new repository in github for your django project.
 Clone your repository into your computer.
-Add the django-project-template github repo as a remote repository:
+Add the django-project-template Github repo as a remote repository:
 * `git remote add template
   git@github.com:magnet-cl/django-project-template.git`
 Pull the code from the project template
@@ -25,7 +25,7 @@ Now you have your own django project in your repository
 ## Quickstart
 
 After you obtain the code, run the quick start script. It should install
-all the dependencies you need to start the project. Then you need to Configure
+all the dependencies you need to start the project. Then you need to configure
 your database settings in the project/local_settings.py file.
 
 * `./quickstart.sh`
@@ -35,7 +35,7 @@ with:
 
 * `./reset.sh`
 
-## Basic Sturcture
+## Basic Structure
 
 ### Base: 
 Base is the first application of this project. It's function is to provide
