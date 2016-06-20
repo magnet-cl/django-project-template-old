@@ -1,7 +1,6 @@
 # standard library
 from os import environ
 from os.path import dirname
-from os.path import splitext
 from time import gmtime
 from time import strftime
 import sys
@@ -55,10 +54,10 @@ def backup_db():
     cmd = 'mkdir -p {}'.format(dumps_folder)
     run(cmd)
     # generate backup file name based on its branch and current time
-    dump_name = strftime("%Y-%m-%d-%H:%M:%S", gmtime())
-    dump_name = '{}/{}.sql.gz'.format(dumps_folder, dump_name)
+    dump_name = strftime("%Y-%m-%d-%H-%M-%S", gmtime())
+    dump_name = '{}/{}.dump'.format(dumps_folder, dump_name)
 
-    cmd = 'pg_dump {} | gzip > "{}"'.format(db_name, dump_name)
+    cmd = 'pg_dump -Fc "{}" -f "{}"'.format(db_name, dump_name)
     run(cmd)
 
     return dump_name
@@ -84,20 +83,14 @@ def import_db(dump_name=None):
     copy of the production database is downloaded.
 
     Keyword arguments:
-    dump_name -- The name of a .sql dump of the database (default None)
+    dump_name -- The name of a sql dump of the database (default None)
 
     """
     # local django settings
     from django.conf import settings as django_settings
 
     if dump_name is None:
-        compressed_file = download_db()
-
-        # name without gzip extension
-        dump_name = splitext(compressed_file)[0]
-
-        # gunzip dump
-        local('gunzip "{}"'.format(compressed_file))
+        dump_name = download_db()
 
     # get local database information
     local_engine = django_settings.DATABASES['default']['ENGINE']
@@ -109,9 +102,11 @@ def import_db(dump_name=None):
         print(red('Aborting current task.'))
         return
 
-    local('echo "drop database if exists {}" | psql'.format(local_name))
-    local('echo "create database {}" | psql'.format(local_name))
-    local('psql {} < "{}"'.format(local_name, dump_name))
+    local('dropdb "{}"'.format(local_name))
+    local('createdb "{}"'.format(local_name))
+    local('pg_restore -d "{}" -O -j 2 "{}"'.format(local_name, dump_name))
+
+    print(green('Remember that there are settings established at DB level'))
 
     return dump_name
 
@@ -126,10 +121,7 @@ def export_db(compressed_file=None):
     """
 
     if compressed_file is None:
-        compressed_file = download_db(compressed_file)
-
-    # name without gzip extension
-    dump_name = splitext(compressed_file)[0]
+        dump_name = download_db(compressed_file)
 
     # set host and branch for staging server
     staging_host = prompt(green('Type in the staging host: '))
@@ -145,17 +137,13 @@ def export_db(compressed_file=None):
         db_name = get_db_name(staging_root_dir)
 
         # upload the compressed file
-        compressed_file = put(compressed_file)[0]  # put returns a list
-        dump_name = splitext(compressed_file)[0]  # name without gzip extension
-
-        # gunzip dump
-        run('gunzip "{}"'.format(compressed_file))
+        uploaded_dump = put(dump_name)[0]  # put returns a list
 
         run('dropdb "{}"'.format(db_name))
         run('createdb "{}"'.format(db_name))
-        run('psql {} < "{}"'.format(db_name, dump_name))
+        run('pg_restore -d "{}" -j 2 "{}"'.format(db_name, uploaded_dump))
 
         # cleanup files
-        run('rm -f "{}"'.format(dump_name))  # raw file
+        run('rm -f "{}"'.format(uploaded_dump))  # raw file
 
     print(green('Remember that there are settings established at DB level'))
