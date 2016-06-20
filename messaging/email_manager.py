@@ -1,16 +1,12 @@
+# standard library
+from threading import Thread
+
 # django
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template import Context
 from django.template.loader import get_template
 from django.utils.translation import ugettext_lazy as _
-
-# standard library
-from threading import Thread
-import time
-
-# base
-from base import utils
 
 
 def _send_emails(emails, template_name, subject, sender=None,
@@ -40,28 +36,21 @@ def _send_emails(emails, template_name, subject, sender=None,
             settings.SENDER_EMAIL
         )
 
-    emails_in_groups_of_5 = utils.grouper(emails, 5)
+    msg = EmailMultiAlternatives(subject, text_content,
+                                 sender, emails, headers=headers)
 
-    for emails in emails_in_groups_of_5:
-        msg = EmailMultiAlternatives(subject, text_content,
-                                     sender, emails, headers=headers)
+    for attachment in attachments:
+        attachment.seek(0)
+        msg.attach(attachment.name, attachment.read(),
+                   'application/pdf')
 
-        for attachment in attachments:
-            attachment.seek(0)
-            msg.attach(attachment.name, attachment.read(),
-                       'application/pdf')
+    msg.attach_alternative(html_content, "text/html")
 
-        msg.attach_alternative(html_content, "text/html")
+    # do not send emails if in testing
+    if settings.TEST:
+        return
 
-        # do not send emails if in testing
-        if settings.TEST:
-            return
-
-        try:
-            msg.send(fail_silently=fail_silently)
-        except:
-            time.sleep(1)
-            msg.send(fail_silently=fail_silently)
+    msg.send(fail_silently=fail_silently)
 
 
 def send_emails(**kwargs):
