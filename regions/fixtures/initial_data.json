@@ -151,7 +151,7 @@
 },
 {
     "pk": 1, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 15, 
         "created_at": "2014-08-08T22:23:57.810Z", 
@@ -161,7 +161,7 @@
 },
 {
     "pk": 2, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 15, 
         "created_at": "2014-08-08T22:23:57.882Z", 
@@ -171,7 +171,7 @@
 },
 {
     "pk": 3, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 15, 
         "created_at": "2014-08-08T22:23:57.888Z", 
@@ -181,7 +181,7 @@
 },
 {
     "pk": 4, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 15, 
         "created_at": "2014-08-08T22:23:57.892Z", 
@@ -191,7 +191,7 @@
 },
 {
     "pk": 5, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.895Z", 
@@ -201,7 +201,7 @@
 },
 {
     "pk": 6, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.898Z", 
@@ -211,7 +211,7 @@
 },
 {
     "pk": 7, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.901Z", 
@@ -221,7 +221,7 @@
 },
 {
     "pk": 8, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.906Z", 
@@ -231,7 +231,7 @@
 },
 {
     "pk": 9, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.909Z", 
@@ -241,7 +241,7 @@
 },
 {
     "pk": 10, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.912Z", 
@@ -251,7 +251,7 @@
 },
 {
     "pk": 11, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 2, 
         "created_at": "2014-08-08T22:23:57.915Z", 
@@ -261,7 +261,7 @@
 },
 {
     "pk": 12, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.918Z", 
@@ -271,7 +271,7 @@
 },
 {
     "pk": 13, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.921Z", 
@@ -281,7 +281,7 @@
 },
 {
     "pk": 14, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.924Z", 
@@ -291,7 +291,7 @@
 },
 {
     "pk": 15, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.926Z", 
@@ -301,7 +301,7 @@
 },
 {
     "pk": 16, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.929Z", 
@@ -311,7 +311,7 @@
 },
 {
     "pk": 17, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.932Z", 
@@ -321,7 +321,7 @@
 },
 {
     "pk": 18, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.934Z", 
@@ -331,7 +331,7 @@
 },
 {
     "pk": 19, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.937Z", 
@@ -341,7 +341,7 @@
 },
 {
     "pk": 20, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 3, 
         "created_at": "2014-08-08T22:23:57.940Z", 
@@ -351,7 +351,7 @@
 },
 {
     "pk": 21, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.943Z", 
@@ -361,7 +361,7 @@
 },
 {
     "pk": 22, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.945Z", 
@@ -371,7 +371,7 @@
 },
 {
     "pk": 23, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.948Z", 
@@ -381,7 +381,7 @@
 },
 {
     "pk": 24, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.951Z", 
@@ -391,7 +391,7 @@
 },
 {
     "pk": 25, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.953Z", 
@@ -401,7 +401,7 @@
 },
 {
     "pk": 26, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.956Z", 
@@ -411,7 +411,7 @@
 },
 {
     "pk": 27, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.959Z", 
@@ -421,7 +421,7 @@
 },
 {
     "pk": 28, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.962Z", 
@@ -431,7 +431,7 @@
 },
 {
     "pk": 29, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 4, 
         "created_at": "2014-08-08T22:23:57.964Z", 
@@ -441,7 +441,7 @@
 },
 {
     "pk": 30, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.967Z", 
@@ -451,7 +451,7 @@
 },
 {
     "pk": 31, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.969Z", 
@@ -461,7 +461,7 @@
 },
 {
     "pk": 32, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.972Z", 
@@ -471,7 +471,7 @@
 },
 {
     "pk": 33, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.975Z", 
@@ -481,7 +481,7 @@
 },
 {
     "pk": 34, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.978Z", 
@@ -491,7 +491,7 @@
 },
 {
     "pk": 35, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.981Z", 
@@ -501,7 +501,7 @@
 },
 {
     "pk": 36, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.984Z", 
@@ -511,7 +511,7 @@
 },
 {
     "pk": 37, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.986Z", 
@@ -521,7 +521,7 @@
 },
 {
     "pk": 38, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.989Z", 
@@ -531,7 +531,7 @@
 },
 {
     "pk": 39, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:57.996Z", 
@@ -541,7 +541,7 @@
 },
 {
     "pk": 40, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:58.005Z", 
@@ -551,7 +551,7 @@
 },
 {
     "pk": 41, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:58.007Z", 
@@ -561,7 +561,7 @@
 },
 {
     "pk": 42, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:58.009Z", 
@@ -571,7 +571,7 @@
 },
 {
     "pk": 43, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:58.013Z", 
@@ -581,7 +581,7 @@
 },
 {
     "pk": 44, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 5, 
         "created_at": "2014-08-08T22:23:58.015Z", 
@@ -591,7 +591,7 @@
 },
 {
     "pk": 45, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.018Z", 
@@ -601,7 +601,7 @@
 },
 {
     "pk": 46, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.020Z", 
@@ -611,7 +611,7 @@
 },
 {
     "pk": 47, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.025Z", 
@@ -621,7 +621,7 @@
 },
 {
     "pk": 48, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.028Z", 
@@ -631,7 +631,7 @@
 },
 {
     "pk": 49, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.030Z", 
@@ -641,7 +641,7 @@
 },
 {
     "pk": 50, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.033Z", 
@@ -651,7 +651,7 @@
 },
 {
     "pk": 51, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.036Z", 
@@ -661,7 +661,7 @@
 },
 {
     "pk": 52, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.038Z", 
@@ -671,7 +671,7 @@
 },
 {
     "pk": 53, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.041Z", 
@@ -681,7 +681,7 @@
 },
 {
     "pk": 54, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.043Z", 
@@ -691,7 +691,7 @@
 },
 {
     "pk": 55, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.046Z", 
@@ -701,7 +701,7 @@
 },
 {
     "pk": 56, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.049Z", 
@@ -711,7 +711,7 @@
 },
 {
     "pk": 57, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.052Z", 
@@ -721,7 +721,7 @@
 },
 {
     "pk": 58, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.054Z", 
@@ -731,7 +731,7 @@
 },
 {
     "pk": 59, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.057Z", 
@@ -741,7 +741,7 @@
 },
 {
     "pk": 60, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.060Z", 
@@ -751,7 +751,7 @@
 },
 {
     "pk": 61, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.062Z", 
@@ -761,7 +761,7 @@
 },
 {
     "pk": 62, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.065Z", 
@@ -771,7 +771,7 @@
 },
 {
     "pk": 63, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.067Z", 
@@ -781,7 +781,7 @@
 },
 {
     "pk": 64, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.070Z", 
@@ -791,7 +791,7 @@
 },
 {
     "pk": 65, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.073Z", 
@@ -801,7 +801,7 @@
 },
 {
     "pk": 66, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.075Z", 
@@ -811,7 +811,7 @@
 },
 {
     "pk": 67, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.078Z", 
@@ -821,7 +821,7 @@
 },
 {
     "pk": 68, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.081Z", 
@@ -831,7 +831,7 @@
 },
 {
     "pk": 69, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.083Z", 
@@ -841,7 +841,7 @@
 },
 {
     "pk": 70, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.086Z", 
@@ -851,7 +851,7 @@
 },
 {
     "pk": 71, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.089Z", 
@@ -861,7 +861,7 @@
 },
 {
     "pk": 72, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.091Z", 
@@ -871,7 +871,7 @@
 },
 {
     "pk": 73, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.094Z", 
@@ -881,7 +881,7 @@
 },
 {
     "pk": 74, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.097Z", 
@@ -891,7 +891,7 @@
 },
 {
     "pk": 75, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.100Z", 
@@ -901,7 +901,7 @@
 },
 {
     "pk": 76, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.102Z", 
@@ -911,7 +911,7 @@
 },
 {
     "pk": 77, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.105Z", 
@@ -921,7 +921,7 @@
 },
 {
     "pk": 78, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.108Z", 
@@ -931,7 +931,7 @@
 },
 {
     "pk": 79, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.111Z", 
@@ -941,7 +941,7 @@
 },
 {
     "pk": 80, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.113Z", 
@@ -951,7 +951,7 @@
 },
 {
     "pk": 81, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.116Z", 
@@ -961,7 +961,7 @@
 },
 {
     "pk": 82, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 6, 
         "created_at": "2014-08-08T22:23:58.119Z", 
@@ -971,7 +971,7 @@
 },
 {
     "pk": 83, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.122Z", 
@@ -981,7 +981,7 @@
 },
 {
     "pk": 84, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.124Z", 
@@ -991,7 +991,7 @@
 },
 {
     "pk": 85, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.127Z", 
@@ -1001,7 +1001,7 @@
 },
 {
     "pk": 86, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.130Z", 
@@ -1011,7 +1011,7 @@
 },
 {
     "pk": 87, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.132Z", 
@@ -1021,7 +1021,7 @@
 },
 {
     "pk": 88, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.135Z", 
@@ -1031,7 +1031,7 @@
 },
 {
     "pk": 89, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.138Z", 
@@ -1041,7 +1041,7 @@
 },
 {
     "pk": 90, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.140Z", 
@@ -1051,7 +1051,7 @@
 },
 {
     "pk": 91, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.143Z", 
@@ -1061,7 +1061,7 @@
 },
 {
     "pk": 92, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.146Z", 
@@ -1071,7 +1071,7 @@
 },
 {
     "pk": 93, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.149Z", 
@@ -1081,7 +1081,7 @@
 },
 {
     "pk": 94, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.152Z", 
@@ -1091,7 +1091,7 @@
 },
 {
     "pk": 95, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.154Z", 
@@ -1101,7 +1101,7 @@
 },
 {
     "pk": 96, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.157Z", 
@@ -1111,7 +1111,7 @@
 },
 {
     "pk": 97, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.160Z", 
@@ -1121,7 +1121,7 @@
 },
 {
     "pk": 98, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.162Z", 
@@ -1131,7 +1131,7 @@
 },
 {
     "pk": 99, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.165Z", 
@@ -1141,7 +1141,7 @@
 },
 {
     "pk": 100, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.168Z", 
@@ -1151,7 +1151,7 @@
 },
 {
     "pk": 101, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.170Z", 
@@ -1161,7 +1161,7 @@
 },
 {
     "pk": 102, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.173Z", 
@@ -1171,7 +1171,7 @@
 },
 {
     "pk": 103, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.175Z", 
@@ -1181,7 +1181,7 @@
 },
 {
     "pk": 104, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.178Z", 
@@ -1191,7 +1191,7 @@
 },
 {
     "pk": 105, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.181Z", 
@@ -1201,7 +1201,7 @@
 },
 {
     "pk": 106, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.183Z", 
@@ -1211,7 +1211,7 @@
 },
 {
     "pk": 107, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.186Z", 
@@ -1221,7 +1221,7 @@
 },
 {
     "pk": 108, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.189Z", 
@@ -1231,7 +1231,7 @@
 },
 {
     "pk": 109, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.191Z", 
@@ -1241,7 +1241,7 @@
 },
 {
     "pk": 110, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.194Z", 
@@ -1251,7 +1251,7 @@
 },
 {
     "pk": 111, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.197Z", 
@@ -1261,7 +1261,7 @@
 },
 {
     "pk": 112, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.201Z", 
@@ -1271,7 +1271,7 @@
 },
 {
     "pk": 113, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.203Z", 
@@ -1281,7 +1281,7 @@
 },
 {
     "pk": 114, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.206Z", 
@@ -1291,7 +1291,7 @@
 },
 {
     "pk": 115, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 7, 
         "created_at": "2014-08-08T22:23:58.209Z", 
@@ -1301,7 +1301,7 @@
 },
 {
     "pk": 116, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.212Z", 
@@ -1311,7 +1311,7 @@
 },
 {
     "pk": 117, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.214Z", 
@@ -1321,7 +1321,7 @@
 },
 {
     "pk": 118, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.217Z", 
@@ -1331,7 +1331,7 @@
 },
 {
     "pk": 119, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.220Z", 
@@ -1341,7 +1341,7 @@
 },
 {
     "pk": 120, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.222Z", 
@@ -1351,7 +1351,7 @@
 },
 {
     "pk": 121, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.225Z", 
@@ -1361,7 +1361,7 @@
 },
 {
     "pk": 122, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.228Z", 
@@ -1371,7 +1371,7 @@
 },
 {
     "pk": 123, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.231Z", 
@@ -1381,7 +1381,7 @@
 },
 {
     "pk": 124, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.233Z", 
@@ -1391,7 +1391,7 @@
 },
 {
     "pk": 125, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.236Z", 
@@ -1401,7 +1401,7 @@
 },
 {
     "pk": 126, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.238Z", 
@@ -1411,7 +1411,7 @@
 },
 {
     "pk": 127, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.241Z", 
@@ -1421,7 +1421,7 @@
 },
 {
     "pk": 128, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.244Z", 
@@ -1431,7 +1431,7 @@
 },
 {
     "pk": 129, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.247Z", 
@@ -1441,7 +1441,7 @@
 },
 {
     "pk": 130, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.249Z", 
@@ -1451,7 +1451,7 @@
 },
 {
     "pk": 131, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.252Z", 
@@ -1461,7 +1461,7 @@
 },
 {
     "pk": 132, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.254Z", 
@@ -1471,7 +1471,7 @@
 },
 {
     "pk": 133, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.262Z", 
@@ -1481,7 +1481,7 @@
 },
 {
     "pk": 134, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.265Z", 
@@ -1491,7 +1491,7 @@
 },
 {
     "pk": 135, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.268Z", 
@@ -1501,7 +1501,7 @@
 },
 {
     "pk": 136, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.270Z", 
@@ -1511,7 +1511,7 @@
 },
 {
     "pk": 137, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.273Z", 
@@ -1521,7 +1521,7 @@
 },
 {
     "pk": 138, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.275Z", 
@@ -1531,7 +1531,7 @@
 },
 {
     "pk": 139, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.278Z", 
@@ -1541,7 +1541,7 @@
 },
 {
     "pk": 140, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.281Z", 
@@ -1551,7 +1551,7 @@
 },
 {
     "pk": 141, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.283Z", 
@@ -1561,7 +1561,7 @@
 },
 {
     "pk": 142, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.287Z", 
@@ -1571,7 +1571,7 @@
 },
 {
     "pk": 143, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.289Z", 
@@ -1581,7 +1581,7 @@
 },
 {
     "pk": 144, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.292Z", 
@@ -1591,7 +1591,7 @@
 },
 {
     "pk": 145, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 8, 
         "created_at": "2014-08-08T22:23:58.295Z", 
@@ -1601,7 +1601,7 @@
 },
 {
     "pk": 146, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.297Z", 
@@ -1611,7 +1611,7 @@
 },
 {
     "pk": 147, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.300Z", 
@@ -1621,7 +1621,7 @@
 },
 {
     "pk": 148, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.302Z", 
@@ -1631,7 +1631,7 @@
 },
 {
     "pk": 149, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.305Z", 
@@ -1641,7 +1641,7 @@
 },
 {
     "pk": 150, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.308Z", 
@@ -1651,7 +1651,7 @@
 },
 {
     "pk": 151, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.312Z", 
@@ -1661,7 +1661,7 @@
 },
 {
     "pk": 152, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.314Z", 
@@ -1671,7 +1671,7 @@
 },
 {
     "pk": 153, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.317Z", 
@@ -1681,7 +1681,7 @@
 },
 {
     "pk": 154, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.320Z", 
@@ -1691,7 +1691,7 @@
 },
 {
     "pk": 155, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.322Z", 
@@ -1701,7 +1701,7 @@
 },
 {
     "pk": 156, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.325Z", 
@@ -1711,7 +1711,7 @@
 },
 {
     "pk": 157, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.328Z", 
@@ -1721,7 +1721,7 @@
 },
 {
     "pk": 158, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.331Z", 
@@ -1731,7 +1731,7 @@
 },
 {
     "pk": 159, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.333Z", 
@@ -1741,7 +1741,7 @@
 },
 {
     "pk": 160, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.336Z", 
@@ -1751,7 +1751,7 @@
 },
 {
     "pk": 161, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.339Z", 
@@ -1761,7 +1761,7 @@
 },
 {
     "pk": 162, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.342Z", 
@@ -1771,7 +1771,7 @@
 },
 {
     "pk": 163, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.344Z", 
@@ -1781,7 +1781,7 @@
 },
 {
     "pk": 164, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.347Z", 
@@ -1791,7 +1791,7 @@
 },
 {
     "pk": 165, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.349Z", 
@@ -1801,7 +1801,7 @@
 },
 {
     "pk": 166, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.352Z", 
@@ -1811,7 +1811,7 @@
 },
 {
     "pk": 167, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.355Z", 
@@ -1821,7 +1821,7 @@
 },
 {
     "pk": 168, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.359Z", 
@@ -1831,7 +1831,7 @@
 },
 {
     "pk": 169, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.361Z", 
@@ -1841,7 +1841,7 @@
 },
 {
     "pk": 170, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.364Z", 
@@ -1851,7 +1851,7 @@
 },
 {
     "pk": 171, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.367Z", 
@@ -1861,7 +1861,7 @@
 },
 {
     "pk": 172, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.369Z", 
@@ -1871,7 +1871,7 @@
 },
 {
     "pk": 173, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.373Z", 
@@ -1881,7 +1881,7 @@
 },
 {
     "pk": 174, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.375Z", 
@@ -1891,7 +1891,7 @@
 },
 {
     "pk": 175, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.378Z", 
@@ -1901,7 +1901,7 @@
 },
 {
     "pk": 176, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.381Z", 
@@ -1911,7 +1911,7 @@
 },
 {
     "pk": 177, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.384Z", 
@@ -1921,7 +1921,7 @@
 },
 {
     "pk": 178, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.387Z", 
@@ -1931,7 +1931,7 @@
 },
 {
     "pk": 179, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.389Z", 
@@ -1941,7 +1941,7 @@
 },
 {
     "pk": 180, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.392Z", 
@@ -1951,7 +1951,7 @@
 },
 {
     "pk": 181, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.395Z", 
@@ -1961,7 +1961,7 @@
 },
 {
     "pk": 182, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.397Z", 
@@ -1971,7 +1971,7 @@
 },
 {
     "pk": 183, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.440Z", 
@@ -1981,7 +1981,7 @@
 },
 {
     "pk": 184, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.443Z", 
@@ -1991,7 +1991,7 @@
 },
 {
     "pk": 185, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.446Z", 
@@ -2001,7 +2001,7 @@
 },
 {
     "pk": 186, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.449Z", 
@@ -2011,7 +2011,7 @@
 },
 {
     "pk": 187, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.451Z", 
@@ -2021,7 +2021,7 @@
 },
 {
     "pk": 188, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.454Z", 
@@ -2031,7 +2031,7 @@
 },
 {
     "pk": 189, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.456Z", 
@@ -2041,7 +2041,7 @@
 },
 {
     "pk": 190, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.459Z", 
@@ -2051,7 +2051,7 @@
 },
 {
     "pk": 191, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.461Z", 
@@ -2061,7 +2061,7 @@
 },
 {
     "pk": 192, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.464Z", 
@@ -2071,7 +2071,7 @@
 },
 {
     "pk": 193, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.467Z", 
@@ -2081,7 +2081,7 @@
 },
 {
     "pk": 194, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.469Z", 
@@ -2091,7 +2091,7 @@
 },
 {
     "pk": 195, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.472Z", 
@@ -2101,7 +2101,7 @@
 },
 {
     "pk": 196, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.474Z", 
@@ -2111,7 +2111,7 @@
 },
 {
     "pk": 197, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.477Z", 
@@ -2121,7 +2121,7 @@
 },
 {
     "pk": 198, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.480Z", 
@@ -2131,7 +2131,7 @@
 },
 {
     "pk": 199, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 9, 
         "created_at": "2014-08-08T22:23:58.482Z", 
@@ -2141,7 +2141,7 @@
 },
 {
     "pk": 200, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.484Z", 
@@ -2151,7 +2151,7 @@
 },
 {
     "pk": 201, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.487Z", 
@@ -2161,7 +2161,7 @@
 },
 {
     "pk": 202, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.490Z", 
@@ -2171,7 +2171,7 @@
 },
 {
     "pk": 203, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.493Z", 
@@ -2181,7 +2181,7 @@
 },
 {
     "pk": 204, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.495Z", 
@@ -2191,7 +2191,7 @@
 },
 {
     "pk": 205, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.498Z", 
@@ -2201,7 +2201,7 @@
 },
 {
     "pk": 206, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.500Z", 
@@ -2211,7 +2211,7 @@
 },
 {
     "pk": 207, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.503Z", 
@@ -2221,7 +2221,7 @@
 },
 {
     "pk": 208, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.506Z", 
@@ -2231,7 +2231,7 @@
 },
 {
     "pk": 209, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.508Z", 
@@ -2241,7 +2241,7 @@
 },
 {
     "pk": 210, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.511Z", 
@@ -2251,7 +2251,7 @@
 },
 {
     "pk": 211, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.514Z", 
@@ -2261,7 +2261,7 @@
 },
 {
     "pk": 212, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.516Z", 
@@ -2271,7 +2271,7 @@
 },
 {
     "pk": 213, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.519Z", 
@@ -2281,7 +2281,7 @@
 },
 {
     "pk": 214, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.522Z", 
@@ -2291,7 +2291,7 @@
 },
 {
     "pk": 215, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.524Z", 
@@ -2301,7 +2301,7 @@
 },
 {
     "pk": 216, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.527Z", 
@@ -2311,7 +2311,7 @@
 },
 {
     "pk": 217, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.529Z", 
@@ -2321,7 +2321,7 @@
 },
 {
     "pk": 218, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.531Z", 
@@ -2331,7 +2331,7 @@
 },
 {
     "pk": 219, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.534Z", 
@@ -2341,7 +2341,7 @@
 },
 {
     "pk": 220, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.537Z", 
@@ -2351,7 +2351,7 @@
 },
 {
     "pk": 221, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.540Z", 
@@ -2361,7 +2361,7 @@
 },
 {
     "pk": 222, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.542Z", 
@@ -2371,7 +2371,7 @@
 },
 {
     "pk": 223, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.545Z", 
@@ -2381,7 +2381,7 @@
 },
 {
     "pk": 224, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.547Z", 
@@ -2391,7 +2391,7 @@
 },
 {
     "pk": 225, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.550Z", 
@@ -2401,7 +2401,7 @@
 },
 {
     "pk": 226, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.553Z", 
@@ -2411,7 +2411,7 @@
 },
 {
     "pk": 227, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.555Z", 
@@ -2421,7 +2421,7 @@
 },
 {
     "pk": 228, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.558Z", 
@@ -2431,7 +2431,7 @@
 },
 {
     "pk": 229, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.560Z", 
@@ -2441,7 +2441,7 @@
 },
 {
     "pk": 230, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.563Z", 
@@ -2451,7 +2451,7 @@
 },
 {
     "pk": 231, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 10, 
         "created_at": "2014-08-08T22:23:58.565Z", 
@@ -2461,7 +2461,7 @@
 },
 {
     "pk": 232, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.568Z", 
@@ -2471,7 +2471,7 @@
 },
 {
     "pk": 233, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.571Z", 
@@ -2481,7 +2481,7 @@
 },
 {
     "pk": 234, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.573Z", 
@@ -2491,7 +2491,7 @@
 },
 {
     "pk": 235, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.576Z", 
@@ -2501,7 +2501,7 @@
 },
 {
     "pk": 236, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.579Z", 
@@ -2511,7 +2511,7 @@
 },
 {
     "pk": 237, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.581Z", 
@@ -2521,7 +2521,7 @@
 },
 {
     "pk": 238, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.584Z", 
@@ -2531,7 +2531,7 @@
 },
 {
     "pk": 239, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.586Z", 
@@ -2541,7 +2541,7 @@
 },
 {
     "pk": 240, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.589Z", 
@@ -2551,7 +2551,7 @@
 },
 {
     "pk": 241, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.592Z", 
@@ -2561,7 +2561,7 @@
 },
 {
     "pk": 242, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.594Z", 
@@ -2571,7 +2571,7 @@
 },
 {
     "pk": 243, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 14, 
         "created_at": "2014-08-08T22:23:58.597Z", 
@@ -2581,7 +2581,7 @@
 },
 {
     "pk": 244, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.599Z", 
@@ -2591,7 +2591,7 @@
 },
 {
     "pk": 245, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.602Z", 
@@ -2601,7 +2601,7 @@
 },
 {
     "pk": 246, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.605Z", 
@@ -2611,7 +2611,7 @@
 },
 {
     "pk": 247, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.607Z", 
@@ -2621,7 +2621,7 @@
 },
 {
     "pk": 248, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.610Z", 
@@ -2631,7 +2631,7 @@
 },
 {
     "pk": 249, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.613Z", 
@@ -2641,7 +2641,7 @@
 },
 {
     "pk": 250, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.615Z", 
@@ -2651,7 +2651,7 @@
 },
 {
     "pk": 251, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.618Z", 
@@ -2661,7 +2661,7 @@
 },
 {
     "pk": 252, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.621Z", 
@@ -2671,7 +2671,7 @@
 },
 {
     "pk": 253, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.623Z", 
@@ -2681,7 +2681,7 @@
 },
 {
     "pk": 254, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.625Z", 
@@ -2691,7 +2691,7 @@
 },
 {
     "pk": 255, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.628Z", 
@@ -2701,7 +2701,7 @@
 },
 {
     "pk": 256, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.630Z", 
@@ -2711,7 +2711,7 @@
 },
 {
     "pk": 257, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.633Z", 
@@ -2721,7 +2721,7 @@
 },
 {
     "pk": 258, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.635Z", 
@@ -2731,7 +2731,7 @@
 },
 {
     "pk": 259, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.638Z", 
@@ -2741,7 +2741,7 @@
 },
 {
     "pk": 260, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.641Z", 
@@ -2751,7 +2751,7 @@
 },
 {
     "pk": 261, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.643Z", 
@@ -2761,7 +2761,7 @@
 },
 {
     "pk": 262, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.645Z", 
@@ -2771,7 +2771,7 @@
 },
 {
     "pk": 263, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.648Z", 
@@ -2781,7 +2781,7 @@
 },
 {
     "pk": 264, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.651Z", 
@@ -2791,7 +2791,7 @@
 },
 {
     "pk": 265, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.653Z", 
@@ -2801,7 +2801,7 @@
 },
 {
     "pk": 266, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.656Z", 
@@ -2811,7 +2811,7 @@
 },
 {
     "pk": 267, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.659Z", 
@@ -2821,7 +2821,7 @@
 },
 {
     "pk": 268, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.661Z", 
@@ -2831,7 +2831,7 @@
 },
 {
     "pk": 269, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.664Z", 
@@ -2841,7 +2841,7 @@
 },
 {
     "pk": 270, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.667Z", 
@@ -2851,7 +2851,7 @@
 },
 {
     "pk": 271, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.669Z", 
@@ -2861,7 +2861,7 @@
 },
 {
     "pk": 272, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.672Z", 
@@ -2871,7 +2871,7 @@
 },
 {
     "pk": 273, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 11, 
         "created_at": "2014-08-08T22:23:58.674Z", 
@@ -2881,7 +2881,7 @@
 },
 {
     "pk": 274, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.677Z", 
@@ -2891,7 +2891,7 @@
 },
 {
     "pk": 275, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.679Z", 
@@ -2901,7 +2901,7 @@
 },
 {
     "pk": 276, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.682Z", 
@@ -2911,7 +2911,7 @@
 },
 {
     "pk": 277, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.684Z", 
@@ -2921,7 +2921,7 @@
 },
 {
     "pk": 278, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.687Z", 
@@ -2931,7 +2931,7 @@
 },
 {
     "pk": 279, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.689Z", 
@@ -2941,7 +2941,7 @@
 },
 {
     "pk": 280, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.691Z", 
@@ -2951,7 +2951,7 @@
 },
 {
     "pk": 281, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.694Z", 
@@ -2961,7 +2961,7 @@
 },
 {
     "pk": 282, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.697Z", 
@@ -2971,7 +2971,7 @@
 },
 {
     "pk": 283, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 12, 
         "created_at": "2014-08-08T22:23:58.699Z", 
@@ -2981,7 +2981,7 @@
 },
 {
     "pk": 284, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.702Z", 
@@ -2991,7 +2991,7 @@
 },
 {
     "pk": 285, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.704Z", 
@@ -3001,7 +3001,7 @@
 },
 {
     "pk": 286, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.707Z", 
@@ -3011,7 +3011,7 @@
 },
 {
     "pk": 287, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.710Z", 
@@ -3021,7 +3021,7 @@
 },
 {
     "pk": 288, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.712Z", 
@@ -3031,7 +3031,7 @@
 },
 {
     "pk": 289, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.716Z", 
@@ -3041,7 +3041,7 @@
 },
 {
     "pk": 290, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.718Z", 
@@ -3051,7 +3051,7 @@
 },
 {
     "pk": 291, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.721Z", 
@@ -3061,7 +3061,7 @@
 },
 {
     "pk": 292, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.723Z", 
@@ -3071,7 +3071,7 @@
 },
 {
     "pk": 293, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.726Z", 
@@ -3081,7 +3081,7 @@
 },
 {
     "pk": 294, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 13, 
         "created_at": "2014-08-08T22:23:58.728Z", 
@@ -3091,7 +3091,7 @@
 },
 {
     "pk": 295, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.730Z", 
@@ -3101,7 +3101,7 @@
 },
 {
     "pk": 296, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.733Z", 
@@ -3111,7 +3111,7 @@
 },
 {
     "pk": 297, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.736Z", 
@@ -3121,7 +3121,7 @@
 },
 {
     "pk": 298, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.738Z", 
@@ -3131,7 +3131,7 @@
 },
 {
     "pk": 299, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.741Z", 
@@ -3141,7 +3141,7 @@
 },
 {
     "pk": 300, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.743Z", 
@@ -3151,7 +3151,7 @@
 },
 {
     "pk": 301, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.746Z", 
@@ -3161,7 +3161,7 @@
 },
 {
     "pk": 302, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.748Z", 
@@ -3171,7 +3171,7 @@
 },
 {
     "pk": 303, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.751Z", 
@@ -3181,7 +3181,7 @@
 },
 {
     "pk": 304, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.753Z", 
@@ -3191,7 +3191,7 @@
 },
 {
     "pk": 305, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.755Z", 
@@ -3201,7 +3201,7 @@
 },
 {
     "pk": 306, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.758Z", 
@@ -3211,7 +3211,7 @@
 },
 {
     "pk": 307, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.761Z", 
@@ -3221,7 +3221,7 @@
 },
 {
     "pk": 308, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.763Z", 
@@ -3231,7 +3231,7 @@
 },
 {
     "pk": 309, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.766Z", 
@@ -3241,7 +3241,7 @@
 },
 {
     "pk": 310, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.769Z", 
@@ -3251,7 +3251,7 @@
 },
 {
     "pk": 311, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.772Z", 
@@ -3261,7 +3261,7 @@
 },
 {
     "pk": 312, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.774Z", 
@@ -3271,7 +3271,7 @@
 },
 {
     "pk": 313, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.777Z", 
@@ -3281,7 +3281,7 @@
 },
 {
     "pk": 314, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.780Z", 
@@ -3291,7 +3291,7 @@
 },
 {
     "pk": 315, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.783Z", 
@@ -3301,7 +3301,7 @@
 },
 {
     "pk": 316, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.785Z", 
@@ -3311,7 +3311,7 @@
 },
 {
     "pk": 317, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.788Z", 
@@ -3321,7 +3321,7 @@
 },
 {
     "pk": 318, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.790Z", 
@@ -3331,7 +3331,7 @@
 },
 {
     "pk": 319, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.793Z", 
@@ -3341,7 +3341,7 @@
 },
 {
     "pk": 320, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.796Z", 
@@ -3351,7 +3351,7 @@
 },
 {
     "pk": 321, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.799Z", 
@@ -3361,7 +3361,7 @@
 },
 {
     "pk": 322, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.801Z", 
@@ -3371,7 +3371,7 @@
 },
 {
     "pk": 323, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.804Z", 
@@ -3381,7 +3381,7 @@
 },
 {
     "pk": 324, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.807Z", 
@@ -3391,7 +3391,7 @@
 },
 {
     "pk": 325, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.809Z", 
@@ -3401,7 +3401,7 @@
 },
 {
     "pk": 326, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.812Z", 
@@ -3411,7 +3411,7 @@
 },
 {
     "pk": 327, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.815Z", 
@@ -3421,7 +3421,7 @@
 },
 {
     "pk": 328, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.818Z", 
@@ -3431,7 +3431,7 @@
 },
 {
     "pk": 329, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.820Z", 
@@ -3441,7 +3441,7 @@
 },
 {
     "pk": 330, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.823Z", 
@@ -3451,7 +3451,7 @@
 },
 {
     "pk": 331, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.825Z", 
@@ -3461,7 +3461,7 @@
 },
 {
     "pk": 332, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.828Z", 
@@ -3471,7 +3471,7 @@
 },
 {
     "pk": 333, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.830Z", 
@@ -3481,7 +3481,7 @@
 },
 {
     "pk": 334, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.833Z", 
@@ -3491,7 +3491,7 @@
 },
 {
     "pk": 335, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.835Z", 
@@ -3501,7 +3501,7 @@
 },
 {
     "pk": 336, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.837Z", 
@@ -3511,7 +3511,7 @@
 },
 {
     "pk": 337, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.840Z", 
@@ -3521,7 +3521,7 @@
 },
 {
     "pk": 338, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.842Z", 
@@ -3531,7 +3531,7 @@
 },
 {
     "pk": 339, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.845Z", 
@@ -3541,7 +3541,7 @@
 },
 {
     "pk": 340, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.847Z", 
@@ -3551,7 +3551,7 @@
 },
 {
     "pk": 341, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.850Z", 
@@ -3561,7 +3561,7 @@
 },
 {
     "pk": 342, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.852Z", 
@@ -3571,7 +3571,7 @@
 },
 {
     "pk": 343, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.855Z", 
@@ -3581,7 +3581,7 @@
 },
 {
     "pk": 344, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.858Z", 
@@ -3591,7 +3591,7 @@
 },
 {
     "pk": 345, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.861Z", 
@@ -3601,7 +3601,7 @@
 },
 {
     "pk": 346, 
-    "model": "regions.commune", 
+    "model": "regions.county", 
     "fields": {
         "region": 1, 
         "created_at": "2014-08-08T22:23:58.864Z", 

@@ -27,7 +27,7 @@ class Region(BaseModel):
         return self.name
 
 
-class Commune(BaseModel):
+class County(BaseModel):
     # foreign keys
 
     region = models.ForeignKey(
@@ -37,12 +37,12 @@ class Commune(BaseModel):
     # required fields
     name = models.CharField(
         _('name'), max_length=100, unique=True,
-        help_text=_(u'The name of the commune'),
+        help_text=_(u'The name of the county'),
     )
 
     class Meta:
-        verbose_name_plural = _(u'communes')
-        verbose_name = _(u'commune')
+        verbose_name_plural = _(u'counties')
+        verbose_name = _(u'county')
         ordering = ['name']
 
     def __unicode__(self):

@@ -47,13 +47,13 @@ msgid "region"
 msgstr "región"
 
 #: models.py:40
-msgid "The name of the commune"
+msgid "The name of the county"
 msgstr "El nombre de la comuna"
 
 #: models.py:44
-msgid "communes"
+msgid "countys"
 msgstr "comunas"
 
 #: models.py:45
-msgid "commune"
+msgid "county"
 msgstr "comuna"
