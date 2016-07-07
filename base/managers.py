@@ -35,5 +35,5 @@ class BaseManager(models.Manager):
         return json.dumps(list(qs.values()), cls=DjangoJSONEncoder)
 
     def find_duplicates(self, *fields):
-        qs = self.get_query_set()
+        qs = self.get_queryset()
         return qs.find_duplicates(*fields)
