@@ -18,6 +18,7 @@ from users.models import User
 
 # utils
 from base.utils import camel_to_underscore
+from base.utils import random_string
 
 
 class Mockup(object):
@@ -60,10 +61,7 @@ class Mockup(object):
         return random.uniform(minimum, maximum)
 
     def random_string(self, length=6, chars=None):
-        if chars is None:
-            chars = string.ascii_uppercase + string.digits
-
-        return ''.join(random.choice(chars) for x in range(length))
+        return random_string(length=length, chars=chars)
 
     def random_uuid(self, *args, **kwargs):
         chars = string.digits

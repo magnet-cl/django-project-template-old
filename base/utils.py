@@ -2,7 +2,9 @@
 
 # standard library
 import itertools
+import random
 import re
+import string
 import unicodedata
 import urlparse
 
@@ -83,3 +85,10 @@ def underscore_to_camel(word):
 def strip_accents(s):
     return ''.join(c for c in unicodedata.normalize('NFD', s)
                    if unicodedata.category(c) != 'Mn')
+
+
+def random_string(length=6, chars=None):
+    if chars is None:
+        chars = string.ascii_uppercase + string.digits
+
+    return ''.join(random.choice(chars) for x in range(length))
