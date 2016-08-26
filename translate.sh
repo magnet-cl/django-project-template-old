@@ -44,6 +44,7 @@ elif [ $2 ] && [ $2 != '-c' ] ; then
     translate
     cd ..
 else
+    mkdir -p locale
     print_blue "Translate all apps"
     translate
 fi
