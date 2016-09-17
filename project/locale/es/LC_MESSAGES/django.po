@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-18 07:49-0300\n"
+"POT-Creation-Date: 2016-09-17 08:11-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,36 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/admin/base_site.html:4
+#: project/templates/admin/base_site.html:4
 msgid "Django site admin"
 msgstr "Sitio de administración de Django"
 
-#: templates/admin/base_site.html:7
+#: project/templates/admin/base_site.html:7
 msgid "Django administration"
 msgstr "Administración de Django"
 
-#: templates/admin/login.html:41
+#: project/templates/admin/login.html:41
 msgid "Login"
 msgstr "Ingresa"
 
-#: templates/admin/login.html:44
+#: project/templates/admin/login.html:44
 msgid "Please correct the error below."
 msgid_plural "Please correct the errors below."
 msgstr[0] "Por favor corrige el error de abajo"
 msgstr[1] "Por favor corrige los errores de abajo"
 
-#: templates/admin/login.html:56
+#: project/templates/admin/login.html:56
 msgid "E-mail:"
 msgstr "E-mail:"
 
-#: templates/admin/login.html:65
+#: project/templates/admin/login.html:65
 msgid "Password:"
 msgstr "Contraseña"
 
-#: templates/admin/login.html:78
+#: project/templates/admin/login.html:78
 msgid "Forgotten your password or email?"
 msgstr "¿Has olvidado tu contraseña?"
 
-#: templates/admin/login.html:84
+#: project/templates/admin/login.html:84
 msgid "Log in"
 msgstr "Ingreso"

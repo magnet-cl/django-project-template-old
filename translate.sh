@@ -36,11 +36,13 @@ done
 if [ $1 ] && [ $1 != '-c' ] ; then 
     print_blue "Translate only on app $1"
     cd $1
+    mkdir -p locale
     translate
     cd ..
 elif [ $2 ] && [ $2 != '-c' ] ; then 
     print_blue "Translate only on app $2"
     cd $2
+    mkdir -p locale
     translate
     cd ..
 else
