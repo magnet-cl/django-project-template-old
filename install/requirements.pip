@@ -1,4 +1,4 @@
-Django==1.8.13
+Django==1.8.14
 Fabric==1.10.2
 bootstrap-admin==0.3.6
 django-compressor==2.0
