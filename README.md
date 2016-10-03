@@ -86,6 +86,8 @@ abstract model classes that are used throughout your project.
     * Use mockups to create objects to tests
     * Urls tests to check of 200 on every page is included
     * Integrity tests are placed to check on_delete attribute of fields
+* view_utils.py:
+    * clean_query_string
 
 ### Users: 
     * User: Custom user model that inherits form
