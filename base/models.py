@@ -8,24 +8,13 @@ All apps should use the BaseModel as parent for all models
 import json
 
 # django
-from django.core.serializers.json import DjangoJSONEncoder
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 # base
 from base.managers import BaseManager
-
-
-class ModelEncoder(DjangoJSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, models.fields.files.FieldFile):
-            if obj:
-                return obj.url
-            else:
-                return None
-
-        return super(ModelEncoder, self).default(obj)
+from base.serializers import ModelEncoder
 
 
 class BaseModel(models.Model):

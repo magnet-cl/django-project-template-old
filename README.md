@@ -37,6 +37,23 @@ with:
 
 ## Basic Sturcture
 
+### Settings: 
+
+* Settings file is located on project/settings/__init__.py
+    * Settings to modify:
+        * RECAPTCHA_PUBLIC_KEY and RECAPTCHA_PRIVATE_KEY to set keys for the
+        Captcha validator
+        * ALLOWED_HOSTS: Set domains for Debug=False
+        * SECRET_KEY: Changed automatically by quickstart.sh
+* Local settings is located in project/settings/local_settings.py (this file
+is not versioned)
+    * Settings to modify:
+         * Database configuration
+         * Sendgrid configuration
+         * Amazon configuration 
+* A versioned copy of local settings is located on
+project/settings/local_settings.default
+
 ### Base: 
 Base is the first application of this project. It's function is to provide
 the base for all other apps in your project. This is the place where you put
@@ -53,8 +70,22 @@ abstract model classes that are used throughout your project.
          included in the dict. By the contrary, if the exclude parameter is
          passed, then the excluded attributes will not be return in the dict.
 
-* Fixtures: Fixtures with an admin user
 * Admin: A basic configuration for the admin
+* Json encoder: ModelEncoder
+* Class base views in base/views.py
+* BaseManager: Override the default manager
+    * to_json
+    * find_duplicates(fields): Find duplicates for the given fields
+* Forms: BaseModelForm
+    * adds css clases depending on the field class
+    * Inherits BetterModelForms
+* Mockups:
+    * Create instances of models using the mockups (You have to define the
+    method to create a mockup)
+* Tests:
+    * Use mockups to create objects to tests
+    * Urls tests to check of 200 on every page is included
+    * Integrity tests are placed to check on_delete attribute of fields
 
 ### Users: 
     * User: Custom user model that inherits form
@@ -63,6 +94,19 @@ abstract model classes that are used throughout your project.
        * Simple email system to send templated emails.
        * Custom Backend for email authentication instead of username
          authentication
+    * Fixtures: Fixtures on migration 0002
+
+### Regions: 
+
+### node_modules: 
+
+### bower:
+
+### scripts: 
+
+* translate.sh
+* quickstart.sh
+* reset.sh
 
 ## Features
 
