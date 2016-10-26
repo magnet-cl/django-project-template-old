@@ -8,8 +8,9 @@
     - if field.field.is_checkbox
       div.col-md-offset-3.col-md-9
         div.checkbox
-          label {{field.label}}
+          label
             {{field }}
+            {{field.label}}
     - else
       label.col-sm-3(for="id_{{field.name}}")
         | {{field.label}}

@@ -6,6 +6,7 @@
 # django
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
@@ -17,6 +18,7 @@ from django.views.generic.list import ListView
 
 # utils
 from base.view_utils import clean_query_string
+from base.utils import camel_to_underscore
 
 
 @login_required
@@ -68,6 +70,44 @@ class BaseCreateView(CreateView, PermissionRequiredMixin):
     def dispatch(self, *args, **kwargs):
         self.check_permission_required()
         return super(BaseCreateView, self).dispatch(*args, **kwargs)
+
+
+class BaseSubModelCreateView(CreateView, PermissionRequiredMixin):
+    """
+    Create view when the object is nested within a parent object
+    """
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        self.check_permission_required()
+        return super(BaseSubModelCreateView, self).dispatch(*args, **kwargs)
+
+    def get_form_kwargs(self):
+        model_underscore_name = camel_to_underscore(self.parent_model.__name__)
+
+        obj = get_object_or_404(
+            self.parent_model,
+            pk=self.kwargs['{}_id'.format(model_underscore_name)]
+        )
+
+        self.object = self.model(**{model_underscore_name: obj})
+
+        return super(BaseSubModelCreateView, self).get_form_kwargs()
+
+    def get_context_data(self, **kwargs):
+        context = super(BaseSubModelCreateView, self).get_context_data(
+            **kwargs
+        )
+        model_underscore_name = camel_to_underscore(self.parent_model.__name__)
+
+        obj = get_object_or_404(
+            self.parent_model,
+            pk=self.kwargs['{}_id'.format(model_underscore_name)]
+        )
+
+        context[model_underscore_name] = obj
+
+        return context
 
 
 class BaseListView(ListView, PermissionRequiredMixin):
