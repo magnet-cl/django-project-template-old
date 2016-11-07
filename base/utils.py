@@ -83,8 +83,17 @@ def underscore_to_camel(word):
 
 
 def strip_accents(s):
-    return ''.join(c for c in unicodedata.normalize('NFD', s)
-                   if unicodedata.category(c) != 'Mn')
+    return u''.join(c for c in unicodedata.normalize('NFD', s)
+                    if unicodedata.category(c) != 'Mn')
+
+
+def tz_datetime(s, *args, **kwargs):
+    """
+    Creates a datetime.datetime object but with the current timezone
+    """
+    tz = timezone.get_current_timezone()
+    naive_dt = timezone.datetime(*args, **kwargs)
+    return timezone.make_aware(naive_dt, tz)
 
 
 def random_string(length=6, chars=None):
