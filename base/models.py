@@ -13,8 +13,27 @@ from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
 # base
+from base import utils
 from base.managers import BaseManager
 from base.serializers import ModelEncoder
+
+
+# public methods
+def file_path(self, name):
+    """
+    Generic method to give to a FileField or ImageField in it's upload_to
+    parameter.
+
+    This returns the name of the class, concatenated with the id of the
+    object and the name of the file.
+    """
+    base_path = u"{}/{}/{}"
+
+    return base_path.format(
+        self.__class__.__name__,
+        utils.random_string(30),
+        name
+    )
 
 
 class BaseModel(models.Model):
@@ -38,18 +57,6 @@ class BaseModel(models.Model):
         abstract = True
 
     # public methods
-    def file_path(self, name):
-        """
-        Generic method to give to a FileField or ImageField in it's upload_to
-        parameter.
-
-        This returns the name of the class, concatenated with the id of the
-        object and the name of the file.
-        """
-        base_path = "{}/{}/{}"
-
-        return base_path.format(self.__class__.__name__, name)
-
     def update(self, **kwargs):
         """ proxy method for the QuerySet: update method
         highly recommended when you need to save just one field
@@ -114,10 +121,3 @@ class BaseModel(models.Model):
 
         # turn the dict to json
         return json.dumps(data, cls=ModelEncoder, **kargs)
-
-    def refresh(self):
-        """
-        returns a new object of the same class as the caller, with it's
-        data taken form the database
-        """
-        return self.__class__.objects.get(id=self.id)
