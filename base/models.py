@@ -8,6 +8,7 @@ All apps should use the BaseModel as parent for all models
 import json
 
 # django
+from django.contrib.sites.models import Site
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
@@ -121,3 +122,8 @@ class BaseModel(models.Model):
 
         # turn the dict to json
         return json.dumps(data, cls=ModelEncoder, **kargs)
+
+    def get_full_url(self):
+        absolute_url = self.get_absolute_url()
+        site = Site.objects.get_current().domain
+        return 'http://{site}{path}'.format(site=site, path=absolute_url)
