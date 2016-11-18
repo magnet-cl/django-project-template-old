@@ -18,3 +18,23 @@ def paginate(request, objects, page_size=25):
         paginated_objects = paginator.page(paginator.num_pages)
 
     return paginated_objects
+
+
+def clean_query_string(request):
+    clean_query_set = request.GET.copy()
+
+    clean_query_set = dict(
+        (k, v) for k, v in request.GET.items() if not k.startswith('o_')
+    )
+
+    try:
+        del clean_query_set['p']
+    except:
+        pass
+
+    mstring = []
+    for key in clean_query_set.iterkeys():
+        valuelist = request.GET.getlist(key)
+        mstring.extend(['%s=%s' % (key, val) for val in valuelist])
+
+    return '&'.join(mstring)
