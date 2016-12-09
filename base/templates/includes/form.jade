@@ -7,5 +7,5 @@
     fieldset(class="{{ fieldset.classes }}", data-index="{{forloop.counter0}}")
       {% include "includes/fieldset.jade"%}
 - else 
-  - for field in form.fields
+  - for field in form
     {% include "includes/field.jade"%}
