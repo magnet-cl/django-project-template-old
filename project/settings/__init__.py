@@ -223,6 +223,14 @@ LOGGING = {
             '()': 'django.utils.log.RequireDebugFalse'
         }
     },
+    'formatters': {
+        'standard': {
+            'format': (
+                '%(asctime)s %(levelname)s: file %(filename)s line %(lineno)d '
+                '%(message)s'
+            )
+        },
+    },
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
@@ -233,6 +241,7 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'logging.FileHandler',
             'filename': '{}/logs/{}/error.log'.format(BASE_DIR, env),
+            'formatter': 'standard',
         },
     },
     'loggers': {
