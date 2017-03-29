@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 LOCAL_DEBUG = True
 
 LOCAL_DATABASES = {

@@ -31,7 +31,7 @@ def _send_emails(emails, template_name, subject, sender=None,
     html_content = html_template.render(context)
 
     if sender is None:
-        sender = "{} <{}>".format(
+        sender = u"{} <{}>".format(
             settings.EMAIL_SENDER_NAME,
             settings.SENDER_EMAIL
         )
